@@ -56,24 +56,24 @@
             </div>
         </div>
     </section>
+        <footer>
+        <div class="footer-content">
+            <div id="newsletter">
+                <h3>Iscriviti alla nostra newsletter</h3>
+                <form action="subscribe.php" method="post">
+                    <input type="email" placeholder="Inserisci la tua email" name="email" required>
+                    <button type="submit">Iscriviti</button>
+                </form>
+            </div>
 
-    <footer>
-    <div class="footer-content">
-        <div id="newsletter">
-            <h3>Iscriviti alla nostra newsletter</h3>
-            <form>
-                <input type="email" placeholder="Inserisci la tua email" name="email" required>
-                <button type="submit">Iscriviti</button>
-            </form>
+            <div id="footer-contacts">
+                <h3>Contattaci</h3>
+                <p>Via Roma 1, 00100 Roma, Italia</p>
+                <p>Telefono: +39 012 345 6789</p>
+                <p>Email: info@museovirtuale.it</p>
+            </div>
         </div>
-        <div id="footer-contacts">
-            <h3>Contattaci</h3>
-            <p>Via Roma 1, 00100 Roma, Italia</p>
-            <p>Telefono: +39 012 345 6789</p>
-            <p>Email: info@museovirtuale.it</p>
-        </div>
-    </div>
-    <p class="copy">&copy; 2024 Tulipano Giallo</p>
-</footer>
-</body>
+        <p class="copy">&copy; 2024 Tulipano Giallo</p>
+        </footer>
+    </body>
 </html>
