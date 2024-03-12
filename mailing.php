@@ -10,9 +10,9 @@
 
     <?php
     $servername = "localhost";
-    $username = "username";
-    $password = "password";
-    $dbname = "nomeDatabase";
+    $username = "phpmyadmin";
+    $password = "ciaone11";
+    $dbname = "Museo";
 
     // Crea la connessione
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -33,6 +33,8 @@
             <th>Data di Iscrizione</th>
         </tr>
         <?php
+        //show errors
+        ini_set('display_errors', 1);
         if ($result->num_rows > 0) {
             // Output data di ogni riga
             while($row = $result->fetch_assoc()) {
