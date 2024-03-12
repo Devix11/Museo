@@ -1,4 +1,6 @@
 <?php
+// Mostra errori
+ini_set('display_errors', 1);
 // Connessione al database
 $servername = "localhost"; // Indirizzo del server MySQL
 $username = "phpmyadmin"; // Nome utente del database
