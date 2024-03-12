@@ -19,6 +19,8 @@
         <h1>Mostre</h1>
         <div class="row">
             <?php
+            //Mostra errori mysql
+            ini_set('display_errors', 1);
             // Fetch the list of exhibitions from your database or any other data source
             // Connect to the MySQL database
             $servername = "localhost";
