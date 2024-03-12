@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="mostre.php">Mostre</a></li>
+                <li><a href="contatti.php">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
         <h1>Mostre</h1>
         <div class="row">
@@ -31,5 +40,9 @@
             ?>
         </div>
     </div>
+    <footer>
+        <p>&copy; 2022 Your Museum. All rights reserved.</p>
+    </footer>
+    
 </body>
 </html>
