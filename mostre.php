@@ -20,23 +20,44 @@
         <div class="row">
             <?php
             // Fetch the list of exhibitions from your database or any other data source
-            $exhibitions = [
-                ['title' => 'Exhibition 1', 'image' => 'exhibition1.jpg'],
-                ['title' => 'Exhibition 2', 'image' => 'exhibition2.jpg'],
-                ['title' => 'Exhibition 3', 'image' => 'exhibition3.jpg'],
-            ];
+            // Connect to the MySQL database
+            $servername = "localhost";
+            $username = "phpmyadmin";
+            $password = "ciaone11";
+            $dbname = "museo";
 
-            // Loop through the exhibitions and display them
-            foreach ($exhibitions as $exhibition) {
-                echo '<div class="col-md-4">';
-                echo '<div class="card">';
-                echo '<img src="' . $exhibition['image'] . '" class="card-img-top" alt="' . $exhibition['title'] . '">';
-                echo '<div class="card-body">';
-                echo '<h5 class="card-title">' . $exhibition['title'] . '</h5>';
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
             }
+
+            // Fetch the list of exhibitions from the database
+            $sql = "SELECT name, image FROM exhibitions";
+            $result = $conn->query($sql);
+
+            // Check if there are any exhibitions
+            if ($result->num_rows > 0) {
+                // Loop through the exhibitions and display them
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="col-md-4">';
+                    echo '<div class="card">';
+                    echo '<img src="' . $row['image'] . '" class="card-img-top" alt="' . $row['name'] . '">';
+                    echo '<div class="card-body">';
+                    echo '<h5 class="card-title">' . $row['name'] . '</h5>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+            } else {
+                echo "No exhibitions found.";
+            }
+
+            // Close the database connection
+            $conn->close();
+            
+            
             ?>
         </div>
     </div>
