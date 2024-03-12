@@ -36,7 +36,7 @@
             }
 
             // Fetch the list of exhibitions from the database
-            $sql = "SELECT name, image FROM exhibitions";
+            $sql = "SELECT Name, Image FROM Exhibitions";
             $result = $conn->query($sql);
 
             // Check if there are any exhibitions
