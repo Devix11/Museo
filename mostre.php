@@ -26,7 +26,7 @@
             $servername = "localhost";
             $username = "phpmyadmin";
             $password = "ciaone11";
-            $dbname = "museo";
+            $dbname = "Museo";
 
             $conn = new mysqli($servername, $username, $password, $dbname);
 
