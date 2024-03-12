@@ -39,6 +39,10 @@
             $sql = "SELECT Name, Image FROM Exhibitions";
             $result = $conn->query($sql);
 
+            //L'immagine viene restituita come stringa LONGBLOB
+            // Converti l'immagine in un formato visualizzabile
+            $imageData = base64_encode($row['Image']);
+            $src = 'data:image/jpeg;base64,'.$imageData;
             // Check if there are any exhibitions
             if ($result->num_rows > 0) {
                 // Loop through the exhibitions and display them
