@@ -7,6 +7,15 @@ $username = "phpmyadmin";
 $password = "ciaone11";
 $dbname = "Museo";
 
+// Connessione
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Controllo della connessione
+if ($conn->connect_error) {
+    die("Connessione fallita: " . $conn->connect_error);
+}
+
+// Ottenere l'oggetto e il messaggio dalla richiesta POST
 $subject = $_POST['subject'];
 $message = $_POST['message'];
 $headers = 'From: davideagostini05@gmail.com' . "\r\n" .
