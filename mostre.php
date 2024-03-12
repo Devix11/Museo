@@ -39,16 +39,14 @@
             $sql = "SELECT Name, Image FROM Exhibitions";
             $result = $conn->query($sql);
 
-            //L'immagine viene restituita come stringa LONGBLOB
-            // Converti l'immagine in un formato visualizzabile
-            $imageData = base64_encode($row['Image']);
-            $src = 'data:image/jpeg;base64,'.$imageData;
             // Check if there are any exhibitions
             if ($result->num_rows > 0) {
                 // Loop through the exhibitions and display them
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="col-md-4">';
                     echo '<div class="card">';
+                    $imageData = base64_encode($row['Image']);
+                    $src = 'data:image/jpeg;base64,'.$imageData;
                     echo '<img src="' . $row['image'] . '" class="card-img-top" alt="' . $row['name'] . '">';
                     echo '<div class="card-body">';
                     echo '<h5 class="card-title">' . $row['name'] . '</h5>';
