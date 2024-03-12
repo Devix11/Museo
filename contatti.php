@@ -5,7 +5,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <?php include 'header.php'; ?>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="mostre.php">Mostre</a></li>
+                <li><a href="contatti.php">Contatti</a></li>
+            </ul>
+        </nav>
 
     <div class="container">
         <h1>Contatti</h1>
@@ -37,6 +44,7 @@
         </div>
     </div>
 
-    <?php include 'footer.php'; ?>
+    <footer>
+        <p>&copy; 2020 Museo Virtuale</p>
 </body>
 </html>
