@@ -45,11 +45,11 @@
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="col-md-4">';
                     echo '<div class="card">';
-                    $imageData = base64_encode($row['Image']);
-                    $src = 'data:image/jpeg;base64,'.$imageData;
-                    echo '<img src="' . $row['image'] . '" class="card-img-top" alt="' . $row['name'] . '">';
+                    $imageData = base64_encode($row['Image']);  // Convert the binary data to base64
+                    $src = 'data:image/jpeg;base64,' . $imageData;  // Create the src attribute for the img tag
+                    echo '<img src="' . $src . '" class="card-img-top" alt="' . htmlspecialchars($row['Name']) . '">';  // Use $src for the image source
                     echo '<div class="card-body">';
-                    echo '<h5 class="card-title">' . $row['name'] . '</h5>';
+                    echo '<h5 class="card-title">' . htmlspecialchars($row['Name']) . '</h5>';  // Display the name
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
@@ -60,6 +60,7 @@
 
             // Close the database connection
             $conn->close();
+
             
             
             ?>
