@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 $servername = "localhost"; // Indirizzo del server MySQL
 $username = "phpmyadmin"; // Nome utente del database
 $password = "ciaone11"; // Password del database
-$dbname = "Newsletter"; // Nome del database
+$dbname = "Museo"; // Nome del database
 
 // Connessione
 $conn = new mysqli($servername, $username, $password, $dbname);
