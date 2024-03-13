@@ -2,6 +2,7 @@
 // Mostra errori
 ini_set('display_errors', 1);
 // Connessione al database...
+/*
 $servername = "localhost";
 $username = "phpmyadmin";
 $password = "ciaone11";
@@ -34,5 +35,15 @@ if ($result->num_rows > 0) {
   echo "Nessun destinatario trovato.";
 }
 
-$conn->close();
+$conn->close();*/
+
+$to = 'davideagostini05@gmail.com';
+$subject = 'Oggetto dell\'email';
+$message = 'Questo è il corpo dell\'email.';
+$headers = 'From: mario@yahoo.com' . "\r\n" .
+    'Reply-To: mittente@yahoo.com' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+mail($to, $subject, $message, $headers);
+echo "Email inviata con successo.";
 ?>
