@@ -1,74 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Mostre</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="mostre.php">Mostre</a></li>
-                <li><a href="contatti.php">Contatti</a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class="container">
-        <h1>Mostre</h1>
-        <div class="row">
-            <?php
-            //Mostra errori mysql
-            ini_set('display_errors', 1);
-            // Fetch the list of exhibitions from your database or any other data source
-            // Connect to the MySQL database
-            $servername = "localhost";
-            $username = "phpmyadmin";
-            $password = "ciaone11";
-            $dbname = "Museo";
+    <head>
+        <title>Mostre</title>
+        <!-- Collegamento ai file CSS -->
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <header>
+            <!-- Menu di navigazione -->
+            <nav>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="mostre.php">Mostre</a></li>
+                    <li><a href="contatti.php">Contatti</a></li>
+                </ul>
+            </nav>
+        </header>
 
-            $conn = new mysqli($servername, $username, $password, $dbname);
+        <div class="container">
+            <h1>Mostre</h1>
+            <div class="row">
+                <?php
+                    // Abilita la visualizzazione degli errori
+                    ini_set('display_errors', 1);
 
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+                    // Parametri di connessione al database
+                    $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
+                    $user = "phpmyadmin"; // Nome utente per l'accesso al database
+                    $pwd = "ciaone11"; // Password per l'accesso al database
+                    $db = "Museo"; // Nome del database
 
-            // Fetch the list of exhibitions from the database
-            $sql = "SELECT Name, Image FROM Exhibitions";
-            $result = $conn->query($sql);
+                    // Creazione della connessione
+                    $conn = new mysqli($server, $user, $pwd, $db);
 
-            // Check if there are any exhibitions
-            if ($result->num_rows > 0) {
-                // Loop through the exhibitions and display them
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="col-md-4">';
-                    echo '<div class="card">';
-                    $imageData = base64_encode($row['Image']);  // Convert the binary data to base64
-                    $src = 'data:image/jpeg;base64,' . $imageData;  // Create the src attribute for the img tag
-                    echo '<img src="' . $src . '" class="card-img-top" alt="' . htmlspecialchars($row['Name']) . '">';  // Use $src for the image source
-                    echo '<div class="card-body">';
-                    echo '<h5 class="card-title">' . htmlspecialchars($row['Name']) . '</h5>';  // Display the name
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                }
-            } else {
-                echo "No exhibitions found.";
-            }
+                    // Controllo della connessione
+                    if ($conn->connect_error) {
+                        die("Connessione fallita: " . $conn->connect_error);
+                    }
 
-            // Close the database connection
-            $conn->close();
+                    // Fetch della lista delle esibizioni dal database
+                    $sql = "SELECT Name, Image FROM Exhibitions";
+                    $result = $conn->query($sql);
 
-            
-            
-            ?>
+                    // Controlla se ci sono delle esibizioni
+                    if ($result->num_rows > 0) {
+                        // Ciclo per mostrare a video tutte le esibizioni
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<div class="col-md-4">';
+                                echo '<div class="card">';
+                                    // Mostra l'immagine della mostra
+                                    $imageData = base64_encode($row['Image']);  
+                                    $src = 'data:image/jpeg;base64,' . $imageData;  
+                                    echo '<img src="' . $src . '" class="card-img-top" alt="' . htmlspecialchars($row['Name']) . '">';  
+                                    echo '<div class="card-body">';
+                                        // Mostra il nome della mostra
+                                        echo '<h5 class="card-title">' . htmlspecialchars($row['Name']) . '</h5>'; 
+                                    echo '</div>';
+                                echo '</div>';
+                            echo '</div>';
+                        }
+                    } else {
+                        // Se non ci sono esibizioni
+                        echo "Nessuna esibizione trovata.";
+                    }                    
+
+                    // Chiusura della connessione
+                    $conn->close();
+                ?>
+            </div>
         </div>
-    </div>
-    <footer>
-        <p>&copy; 2022 Your Museum. All rights reserved.</p>
-    </footer>
-    
-</body>
+
+        <footer>
+            <!-- Testo del footer -->
+            <p>&copy; 2022 Yellow Tulip Museum. All rights reserved.</p>
+        </footer>
+        
+    </body>
 </html>

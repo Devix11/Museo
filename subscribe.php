@@ -1,35 +1,36 @@
 <?php
-// Mostra errori
-ini_set('display_errors', 1);
-// Connessione al database
-$servername = "localhost"; // Indirizzo del server MySQL
-$username = "phpmyadmin"; // Nome utente del database
-$password = "ciaone11"; // Password del database
-$dbname = "Museo"; // Nome del database
+    // Abilita la visualizzazione degli errori
+    ini_set('display_errors', 1);
 
-// Connessione
-$conn = new mysqli($servername, $username, $password, $dbname);
+    // Parametri di connessione al database
+    $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
+    $user = "phpmyadmin"; // Nome utente per l'accesso al database
+    $pwd = "ciaone11"; // Password per l'accesso al database
+    $db = "Museo"; // Nome del database
 
-// Controllo della connessione
-if ($conn->connect_error) {
-    die("Connessione fallita: " . $conn->connect_error);
-}
+    // Creazione della connessione
+    $conn = new mysqli($server, $user, $pwd, $db);
 
-// Ottenere l'email dalla richiesta POST
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'])) {
-    $email = $_POST['email'];
-
-    // Query per inserire l'email nella tabella Newsletter
-    $sql = "INSERT INTO Newsletter (Email) VALUES ('$email')";
-
-    // Eseguire la query e controllare se ha avuto successo
-    if ($conn->query($sql) === TRUE) {
-        echo "Iscrizione alla newsletter avvenuta con successo!";
-    } else {
-        echo "Errore durante l'iscrizione alla newsletter: " . $conn->error;
+    // Controllo della connessione
+    if ($conn->connect_error) {
+        die("Connessione fallita: " . $conn->connect_error);
     }
-}
 
-// Chiudere la connessione
-$conn->close();
+    // Gestione della richiesta POST per l'iscrizione alla newsletter
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'])) {
+        $email = $_POST['email'];
+        
+        // Query per inserire l'email nella tabella newsletter
+        $sql = "INSERT INTO Newsletter (Email) VALUES ('$email')";
+        
+        // Esecuzione della query e controllo del risultato
+        if ($conn->query($sql) === TRUE) {
+            echo 'Iscrizione alla newsletter avvenuta con successo!';
+        } else {
+            echo 'Errore durante l\'iscrizione alla newsletter: ' . $conn->error;
+        }
+    }
+
+    // Chiusura della connessione
+    $conn->close();
 ?>

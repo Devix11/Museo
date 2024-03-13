@@ -1,3 +1,4 @@
+/* Reset del CSS x il body */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -6,6 +7,7 @@ body {
     color: #333;
 }
 
+/* Stile dell'header */
 header {
     background: #333;
     color: #f9f9f9;
@@ -13,6 +15,7 @@ header {
     text-align: center;
 }
 
+/* Stile del menu di navigazione (navbar) */
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -35,6 +38,7 @@ nav ul li a:hover {
     color: #ffdd57;
 }
 
+/* Stile del contenuto principale */
 main {
     flex: 1;
 }
@@ -52,6 +56,7 @@ h2 {
     color: #ffdd57;
 }
 
+/* Stile dei pulsanti */
 button {
     background-color: #ffdd57;
     color: #333;
@@ -66,6 +71,7 @@ button:hover {
     background-color: #ccbc4d;
 }
 
+/* Stile del footer */
 footer {
     background: #333;
     color: #f9f9f9;
@@ -76,6 +82,7 @@ footer {
     align-items: center;
 }
 
+/* Contenuto del footer */
 footer .footer-content {
     display: flex;
     justify-content: space-between;
@@ -127,7 +134,7 @@ footer .footer-content button:hover {
     background-color: #ccbc4d;
 }
 
-/* Copyright text */
+/* Testo di copyright */
 footer p.copy {
     text-align: center;
     width: 100%;
