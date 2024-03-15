@@ -21,7 +21,7 @@
         </header>
 
         <!-- Info museo -->
-        <section id="info" style="text-align-all: center">
+        <section id="info" style="text-align: center">
             <h2>Benvenuti allo Yellow Tulip Museum!</h2>
 
             <p>Lo Yellow Tulip Museum è un luogo dove la storia, l'arte e la cultura si fondono per creare un'esperienza unica e coinvolgente per i visitatori di tutte le età. Situato nel cuore della città di Padova, il nostro museo celebra la ricchezza e la diversità della storia umana attraverso una vasta collezione di reperti, opere d'arte e installazioni interattive.</p>
@@ -73,7 +73,7 @@
             </div>
         </section>
 
-        <footer style="align-items: center">
+        <footer>
             <!-- Contenuto del footer con moduli di iscrizione alla newsletter, informazioni di contatto e mappa -->
             <div class="footer-content" style="max-width: fit-content">
 
