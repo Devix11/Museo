@@ -73,7 +73,7 @@
 
         <footer>
             <!-- Contenuto del footer con moduli di iscrizione alla newsletter, informazioni di contatto e mappa -->
-            <div class="footer-content">
+            <div class="footer-content" style="max-width: fit-content">
 
                 <!-- Modulo di iscrizione alla newsletter -->
                 <div id="newsletter" style="max-width: fit-content">
