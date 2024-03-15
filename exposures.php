@@ -12,8 +12,8 @@
             <nav>
                 <ul>
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="mostre.php">Mostre</a></li>
-                    <li><a href="contatti.php">Contatti</a></li>
+                    <li><a href="exposures.php">Mostre</a></li>
+                    <li><a href="contacts.php">Contatti</a></li>
                 </ul>
             </nav>
         </header>

@@ -12,10 +12,10 @@
             <h1>Yellow Tulip Museum</h1>
             <nav>
                 <ul>
-                    <li><a href="#mostre">Mostre</a></li>
+                    <li><a href="exposures.php">Mostre</a></li>
                     <li><a href="#biglietti">Biglietti</a></li>
-                    <li><a href="#account">Account</a></li>
-                    <li><a href="#contatti">Contatti</a></li>
+                    <li><a href="subscribe.php">Account</a></li>
+                    <li><a href="contacts.php">Contatti</a></li>
                 </ul>
             </nav>
         </header>
