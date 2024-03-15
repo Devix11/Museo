@@ -14,7 +14,7 @@
                 <ul>
                     <li><a href="exposures.php">Mostre</a></li>
                     <li><a href="#biglietti">Biglietti</a></li>
-                    <li><a href="subscribe.php">Account</a></li>
+                    <li><a href="#account">Account</a></li>
                     <li><a href="contacts.php">Contatti</a></li>
                 </ul>
             </nav>
