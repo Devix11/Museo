@@ -25,11 +25,11 @@
             <h2>Benvenuti al Yellow Tulip Museum!</h2>
 
             <p>Yellow Tulip Museum è un luogo dove la storia, l'arte e la cultura si fondono per creare un'esperienza unica e coinvolgente per i visitatori di tutte le età. Situato nel cuore della città di Padova, il nostro museo celebra la ricchezza e la diversità della storia umana attraverso una vasta collezione di reperti, opere d'arte e installazioni interattive.</p>
-            <br><br><br>
+            <br>
             <p>Fondato nel 2024, il Yellow Tulip Museum si impegna a preservare, studiare e condividere il patrimonio culturale del mondo. La nostra missione è educare, ispirare e stimolare la curiosità attraverso mostre innovative, programmi educativi e eventi speciali.</p>
-            <br><br><br>
+            <br>
             <p>Dal periodo antico alla contemporaneità, esplora le innumerevoli sfaccettature della storia umana attraverso le nostre esibizioni permanenti e temporanee. Dai reperti archeologici alle opere d'arte moderne, ogni visita al Yellow Tulip Museum è un viaggio attraverso le epoche e le culture.</p>
-            <br><br><br>
+            <br>
             <p>Vieni a scoprire il Yellow Tulip Museum e lasciati trasportare dalla bellezza, dall'arte e dalla storia che ci circonda. Siamo ansiosi di accoglierti e di condividere con te la nostra passione per il patrimonio culturale del mondo.</p>
         </section>
 
