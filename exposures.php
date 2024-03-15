@@ -12,8 +12,9 @@
             <nav>
                 <ul>
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="exposures.php">Mostre</a></li>
+                    <li><a href="tickets.php">Biglietti</a></li>
                     <li><a href="contacts.php">Contatti</a></li>
+                    <li><a href="account.php">Profilo</a></li>
                 </ul>
             </nav>
         </header>
