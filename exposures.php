@@ -72,10 +72,8 @@
             </div>
         </div>
 
-        <footer>
-            <!-- Testo del footer -->
-            <p>&copy; 2022 Yellow Tulip Museum. All rights reserved.</p>
-        </footer>
-        
+        <?php
+            include_once("footer.php");
+        ?>
     </body>
 </html>
