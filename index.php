@@ -73,7 +73,7 @@
                     <h3>Iscriviti alla nostra newsletter</h3>
                     <form action="subscribe.php" method="post">
                         <input type="email" placeholder="Inserisci la tua email" name="email" required>
-                        <button type="submit">Iscriviti</button>
+                        <button type="submit">Iscriviti</button><br>
                         <input type="checkbox" name="privacy" required> Acconsento all'informativa privacy
                     </form>
                 </div>
