@@ -56,6 +56,10 @@ h2 {
     color: #ffdd57;
 }
 
+p {
+    font-size: 14px;
+}
+
 /* Stile dei pulsanti */
 button {
     background-color: #ffdd57;
