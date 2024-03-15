@@ -88,9 +88,14 @@
                 <!-- Informazioni di contatto -->
                 <div id="footer-contacts">
                     <h3>Contattaci</h3>
-                    <p>Via Roma 1, 00100 Roma, Italia</p>
+                    <p>Via S. Francesco, 94, 35121 Padova PD, Italia</p>
                     <p>Telefono: +39 049 528 9287</p>
                     <p>Email: info@yellowtulipmuseum.it</p>
+                </div>
+
+                <div id="map">
+                    <h3>Dove ci puoi trovare</h3>
+                    <p>Inserisci qui maps</p>
                 </div>
             </div>
             
