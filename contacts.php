@@ -52,7 +52,12 @@
         </div>
 
         <footer>
-            <p>&copy; 2020 Yellow Tulip Museum. All rights reserved.</p>
+            <!-- Contenuto del footer con moduli di iscrizione alla newsletter e informazioni di contatto -->
+            <div class="footer-content">
+            </div>
+
+            <!-- Testo di copyright -->
+            <p class="copy">&copy; 2024 Yellow Tulip Museum. All rights reserved.</p>
         </footer>
     </body>
 </html>
