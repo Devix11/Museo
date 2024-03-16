@@ -55,6 +55,7 @@ section,
 
 .carousel-slide img {
     max-height: 400px;
+    margin: 20px auto;
 }
 
 h2 {
