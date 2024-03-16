@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="styles.css"> <!-- Collegamento ai file CSS -->
     </head>
     <body>
-        <header>
+        <header class="navbar">
             <!-- Intestazione con titolo e menu di navigazione -->
             <h1>Yellow Tulip Museum</h1>
             <nav>

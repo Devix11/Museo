@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="styles.css"> <!-- Collegamento ai file CSS -->
     </head>
     <body>
-        <footer>
+        <footer class="navbar">
             <!-- Contenuto del footer con moduli di iscrizione alla newsletter, informazioni di contatto e mappa -->
             <div class="footer-content" style="max-width: fit-content">
 
