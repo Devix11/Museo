@@ -63,16 +63,14 @@
                     }
 
                     // Se il tipo MIME non è vuoto, visualizza l'immagine
+                    echo '<div>';
                     if ($mime_type != '') {
-                        echo '<div>';
                         echo '<img src="data:' . $mime_type . ';base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />';
-                        echo '</div>';
                     } else {
                         // Gestione di immagini con estensioni non supportate
-                        echo '<div>';
                         echo 'Immagine non supportata: ' . $row['Name'];
-                        echo '</div>';
                     }
+                    echo '</div>';
                 }
             } else {
                 echo "Nessuna immagine trovata.";
