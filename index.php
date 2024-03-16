@@ -35,8 +35,8 @@
                     // Ottieni l'estensione del file dall'URL
                     $extension = pathinfo($row['ID'], PATHINFO_EXTENSION);
                     // Determina il tipo MIME in base all'estensione del file
-                    $mime_type = '';
-                    echo 'echo of extension: '.$extension;
+                    $mime_type = 'image/jpeg';
+                    /*echo 'echo of extension: '.$extension;
                     switch ($extension) {
                         case 'jpeg':
                         case 'jpg':
@@ -61,7 +61,7 @@
                         default:
                             // Default break...
                             break;
-                    }
+                    }*/
 
                     // Se il tipo MIME non è vuoto, visualizza l'immagine
                     echo '<div>';
