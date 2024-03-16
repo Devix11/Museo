@@ -36,6 +36,7 @@
                     $extension = pathinfo($row['Name'], PATHINFO_EXTENSION);
                     // Determina il tipo MIME in base all'estensione del file
                     $mime_type = '';
+                    echo $extension;
                     switch ($extension) {
                         case 'jpeg':
                         case 'jpg':
