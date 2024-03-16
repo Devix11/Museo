@@ -182,7 +182,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Colore di sfondo della traccia */
+    background: rgba(0, 0, 0, 0); /* Colore di sfondo della traccia */
 }
 
 body::-webkit-scrollbar-thumb {
