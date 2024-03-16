@@ -7,87 +7,6 @@
         <link rel="stylesheet" href="styles.css"> <!-- Collegamento ai file CSS -->
     </head>
     <body>
-        <?php
-            // Abilita la visualizzazione degli errori
-            ini_set('display_errors', 1);
-
-            // Parametri di connessione al database
-            $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
-            $user = "phpmyadmin"; // Nome utente per l'accesso al database
-            $pwd = "ciaone11"; // Password per l'accesso al database
-            $db = "Museo"; // Nome del database
-
-            // Creazione della connessione
-            $conn = new mysqli($server, $user, $pwd, $db);
-
-            // Controllo della connessione
-            if ($conn->connect_error) {
-                die("Connessione fallita: " . $conn->connect_error);
-            }
-
-            // Query per selezionare le immagini dalla tabella
-            $sql = "SELECT ID, Name, Image FROM Images";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                // Output delle immagini
-                while ($row = $result->fetch_assoc()) {
-                    // Ottieni l'estensione del file dall'URL
-                    $extension = pathinfo($row['Name'], PATHINFO_EXTENSION);
-                    // Determina il tipo MIME in base all'estensione del file
-                    $mime_type = 'image/jpeg';
-                    /*
-                    switch ($extension) {
-                        case 'jpeg':
-                        case 'jpg':
-                            $mime_type = 'image/jpeg';
-                            break;
-                        case 'png':
-                            $mime_type = 'image/png';
-                            break;
-                        case 'gif':
-                            $mime_type = 'image/gif';
-                            break;
-                        case 'bmp':
-                            $mime_type = 'image/bmp';
-                            break;
-                        case 'tiff':
-                        case 'tif':
-                            $mime_type = 'image/tiff';
-                            break;
-                        case 'svg':
-                            $mime_type = 'image/svg';
-                            break;
-                        default:
-                            // Default break...
-                            break;
-                    }
-                    */
-
-                    // Se il tipo MIME non è vuoto, visualizza l'immagine
-                    echo '<div class="carousel">';
-                    if ($mime_type != '') {
-                        echo '<div class="carousel-slide">';
-                            echo '<img src="data:' . $mime_type . ';base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />';
-                        echo '</div>';
-                    } else {
-                        // Gestione di immagini con estensioni non supportate
-                        echo '<div class="carousel-slide">';
-                            echo 'Immagine non supportata: ' . $row['Name'];
-                        echo '</div>';
-                    }
-                    echo '</div>';
-                }
-            } else {
-                echo "Nessuna immagine trovata.";
-            }
-
-            echo '<script src="script.js"></script>';
-
-            // Chiusura della connessione
-            $conn->close();
-        ?>
-
         <header>
             <!-- Intestazione con titolo e menu di navigazione -->
             <h1>Yellow Tulip Museum</h1>
@@ -115,6 +34,88 @@
             <br>
             <p>E ricordate, imparare la storia non è mai stato così divertente!!</p>
         </section>
+
+        <!-- Sezione carosello -->
+        <?php
+        // Abilita la visualizzazione degli errori
+        ini_set('display_errors', 1);
+
+        // Parametri di connessione al database
+        $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
+        $user = "phpmyadmin"; // Nome utente per l'accesso al database
+        $pwd = "ciaone11"; // Password per l'accesso al database
+        $db = "Museo"; // Nome del database
+
+        // Creazione della connessione
+        $conn = new mysqli($server, $user, $pwd, $db);
+
+        // Controllo della connessione
+        if ($conn->connect_error) {
+            die("Connessione fallita: " . $conn->connect_error);
+        }
+
+        // Query per selezionare le immagini dalla tabella
+        $sql = "SELECT ID, Name, Image FROM Images";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // Output delle immagini
+            while ($row = $result->fetch_assoc()) {
+                // Ottieni l'estensione del file dall'URL
+                $extension = pathinfo($row['Name'], PATHINFO_EXTENSION);
+                // Determina il tipo MIME in base all'estensione del file
+                $mime_type = 'image/jpeg';
+                /*
+                switch ($extension) {
+                    case 'jpeg':
+                    case 'jpg':
+                        $mime_type = 'image/jpeg';
+                        break;
+                    case 'png':
+                        $mime_type = 'image/png';
+                        break;
+                    case 'gif':
+                        $mime_type = 'image/gif';
+                        break;
+                    case 'bmp':
+                        $mime_type = 'image/bmp';
+                        break;
+                    case 'tiff':
+                    case 'tif':
+                        $mime_type = 'image/tiff';
+                        break;
+                    case 'svg':
+                        $mime_type = 'image/svg';
+                        break;
+                    default:
+                        // Default break...
+                        break;
+                }
+                */
+
+                // Se il tipo MIME non è vuoto, visualizza l'immagine
+                echo '<div class="carousel">';
+                if ($mime_type != '') {
+                    echo '<div class="carousel-slide">';
+                    echo '<img src="data:' . $mime_type . ';base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />';
+                    echo '</div>';
+                } else {
+                    // Gestione di immagini con estensioni non supportate
+                    echo '<div class="carousel-slide">';
+                    echo 'Immagine non supportata: ' . $row['Name'];
+                    echo '</div>';
+                }
+                echo '</div>';
+            }
+        } else {
+            echo "Nessuna immagine trovata.";
+        }
+
+        echo '<script src="script.js"></script>';
+
+        // Chiusura della connessione
+        $conn->close();
+        ?>
 
         <!-- Sezione Biglietti -->
         <section id="biglietti">
