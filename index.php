@@ -33,7 +33,7 @@
                 // Output delle immagini
                 while ($row = $result->fetch_assoc()) {
                     // Ottieni l'estensione del file dall'URL
-                    $extension = pathinfo($row['Image'], PATHINFO_EXTENSION);
+                    $extension = pathinfo($row['ID'], PATHINFO_EXTENSION);
                     // Determina il tipo MIME in base all'estensione del file
                     $mime_type = '';
                     echo 'echo of extension: '.$extension;
