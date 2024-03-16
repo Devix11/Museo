@@ -53,6 +53,11 @@ section,
     border-radius: 8px;
 }
 
+.carousel-slide img {
+    max-height: 800px;
+    align-content: center;
+}
+
 h2 {
     color: #ffdd57;
 }
