@@ -44,7 +44,7 @@ main {
 }
 
 section,
-.carousel{
+.carousel-slide img{
     background: #fff;
     padding: 20px;
     margin: 20px auto;
