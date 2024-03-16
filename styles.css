@@ -180,9 +180,14 @@ footer p.copy {
 body::-webkit-scrollbar {
     width: 10px; /* Larghezza della scrollbar */
 }
+/*
+body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0); Colore di sfondo della traccia
+}
+*/
 
 body::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0); /* Colore di sfondo della traccia */
+    background: var(--scrollbar-background-color); /* Colore di sfondo della traccia */
 }
 
 body::-webkit-scrollbar-thumb {

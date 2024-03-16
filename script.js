@@ -12,3 +12,9 @@ function showSlides() {
     slides[slideIndex-1].style.display = "block";
     setTimeout(showSlides, 5000); // Cambia immagine ogni 5 secondi
 }
+
+// Ottieni il colore di sfondo della navbar
+const navbarColor = window.getComputedStyle(document.querySelector('.navbar')).backgroundColor;
+
+// Applica il colore di sfondo della navbar alla scrollbar
+document.documentElement.style.setProperty('--scrollbar-background-color', navbarColor);
