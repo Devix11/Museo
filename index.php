@@ -33,10 +33,10 @@
                 // Output delle immagini
                 while ($row = $result->fetch_assoc()) {
                     // Ottieni l'estensione del file dall'URL
-                    $extension = pathinfo($row['ID'], PATHINFO_EXTENSION);
+                    $extension = pathinfo($row['Name'], PATHINFO_EXTENSION);
                     // Determina il tipo MIME in base all'estensione del file
                     $mime_type = 'image/jpeg';
-                    /*echo 'echo of extension: '.$extension;
+                    /*
                     switch ($extension) {
                         case 'jpeg':
                         case 'jpg':
@@ -61,21 +61,28 @@
                         default:
                             // Default break...
                             break;
-                    }*/
+                    }
+                    */
 
                     // Se il tipo MIME non è vuoto, visualizza l'immagine
-                    echo '<div>';
+                    echo '<div class="carousel">';
                     if ($mime_type != '') {
-                        echo '<img src="data:' . $mime_type . ';base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />';
+                        echo '<div class="carousel-slide">';
+                            echo '<img src="data:' . $mime_type . ';base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />';
+                        echo '</div>';
                     } else {
                         // Gestione di immagini con estensioni non supportate
-                        echo 'Immagine non supportata: ' . $row['Name'];
+                        echo '<div class="carousel-slide">';
+                            echo 'Immagine non supportata: ' . $row['Name'];
+                        echo '</div>';
                     }
                     echo '</div>';
                 }
             } else {
                 echo "Nessuna immagine trovata.";
             }
+
+            echo '<script src="script.js"></script>';
 
             // Chiusura della connessione
             $conn->close();
