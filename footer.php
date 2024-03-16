@@ -11,26 +11,28 @@
             <!-- Contenuto del footer con moduli di iscrizione alla newsletter, informazioni di contatto e mappa -->
             <div class="footer-content" style="max-width: fit-content">
 
-                <!-- Modulo di iscrizione alla newsletter -->
-                <div id="newsletter" style="max-width: fit-content">
-                    <h3>Iscriviti alla nostra newsletter</h3>
-                    <form action="subscribe.php" method="post">
-                        <label>
-                            <input type="email" placeholder="Inserisci la tua email" name="email" required>
-                        </label>
-                        <button type="submit">Iscriviti</button><br>
-                        <label>
-                            <input type="checkbox" name="privacy" required>
-                        </label> Acconsento all'informativa privacy
-                    </form>
-                </div>
+                <div>
+                    <!-- Informazioni di contatto -->
+                    <div id="footer-contacts" style="max-width: fit-content">
+                        <h3>Contattaci</h3>
+                        <p>Via S. Francesco, 94, 35121 Padova PD, Italia</p>
+                        <p>Telefono: +39 049 528 9287</p>
+                        <p>Email: info@yellowtulipmuseum.it</p>
+                    </div>
 
-                <!-- Informazioni di contatto -->
-                <div id="footer-contacts" style="max-width: fit-content">
-                    <h3>Contattaci</h3>
-                    <p>Via S. Francesco, 94, 35121 Padova PD, Italia</p>
-                    <p>Telefono: +39 049 528 9287</p>
-                    <p>Email: info@yellowtulipmuseum.it</p>
+                    <!-- Modulo di iscrizione alla newsletter -->
+                    <div id="newsletter" style="max-width: fit-content">
+                        <h3>Iscriviti alla nostra newsletter</h3>
+                        <form action="subscribe.php" method="post">
+                            <label>
+                                <input type="email" placeholder="Inserisci la tua email" name="email" required>
+                            </label>
+                            <button type="submit">Iscriviti</button><br>
+                            <label>
+                                <input type="checkbox" name="privacy" required>
+                            </label> Acconsento all'informativa privacy
+                        </form>
+                    </div>
                 </div>
 
                 <div id="map" style="max-width: fit-content">

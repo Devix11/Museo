@@ -60,6 +60,24 @@ p {
     font-size: 17px;
 }
 
+/* Stile del carosello */
+.carousel {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    display: none;
+    width: 100%;
+    transition: all 0.5s ease;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+}
+
 /* Stile dei pulsanti */
 button {
     background-color: #ffdd57;

@@ -35,6 +35,38 @@
             <p>E ricordate, imparare la storia non è mai stato così divertente!!</p>
         </section>
 
+        <div class="carousel">
+            <div class="carousel-slide" id="slide1">
+                <img src="./images/Carosel1.jpeg" alt="Art Piece 1">
+            </div>
+            <div class="carousel-slide" id="slide2">
+                <img src="./images/Carosel2.jpeg" alt="Art Piece 2">
+            </div>
+            <div class="carousel-slide" id="slide3">
+                <img src="./images/Carosel3.jpeg" alt="Art Piece 3">
+            </div>
+            <div class="carousel-slide" id="slide4">
+                <img src="./images/Carosel4.jpeg" alt="Art Piece 1">
+            </div>
+            <div class="carousel-slide" id="slide5">
+                <img src="./images/Carosel5.jpeg" alt="Art Piece 2">
+            </div>
+            <div class="carousel-slide" id="slide6">
+                <img src="./images/Carosel6.jpg" alt="Art Piece 3">
+            </div>
+            <div class="carousel-slide" id="slide7">
+                <img src="./images/Carosel7.jpg" alt="Art Piece 1">
+            </div>
+            <div class="carousel-slide" id="slide8">
+                <img src="./images/Carosel8.jpg" alt="Art Piece 2">
+            </div>
+            <div class="carousel-slide" id="slide9">
+                <img src="./images/Carosel9.jpg" alt="Art Piece 3">
+            </div>
+
+            <script src="script.js"></script>
+        </div>
+
         <!-- Sezione Biglietti -->
         <section id="biglietti">
             <h2>Acquista Biglietti</h2>
