@@ -42,14 +42,6 @@ if ($conn->connect_error) {
 // Chiusura della connessione
 $conn->close();
 ?>
-
-<!-- Sezione Account -->
-<section id="user">
-    <h2>Hai un profilo?</h2>
-    <button onclick="open('login.php')">Accedi</button><br>
-    <a href="register.php">Registrati</a>
-</section>
-
 <!-- Sezione Account -->
 <section id="account">
     <h2>Account</h2>
@@ -57,26 +49,12 @@ $conn->close();
         <!-- Modulo di accesso -->
         <div class="login">
             <h3>Accedi</h3>
-            <form action="" method="post">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                <button type="submit">Accedi</button>
-            </form>
-        </div>
-
-        <!-- Modulo di registrazione -->
-        <div class="register">
-            <h3>Registrati</h3>
-            <form action="" method="post">
-                <label for="new-username">Username:</label>
-                <input type="text" id="new-username" name="username" required>
-                <label for="new-password">Password:</label>
-                <input type="password" id="new-password" name="password" required>
+            <form action="login_process.php" method="post">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <button type="submit">Registrati</button>
+                <input type="email" id="email" name="email" placeholder="example@email.it" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="********" required>
+                <button type="submit">Accedi</button>
             </form>
         </div>
     </div>
