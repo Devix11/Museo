@@ -43,7 +43,7 @@ if ($conn->connect_error) {
 $conn->close();
 ?>
 <!-- Sezione Account -->
-<section id="account">
+<section id="login">
     <h2>Account</h2>
     <div class="account-actions">
         <!-- Modulo di accesso -->

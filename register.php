@@ -44,7 +44,7 @@ $conn->close();
 ?>
 
 <!-- Sezione Account -->
-<section id="account">
+<section id="register">
     <h2>Account</h2>
     <div class="account-actions">
         <!-- Modulo di registrazione -->
