@@ -37,8 +37,14 @@
 
         <!-- Sezione carosello -->
         <?php
-            // Abilita la visualizzazione degli errori
-            ini_set('display_errors', 1);
+                    // Abilita la visualizzazione degli errori
+                    ini_set('display_errors', 1);
+        require_once(__DIR__ . '/vendor/autoload.php');
+
+        $client = new GuzzleHttp\Client();
+
+        $client->getAsync('http://localhost/ping')
+        ->then(function ($response) { echo '10'; });
 
         // Parametri di connessione al database
         $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
