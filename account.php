@@ -25,22 +25,22 @@
             // Abilita la visualizzazione degli errori
             ini_set('display_errors', 1);
 
-            // Parametri di connessione al database
-            $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
-            $user = "phpmyadmin"; // Nome utente per l'accesso al database
-            $pwd = "ciaone11"; // Password per l'accesso al database
-            $db = "Museo"; // Nome del database
+        // Parametri di connessione al database
+        $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
+        $user = "phpmyadmin"; // Nome utente per l'accesso al database
+        $pwd = "ciaone11"; // Password per l'accesso al database
+        $db = "Museo"; // Nome del database
 
-            // Creazione della connessione
-            $conn = new mysqli($server, $user, $pwd, $db);
+        // Creazione della connessione
+        $conn = new mysqli($server, $user, $pwd, $db);
 
-            // Controllo della connessione
-            if ($conn->connect_error) {
-                die("Connessione fallita: " . $conn->connect_error);
-            }
+        // Controllo della connessione
+        if ($conn->connect_error) {
+            die("Connessione fallita: " . $conn->connect_error);
+        }
 
-            // Chiusura della connessione
-            $conn->close();
+        // Chiusura della connessione
+        $conn->close();
         ?>
 
         <!-- Sezione Account -->

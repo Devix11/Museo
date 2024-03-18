@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yellow Tulip Museum</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Collegamento ai file CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header class="navbar">
-    <!-- Intestazione con titolo e menu di navigazione -->
     <h1>Yellow Tulip Museum</h1>
     <nav>
         <ul>
@@ -20,10 +19,10 @@
     </nav>
 </header>
 
-
-<!-- Sezione php per la gestione login/registrazione -->
 <?php
-// Abilita la visualizzazione degli errori
+
+require_once(__DIR__ . '/vendor/autoload.php');
+
 ini_set('display_errors', 1);
 
 // Parametri di connessione al database

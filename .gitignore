@@ -1,2 +1,6 @@
 .idea
+vendor
+/api/node_modules
+node_modules
 qodana.yaml
+.php-cs-fixer.cache
