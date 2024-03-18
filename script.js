@@ -5,12 +5,12 @@ function showSlides() {
     let i;
     let slides = document.getElementsByClassName("carousel-slide");
     for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
+        slides[i].style.opacity = 0;
     }
     slideIndex++;
     if (slideIndex > slides.length) {slideIndex = 1}
-    slides[slideIndex-1].style.display = "block";
-    setTimeout(showSlides, 5000); // Cambia immagine ogni 5 secondi
+    slides[slideIndex-1].style.opacity = 1;
+    setTimeout(showSlides, 3500); // Cambia immagine ogni 3.5 secondi
 }
 
 // Ottieni il colore di sfondo della navbar

@@ -61,6 +61,11 @@ section,
     justify-content: center;
 }
 
+.carousel-slide {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
 h2 {
     color: #ffdd57;
 }
