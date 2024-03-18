@@ -55,7 +55,7 @@
         }
 
         // Query per selezionare le immagini dalla tabella
-        $sql = "SELECT ID, Name, Image FROM Images";
+        $sql = "SELECT ID, Name, Image FROM Images WHERE Name='HomeCarosel_'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -95,16 +95,14 @@
 
                 // Se il tipo MIME non è vuoto, visualizza l'immagine
                 echo '<div class="carousel">';
-                if ($mime_type != '') {
                     echo '<div class="carousel-slide">';
-                    echo '<img src="data:' . $mime_type . ';base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />';
+                        if ($mime_type != '') {
+                            echo '<img src="data:' . $mime_type . ';base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />';
+                        } else {
+                            // Gestione di immagini con estensioni non supportate
+                            echo 'Immagine non supportata: ' . $row['Name'];
+                        }
                     echo '</div>';
-                } else {
-                    // Gestione di immagini con estensioni non supportate
-                    echo '<div class="carousel-slide">';
-                    echo 'Immagine non supportata: ' . $row['Name'];
-                    echo '</div>';
-                }
                 echo '</div>';
             }
         } else {
