@@ -51,9 +51,9 @@ $conn->close();
             <h3>Accedi</h3>
             <form action="login_process.php" method="post">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="example@email.it" required>
+                <input type="email" id="email" name="email" placeholder="example@email.it" required><br>
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="********" required>
+                <input type="password" id="password" name="password" placeholder="********" required><br>
                 <button type="submit">Accedi</button>
             </form>
         </div>

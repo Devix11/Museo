@@ -44,41 +44,11 @@ $conn->close();
 ?>
 
 <!-- Sezione Account -->
-<section id="user">
-    <h2>Hai un profilo?</h2>
-    <button onclick="open('login.php')">Accedi</button><br>
-    <a href="register.php">Registrati</a>
-</section>
-
-<!-- Sezione Account -->
 <section id="account">
-    <h2>Account</h2>
     <div class="account-actions">
-        <!-- Modulo di accesso -->
-        <div class="login">
-            <h3>Accedi</h3>
-            <form action="" method="post">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                <button type="submit">Accedi</button>
-            </form>
-        </div>
-
-        <!-- Modulo di registrazione -->
-        <div class="register">
-            <h3>Registrati</h3>
-            <form action="" method="post">
-                <label for="new-username">Username:</label>
-                <input type="text" id="new-username" name="username" required>
-                <label for="new-password">Password:</label>
-                <input type="password" id="new-password" name="password" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <button type="submit">Registrati</button>
-            </form>
-        </div>
+        <h2>Hai un profilo?</h2>
+        <button onclick="open('login.php')">Accedi</button><br>
+        <a href="register.php">Registrati</a>
     </div>
 </section>
 

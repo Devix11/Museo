@@ -52,14 +52,14 @@ $conn->close();
             <h3>Registrati</h3>
             <form action="register_process.php" method="post">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="example@email.it" required>
+                <input type="email" id="email" name="email" placeholder="example@email.it" required><br>
                 <label for="new-password">Password:</label>
-                <input type="password" minlength="8" id="new-password" name="password" placeholder="********" required>
+                <input type="password" minlength="8" id="new-password" name="password" placeholder="********" required><br>
                 <label for="tel">Telefono:</label>
-                <input type="tel" maxlength="10" minlength="10" id="tel" name="tel" placeholder="0123456789" required>
+                <input type="tel" maxlength="10" minlength="10" id="tel" name="tel" placeholder="0123456789" required><br>
                 <label for="cf">Codice Fiscale:</label>
-                <input type="text" maxlength="16" minlength="16" id="cf" name="cf" placeholder="XXXXXX00X00X000X" required>
-                <button type="submit">Registrati</button>
+                <input type="text" maxlength="16" minlength="16" id="cf" name="cf" placeholder="XXXXXX00X00X000X" required><br>
+                <button type="submit">Registrati</button><br>
             </form>
         </div>
     </div>
