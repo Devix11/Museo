@@ -64,7 +64,7 @@
                     // Ottieni l'estensione del file dall'URL
                     $extension = pathinfo($row['Name'], PATHINFO_EXTENSION);
                     // Determina il tipo MIME in base all'estensione del file
-                    $mime_type = 'image/jpeg';
+
                     /*
                     switch ($extension) {
                         case 'jpeg':
@@ -96,12 +96,7 @@
                     // Se il tipo MIME non è vuoto, visualizza l'immagine
                     echo '<div class="carousel">';
                         echo '<div class="carousel-slide">';
-                            if ($mime_type != '') {
-                                echo '<img src="data:' . $mime_type . ';base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />';
-                            } else {
-                                // Gestione di immagini con estensioni non supportate
-                                echo 'Immagine non supportata: ' . $row['Name'];
-                            }
+                            echo '<img src="data:image/jpeg;base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />';
                         echo '</div>';
                     echo '</div>';
                 }

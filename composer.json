@@ -1,0 +1,7 @@
+{
+  "name": "scuola/museo",
+  "description": "School project",
+  "require-dev": {
+    "phpstan/phpstan": "1.10.60"
+  }
+}
