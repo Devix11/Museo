@@ -37,117 +37,80 @@
 
         <!-- Sezione carosello -->
         <?php
-        // Abilita la visualizzazione degli errori
-        ini_set('display_errors', 1);
+            // Abilita la visualizzazione degli errori
+            ini_set('display_errors', 1);
 
-        // Parametri di connessione al database
-        $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
-        $user = "phpmyadmin"; // Nome utente per l'accesso al database
-        $pwd = "ciaone11"; // Password per l'accesso al database
-        $db = "Museo"; // Nome del database
+            // Parametri di connessione al database
+            $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
+            $user = "phpmyadmin"; // Nome utente per l'accesso al database
+            $pwd = "ciaone11"; // Password per l'accesso al database
+            $db = "Museo"; // Nome del database
 
-        // Creazione della connessione
-        $conn = new mysqli($server, $user, $pwd, $db);
+            // Creazione della connessione
+            $conn = new mysqli($server, $user, $pwd, $db);
 
-        // Controllo della connessione
-        if ($conn->connect_error) {
-            die("Connessione fallita: " . $conn->connect_error);
-        }
-
-        // Query per selezionare le immagini dalla tabella
-        $sql = "SELECT ID, Name, Image FROM Images WHERE Name='HomeCarosel%'";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            // Output delle immagini
-            while ($row = $result->fetch_assoc()) {
-                // Ottieni l'estensione del file dall'URL
-                $extension = pathinfo($row['Name'], PATHINFO_EXTENSION);
-                // Determina il tipo MIME in base all'estensione del file
-
-                /*
-                switch ($extension) {
-                    case 'jpeg':
-                    case 'jpg':
-                        $mime_type = 'image/jpeg';
-                        break;
-                    case 'png':
-                        $mime_type = 'image/png';
-                        break;
-                    case 'gif':
-                        $mime_type = 'image/gif';
-                        break;
-                    case 'bmp':
-                        $mime_type = 'image/bmp';
-                        break;
-                    case 'tiff':
-                    case 'tif':
-                        $mime_type = 'image/tiff';
-                        break;
-                    case 'svg':
-                        $mime_type = 'image/svg';
-                        break;
-                    default:
-                        // Default break...
-                        break;
-                }
-                */
-
-                // Se il tipo MIME non è vuoto, visualizza l'immagine
-                echo '<div class="carousel">';
-                    echo '<div class="carousel-slide">';
-                            echo '<img src="data:image/jpeg;base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />';
-                    echo '</div>';
-                echo '</div>';
+            // Controllo della connessione
+            if ($conn->connect_error) {
+                die("Connessione fallita: " . $conn->connect_error);
             }
-        } else {
-            echo "Nessuna immagine trovata.";
-        }
 
-        echo '<script src="script.js"></script>';
+            // Query per selezionare le immagini dalla tabella
+            $sql = "SELECT ID, Name, Image FROM Images WHERE Name LIKE 'HomeCarosel%'";
+            $result = $conn->query($sql);
 
-        // Chiusura della connessione
-        $conn->close();
+            if ($result->num_rows > 0) {
+                // Output delle immagini
+                while ($row = $result->fetch_assoc()) {
+                    // Ottieni l'estensione del file dall'URL
+                    $extension = pathinfo($row['Name'], PATHINFO_EXTENSION);
+                    // Determina il tipo MIME in base all'estensione del file
+
+                    /*
+                    switch ($extension) {
+                        case 'jpeg':
+                        case 'jpg':
+                            $mime_type = 'image/jpeg';
+                            break;
+                        case 'png':
+                            $mime_type = 'image/png';
+                            break;
+                        case 'gif':
+                            $mime_type = 'image/gif';
+                            break;
+                        case 'bmp':
+                            $mime_type = 'image/bmp';
+                            break;
+                        case 'tiff':
+                        case 'tif':
+                            $mime_type = 'image/tiff';
+                            break;
+                        case 'svg':
+                            $mime_type = 'image/svg';
+                            break;
+                        default:
+                            // Default break...
+                            break;
+                    }
+                    */
+
+                    // Se il tipo MIME non è vuoto, visualizza l'immagine
+                    echo '<div class="carousel">';
+                        echo '<div class="carousel-slide">';
+                            echo '<img src="data:image/jpeg;base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />';
+                        echo '</div>';
+                    echo '</div>';
+                }
+            } else {
+                echo "Nessuna immagine trovata.";
+            }
+
+            echo '<script src="script.js"></script>';
+
+            // Chiusura della connessione
+            $conn->close();
         ?>
 
-        <!-- Sezione Biglietti -->
-        <section id="biglietti">
-            <h2>Acquista Biglietti</h2>
-            <p>Opzioni e prezzi dei biglietti...</p>
-        </section>
-
-        <!-- Sezione Account -->
-        <section id="account">
-            <h2>Account</h2>
-            <div class="account-actions">
-                <!-- Modulo di accesso -->
-                <div class="login">
-                    <h3>Accedi</h3>
-                    <form action="" method="post">
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" name="username" required>
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" required>
-                        <button type="submit">Accedi</button>
-                    </form>
-                </div>
-
-                <!-- Modulo di registrazione -->
-                <div class="register">
-                    <h3>Registrati</h3>
-                    <form action="" method="post">
-                        <label for="new-username">Username:</label>
-                        <input type="text" id="new-username" name="username" required>
-                        <label for="new-password">Password:</label>
-                        <input type="password" id="new-password" name="password" required>
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                        <button type="submit">Registrati</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
+        <!-- Footer -->
         <?php
             include_once("footer.php");
         ?>

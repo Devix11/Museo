@@ -65,8 +65,12 @@ h2 {
     color: #ffdd57;
 }
 
-p {
+p, a {
     font-size: 17px;
+}
+
+#account {
+    justify-content: center;
 }
 
 /* Stile del carosello */
