@@ -12,6 +12,7 @@
     <h1>Yellow Tulip Museum</h1>
     <nav>
         <ul>
+            <li><a href="index.php">Home</a></li>
             <li><a href="exposures.php">Mostre</a></li>
             <li><a href="tickets.php">Biglietti</a></li>
             <li><a href="contacts.php">Contatti</a></li>
