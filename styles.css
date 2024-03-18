@@ -1,260 +1,260 @@
 /* Reset del CSS x il body */
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
-    color: #333;
+font-family: 'Arial', sans-serif;
+margin: 0;
+padding: 0;
+background: #f4f4f4;
+color: #333;
 }
 
 /* Stile dell'header */
 header {
-    background: #333;
-    color: #f9f9f9;
-    padding: 10px 0;
-    text-align: center;
+background: #333;
+color: #f9f9f9;
+padding: 10px 0;
+text-align: center;
 }
 
 /* Stile del menu di navigazione (navbar) */
 nav ul {
-    list-style-type: none;
-    padding: 0;
-    text-align: center;
+list-style-type: none;
+padding: 0;
+text-align: center;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 20px;
+display: inline;
+margin: 0 20px;
 }
 
 nav ul li a {
-    color: #f9f9f9;
-    text-decoration: none;
-    padding: 5px 10px;
-    transition: color 0.3s;
+color: #f9f9f9;
+text-decoration: none;
+padding: 5px 10px;
+transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: #ffdd57;
+color: #ffdd57;
 }
 
 /* Stile del contenuto principale */
 main {
-    flex: 1;
+flex: 1;
 }
 
 section,
 .carousel-slide img{
-    background: #fff;
-    padding: 20px;
-    margin: 20px auto;
-    width: 80%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+background: #fff;
+padding: 20px;
+margin: 20px auto;
+width: 80%;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
 }
 
 .carousel-slide img {
-    max-height: 600px;
-    /*margin: auto;*/
-    width: auto;
-    display: flex;
-    justify-content: center;
+max-height: 600px;
+/*margin: auto;*/
+width: auto;
+display: flex;
+justify-content: center;
 }
 
 h2 {
-    color: #ffdd57;
+color: #ffdd57;
 }
 
 p, a {
-    font-size: 17px;
+font-size: 17px;
 }
 
 #account {
-    justify-content: center;
+justify-content: center;
 }
 
 /* Stile del carosello */
 /*
 .carousel {
-    width: 100%;
-    margin: auto;
-    overflow: hidden;
+width: 100%;
+margin: auto;
+overflow: hidden;
 }
 
 .carousel-slide {
-    display: none;
-    width: 100%;
-    transition: all 0.5s ease;
+display: none;
+width: 100%;
+transition: all 0.5s ease;
 }
 
 .carousel-slide img {
-    width: 100%;
-    height: auto;
+width: 100%;
+height: auto;
 }
 */
 
 /* Stile dei pulsanti */
 button {
-    background-color: #ffdd57;
-    color: #333;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+background-color: #ffdd57;
+color: #333;
+border: none;
+padding: 10px 20px;
+cursor: pointer;
+border-radius: 5px;
+transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #ccbc4d;
+background-color: #ccbc4d;
 }
 
 /* Stile del footer */
 footer {
-    background: #333;
-    color: #f9f9f9;
-    padding: 20px 10px;
-    width: justify;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+background: #333;
+color: #f9f9f9;
+padding: 20px 10px;
+width: justify;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 
 /* Contenuto del footer */
 footer .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-left: 10%;
-    margin-right: 10%;
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-left: 10%;
+margin-right: 10%;
 }
 
 footer div {
-    flex: 1;
-    margin: 0 10px;
+flex: 1;
+margin: 0 10px;
 }
 
 footer .footer-content h3,
 footer .footer-content p {
-    color: #ffdd57;
-    margin-bottom: 10px;
-    text-align: left;
+color: #ffdd57;
+margin-bottom: 10px;
+text-align: left;
 }
 
 footer .footer-content form,
 footer .footer-content div {
-    text-align: left;
+text-align: left;
 }
 
 footer .footer-content input[type="email"],
 footer .footer-content button,
 footer .footer-content p {
-    margin: 5px 0;
+margin: 5px 0;
 }
 
 footer .footer-content input[type="email"] {
-    padding: 5px;
-    border: none;
-    border-radius: 3px;
+padding: 5px;
+border: none;
+border-radius: 3px;
 }
 
 footer .footer-content button {
-    background-color: #ffdd57;
-    color: #333;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: background-color 0.3s;
+background-color: #ffdd57;
+color: #333;
+border: none;
+padding: 5px 10px;
+cursor: pointer;
+border-radius: 3px;
+transition: background-color 0.3s;
 }
 
 footer .footer-content button:hover {
-    background-color: #ccbc4d;
+background-color: #ccbc4d;
 }
 
 /* Testo di copyright */
 footer p.copy {
-    text-align: center;
-    width: 100%;
-    margin-top: 20px;
+text-align: center;
+width: 100%;
+margin-top: 20px;
 }
 
 /* Scrollbar */
 
 /* Stile della scrollbar personalizzata per il corpo del documento */
 body::-webkit-scrollbar {
-    width: 10px; /* Larghezza della scrollbar */
+width: 10px; /* Larghezza della scrollbar */
 }
 /*
 body::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0); Colore di sfondo della traccia
+background: rgba(0, 0, 0, 0); Colore di sfondo della traccia
 }
 */
 
 body::-webkit-scrollbar-track {
-    background: var(--scrollbar-background-color); /* Colore di sfondo della traccia */
+background: var(--scrollbar-background-color); /* Colore di sfondo della traccia */
 }
 
 body::-webkit-scrollbar-thumb {
-    background: #888; /* Colore della scrollbar */
-    border-radius: 5px; /* Arrotondamento degli angoli */
+background: #888; /* Colore della scrollbar */
+border-radius: 5px; /* Arrotondamento degli angoli */
 }
 
 body::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Cambia colore al passaggio del mouse */
+background: #555; /* Cambia colore al passaggio del mouse */
 }
 
 /* Media Queries */
 @media (max-width: 768px) {
-    footer .footer-content {
-        flex-direction: column;
-        align-items: center;
-    }
+footer .footer-content {
+flex-direction: column;
+align-items: center;
+}
 
-    footer div {
-        margin: 10px 0;
-    }
+footer div {
+margin: 10px 0;
+}
 
-    nav ul li {
-        display: block;
-        text-align: center;
-        margin: 10px 0;
-    }
+nav ul li {
+display: block;
+text-align: center;
+margin: 10px 0;
+}
 
-    section {
-        width: 95%;
-        padding: 15px;
-    }
+section {
+width: 95%;
+padding: 15px;
+}
 
-    button {
-        padding: 8px 16px;
-    }
+button {
+padding: 8px 16px;
+}
 
 }
 
 @media (max-width: 480px) {
-    footer .footer-content h3,
-    footer .footer-content p {
-        text-align: center;
-    }
+footer .footer-content h3,
+footer .footer-content p {
+text-align: center;
+}
 
-    header h1 {
-        font-size: 20px;
-    }
+header h1 {
+font-size: 20px;
+}
 
-    nav ul li a {
-        padding: 5px 8px;
-        font-size: 14px;
-    }
+nav ul li a {
+padding: 5px 8px;
+font-size: 14px;
+}
 
-    section {
-        padding: 10px;
-    }
+section {
+padding: 10px;
+}
 
-    h2 {
-        font-size: 18px;
-    }
+h2 {
+font-size: 18px;
+}
 
-    button {
-        font-size: 14px;
-    }
+button {
+font-size: 14px;
+}
 }

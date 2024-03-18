@@ -3,20 +3,20 @@ name: CI
 on: [push]
 
 jobs:
-  build-test:
-    runs-on: ubuntu-latest
+build-test:
+runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v4
+steps:
+- uses: actions/checkout@v4
 
-    - name: Setup PHP
-      uses: pmmp/setup-php-action@3.1.0
-      with:
-        php-version: 8.1
-        install-path: "./bin"
-        pm-version-major: 5
+- name: Setup PHP
+uses: pmmp/setup-php-action@3.1.0
+with:
+php-version: 8.1
+install-path: "./bin"
+pm-version-major: 5
 
-    - uses: php-actions/composer@v6
+- uses: php-actions/composer@v6
 
-    - name: Run PHPStan
-      run: ./vendor/bin/phpstan analyze --no-progress --memory-limit=2G
+- name: Run PHPStan
+run: ./vendor/bin/phpstan analyze --no-progress --memory-limit=2G

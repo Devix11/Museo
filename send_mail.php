@@ -4,13 +4,13 @@
 // Abilita la visualizzazione degli errori
 ini_set('display_errors', 1);
 =======
-    // Abilita la visualizzazione degli errori
-    ini_set('display_errors', 1);
-    // Parametri di connessione al database
-    $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
-    $user = "phpmyadmin"; // Nome utente per l'accesso al database
-    $pwd = "ciaone11"; // Password per l'accesso al database
-    $db = "Museo"; // Nome del database
+// Abilita la visualizzazione degli errori
+ini_set('display_errors', 1);
+// Parametri di connessione al database
+$server = "localhost"; // Indirizzo del server MySQL (MariaDB)
+$user = "phpmyadmin"; // Nome utente per l'accesso al database
+$pwd = "ciaone11"; // Password per l'accesso al database
+$db = "Museo"; // Nome del database
 >>>>>>> Stashed changes
 
 /*
@@ -25,26 +25,26 @@ $conn = new mysqli($server, $user, $pwd, $db);
 
 // Controllo della connessione
 if ($conn->connect_error) {
-    die("Connessione fallita: " . $conn->connect_error);
+die("Connessione fallita: " . $conn->connect_error);
 }
 
 // Ottenere l'oggetto e il messaggio dalla richiesta POST
 $subject = $_POST['subject'];
 $message = $_POST['message'];
 $headers = 'From: davideagostini05@gmail.com' . "\r\n" .
-    'Reply-To: davideagostini05@gmail.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
+'Reply-To: davideagostini05@gmail.com' . "\r\n" .
+'X-Mailer: PHP/' . phpversion();
 
 $sql = "SELECT Email FROM Newsletter";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        mail($row["Email"], $subject, $message, $headers);
-    }
-    echo "Email inviate con successo.";
+while($row = $result->fetch_assoc()) {
+mail($row["Email"], $subject, $message, $headers);
+}
+echo "Email inviate con successo.";
 } else {
-    echo "Nessun destinatario trovato.";
+echo "Nessun destinatario trovato.";
 }
 
 $conn->close();
@@ -55,26 +55,26 @@ $to = 'davideagostini05@gmail.com'; // Indirizzo email del destinatario
 $subject = 'Oggetto dell\'email'; // Oggetto dell'email
 $message = 'Questo è il corpo dell\'email.'; // Corpo dell'email
 $headers = 'From: mario@yahoo.com' . "\r\n" . // Intestazioni dell'email
-    'Reply-To: mittente@yahoo.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
+'Reply-To: mittente@yahoo.com' . "\r\n" .
+'X-Mailer: PHP/' . phpversion();
 
 <<<<<<< Updated upstream
 // Invio dell'email
 if (mail($to, $subject, $message, $headers)) {
-    echo "Email inviata con successo."; // Messaggio di successo
+echo "Email inviata con successo."; // Messaggio di successo
 } else {
-    echo "Errore nell'invio dell'email."; // Messaggio di errore
+echo "Errore nell'invio dell'email."; // Messaggio di errore
 }
 =======
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            mail($row["Email"], $subject, $message, $headers);
-        }
-        echo "Email inviate con successo.";
-    } else {
-        echo "Nessun destinatario trovato.";
-    }
+if ($result->num_rows > 0) {
+while($row = $result->fetch_assoc()) {
+mail($row["Email"], $subject, $message, $headers);
+}
+echo "Email inviate con successo.";
+} else {
+echo "Nessun destinatario trovato.";
+}
 
-    $conn->close();
+$conn->close();
 ?>
 >>>>>>> Stashed changes

@@ -1,7 +1,7 @@
 parameters:
-    level: 6
-    paths:
-        - %currentWorkingDirectory%
-    excludePaths:
-        - bin
-        - vendor
+level: 6
+paths:
+- %currentWorkingDirectory%
+excludePaths:
+- bin
+- vendor
