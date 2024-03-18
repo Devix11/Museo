@@ -21,12 +21,7 @@
         <div class="container">
             <!-- Titolo della pagina -->
             <h1>Contatti</h1>
-            <p>Contattaci
-            Via S. Francesco, 94, 35121 Padova PD, Italia
-
-            Telefono: +39 049 528 9287
-
-            Email: info@yellowtulipmuseum.it</p>
+            <p>Inserisci qui il tuo modulo di contatto o le informazioni di contatto.</p>
             
             <div class="row">
                 <!-- Form per il contatto -->
@@ -51,7 +46,9 @@
                 <!-- Informazioni di contatto -->
                 <div class="col-md-6">
                     <h2>Informazioni di Contatto</h2>
-                    <p>Inserisci qui le tue informazioni di contatto.</p>
+                    <p>Indirizzo: Via S. Francesco, 94, 35121 Padova PD, Italia</p>
+                    <p>Telefono: +39 049 827 3939</p>
+                    <p>Email: info@yellowtulipmuseum.it</p>
                 </div>
             </div>
         </div>
