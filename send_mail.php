@@ -1,7 +1,17 @@
 <?php
+<<<<<<< Updated upstream
 
 // Abilita la visualizzazione degli errori
 ini_set('display_errors', 1);
+=======
+    // Abilita la visualizzazione degli errori
+    ini_set('display_errors', 1);
+    // Parametri di connessione al database
+    $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
+    $user = "phpmyadmin"; // Nome utente per l'accesso al database
+    $pwd = "ciaone11"; // Password per l'accesso al database
+    $db = "Museo"; // Nome del database
+>>>>>>> Stashed changes
 
 /*
 // Parametri di connessione al database
@@ -48,9 +58,23 @@ $headers = 'From: mario@yahoo.com' . "\r\n" . // Intestazioni dell'email
     'Reply-To: mittente@yahoo.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
+<<<<<<< Updated upstream
 // Invio dell'email
 if (mail($to, $subject, $message, $headers)) {
     echo "Email inviata con successo."; // Messaggio di successo
 } else {
     echo "Errore nell'invio dell'email."; // Messaggio di errore
 }
+=======
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            mail($row["Email"], $subject, $message, $headers);
+        }
+        echo "Email inviate con successo.";
+    } else {
+        echo "Nessun destinatario trovato.";
+    }
+
+    $conn->close();
+?>
+>>>>>>> Stashed changes
