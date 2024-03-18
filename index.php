@@ -40,74 +40,74 @@
             // Abilita la visualizzazione degli errori
             ini_set('display_errors', 1);
 
-        // Parametri di connessione al database
-        $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
-        $user = "phpmyadmin"; // Nome utente per l'accesso al database
-        $pwd = "ciaone11"; // Password per l'accesso al database
-        $db = "Museo"; // Nome del database
+            // Parametri di connessione al database
+            $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
+            $user = "phpmyadmin"; // Nome utente per l'accesso al database
+            $pwd = "ciaone11"; // Password per l'accesso al database
+            $db = "Museo"; // Nome del database
 
-        // Creazione della connessione
-        $conn = new mysqli($server, $user, $pwd, $db);
+            // Creazione della connessione
+            $conn = new mysqli($server, $user, $pwd, $db);
 
-        // Controllo della connessione
-        if ($conn->connect_error) {
-            die("Connessione fallita: " . $conn->connect_error);
-        }
-
-        // Query per selezionare le immagini dalla tabella
-        $sql = "SELECT ID, Name, Image FROM Images WHERE Name LIKE 'HomeCarosel%'";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            // Output delle immagini
-            while ($row = $result->fetch_assoc()) {
-                // Ottieni l'estensione del file dall'URL
-                $extension = pathinfo($row['Name'], PATHINFO_EXTENSION);
-                // Determina il tipo MIME in base all'estensione del file
-
-                /*
-                switch ($extension) {
-                    case 'jpeg':
-                    case 'jpg':
-                        $mime_type = 'image/jpeg';
-                        break;
-                    case 'png':
-                        $mime_type = 'image/png';
-                        break;
-                    case 'gif':
-                        $mime_type = 'image/gif';
-                        break;
-                    case 'bmp':
-                        $mime_type = 'image/bmp';
-                        break;
-                    case 'tiff':
-                    case 'tif':
-                        $mime_type = 'image/tiff';
-                        break;
-                    case 'svg':
-                        $mime_type = 'image/svg';
-                        break;
-                    default:
-                        // Default break...
-                        break;
-                }
-                */
-
-                // Se il tipo MIME non è vuoto, visualizza l'immagine
-                echo '<div class="carousel">';
-                echo '<div class="carousel-slide">';
-                echo '<img src="data:image/jpeg;base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />';
-                echo '</div>';
-                echo '</div>';
+            // Controllo della connessione
+            if ($conn->connect_error) {
+                die("Connessione fallita: " . $conn->connect_error);
             }
-        } else {
-            echo "Nessuna immagine trovata.";
-        }
 
-        echo '<script src="script.js"></script>';
+            // Query per selezionare le immagini dalla tabella
+            $sql = "SELECT ID, Name, Image FROM Images WHERE Name LIKE 'HomeCarosel%'";
+            $result = $conn->query($sql);
 
-        // Chiusura della connessione
-        $conn->close();
+            if ($result->num_rows > 0) {
+                // Output delle immagini
+                while ($row = $result->fetch_assoc()) {
+                    // Ottieni l'estensione del file dall'URL
+                    $extension = pathinfo($row['Name'], PATHINFO_EXTENSION);
+                    // Determina il tipo MIME in base all'estensione del file
+
+                    /*
+                    switch ($extension) {
+                        case 'jpeg':
+                        case 'jpg':
+                            $mime_type = 'image/jpeg';
+                            break;
+                        case 'png':
+                            $mime_type = 'image/png';
+                            break;
+                        case 'gif':
+                            $mime_type = 'image/gif';
+                            break;
+                        case 'bmp':
+                            $mime_type = 'image/bmp';
+                            break;
+                        case 'tiff':
+                        case 'tif':
+                            $mime_type = 'image/tiff';
+                            break;
+                        case 'svg':
+                            $mime_type = 'image/svg';
+                            break;
+                        default:
+                            // Default break...
+                            break;
+                    }
+                    */
+
+                    // Se il tipo MIME non è vuoto, visualizza l'immagine
+                    echo '<div class="carousel">';
+                        echo '<div class="carousel-slide">';
+                            echo '<img src="data:image/jpeg;base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />';
+                        echo '</div>';
+                    echo '</div>';
+                }
+            } else {
+                echo "Nessuna immagine trovata.";
+            }
+
+            echo '<script src="script.js"></script>';
+
+            // Chiusura della connessione
+            $conn->close();
         ?>
 
         <!-- Footer -->

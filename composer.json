@@ -1,14 +1,14 @@
 {
-"name": "scuola/museo",
-"description": "School project",
-"scripts": {
-"format": "vendor/bin/php-cs-fixer fix"
+  "name": "scuola/museo",
+  "description": "School project",
+  "scripts": {
+  "format": "vendor/bin/php-cs-fixer fix"
 },
-"require-dev": {
-"phpstan/phpstan": "1.10.60",
-"friendsofphp/php-cs-fixer": "^3.51"
-},
-"require": {
-"guzzlehttp/guzzle": "~6.0"
-}
+  "require-dev": {
+    "phpstan/phpstan": "1.10.60",
+    "friendsofphp/php-cs-fixer": "^3.51"
+  },
+  "require": {
+    "guzzlehttp/guzzle": "~6.0"
+  }
 }
