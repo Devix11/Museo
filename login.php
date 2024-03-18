@@ -12,6 +12,7 @@
     <h1>Yellow Tulip Museum</h1>
     <nav>
         <ul>
+            <li><a href="index.php">Home</a></li>
             <li><a href="exposures.php">Mostre</a></li>
             <li><a href="tickets.php">Biglietti</a></li>
             <li><a href="contacts.php">Contatti</a></li>
@@ -43,7 +44,7 @@ if ($conn->connect_error) {
 $conn->close();
 ?>
 <!-- Sezione Account -->
-<section id="account">
+<section id="login">
     <h2>Account</h2>
     <div class="account-actions">
         <!-- Modulo di accesso -->
@@ -51,9 +52,9 @@ $conn->close();
             <h3>Accedi</h3>
             <form action="login_process.php" method="post">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="example@email.it" required>
+                <input type="email" id="email" name="email" placeholder="example@email.it" required><br>
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="********" required>
+                <input type="password" id="password" name="password" placeholder="********" required><br>
                 <button type="submit">Accedi</button>
             </form>
         </div>
