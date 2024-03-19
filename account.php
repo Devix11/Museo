@@ -82,6 +82,7 @@
             </div>
         </section>
 
+        <!-- Footer -->
         <?php
             include_once("footer.php");
         ?>
