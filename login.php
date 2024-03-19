@@ -51,7 +51,7 @@
           # Controlla se l'utente esiste, se sì, verifica la password
           if (mysqli_stmt_num_rows($stmt) == 1) {
             # Associa i valori del risultato alle variabili
-            mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+            mysqli_stmt_bind_result($stmt, $username, $hashed_password);
 
             if (mysqli_stmt_fetch($stmt)) {
               # Controlla se la password è corretta
