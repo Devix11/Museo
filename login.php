@@ -123,11 +123,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema di accesso utente</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="./img/favicon-16x16.png" type="image/x-icon">
     <script defer src="./script.js"></script>
   </head>
   <body>
+  <header class="navbar">
+            <!-- Intestazione con titolo e menu di navigazione -->
+            <h1>Yellow Tulip Museum</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="exposures.php">Mostre</a></li>
+                    <li><a href="tickets.php">Biglietti</a></li>
+                    <li><a href="contacts.php">Contatti</a></li>
+                </ul>
+            </nav>
+        </header>
     <div class="container">
       <div class="row min-vh-100 justify-content-center align-items-center">
         <div class="col-lg-5">
@@ -165,5 +177,9 @@
         </div>
       </div>
     </div>
+    <!-- Footer -->
+    <?php
+            include_once("footer.php");
+    ?>
   </body>
 </html>
