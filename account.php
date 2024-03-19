@@ -50,11 +50,11 @@
             <a href="register.php">Registrati</a>
         </section>
 
-        <!-- Sezione Account -->
+        <!-- Sezione Account 
         <section id="account">
             <h2>Account</h2>
             <div class="account-actions">
-                <!-- Modulo di accesso -->
+                
                 <div class="login">
                     <h3>Accedi</h3>
                     <form action="" method="post">
@@ -65,8 +65,9 @@
                         <button type="submit">Accedi</button>
                     </form>
                 </div>
+                
 
-                <!-- Modulo di registrazione
+                
                 
                 <div class="register">
                     <h3>Registrati</h3>
@@ -80,9 +81,10 @@
                         <button type="submit">Registrati</button>
                     </form>
                 </div>
-                -->
+                
             </div>
         </section>
+        -->
 
         <!-- Footer -->
         <?php
