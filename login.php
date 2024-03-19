@@ -34,7 +34,7 @@
     # Convalida le credenziali
     if (empty($user_login_err) && empty($user_password_err)) {
       # Prepara una query di selezione
-      $sql = "SELECT id, username, password FROM users WHERE username = ? OR email = ?";
+      $sql = "SELECT CF, password FROM Credentials WHERE CF = ? OR email = ?";
 
       if ($stmt = mysqli_prepare($link, $sql)) {
         # Associa le variabili alla query come parametri
@@ -63,7 +63,7 @@
                 $_SESSION["loggedin"] = TRUE;
                 $username = mysqli_real_escape_string($link, $username);
 
-                // Query per verificare se l'utente è un amministratore
+        /*        // Query per verificare se l'utente è un amministratore
                 $sql = "SELECT adm FROM users WHERE username = '$username' OR email = '$username'";
                 $result = mysqli_query($link, $sql);
 
@@ -85,7 +85,7 @@
                 } else {
                   // Gestire il caso in cui si è verificato un errore nell'esecuzione della query SQL
                   echo "<script>" . "alert('Oops! Si è verificato un errore. Riprova più tardi.');" . "</script>";
-                }
+                }*/
 
                 # Reindirizza l'utente alla pagina index
                 echo "<script>" . "window.location.href='./'" . "</script>";
