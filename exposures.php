@@ -19,7 +19,7 @@
             </nav>
         </header>
 
-        <div class="container">\
+        <div class="container">
             <h1>Mostre</h1>
             <div class="row">
 

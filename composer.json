@@ -9,6 +9,7 @@
     "friendsofphp/php-cs-fixer": "^3.51"
   },
   "require": {
-    "guzzlehttp/guzzle": "~6.0"
+    "guzzlehttp/guzzle": "~6.0",
+    "ext-mysqli": "*"
   }
 }

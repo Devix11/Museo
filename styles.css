@@ -108,6 +108,10 @@ button:hover {
     background-color: #ccbc4d;
 }
 
+.card {
+    padding: 25px;
+}
+
 /* Stile del footer */
 footer {
     background: #333;
