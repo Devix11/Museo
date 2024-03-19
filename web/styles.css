@@ -109,7 +109,8 @@ button:hover {
 }
 
 .card {
-    margin: 25px;
+    margin: 15px;
+    padding: 2px;
 }
 
 /* Stile del footer */
