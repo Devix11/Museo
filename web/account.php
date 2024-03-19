@@ -50,11 +50,11 @@
             <a href="register.php">Registrati</a>
         </section>
 
-        <!-- Sezione Account -->
+        <!-- Sezione Account 
         <section id="account">
             <h2>Account</h2>
             <div class="account-actions">
-                <!-- Modulo di accesso -->
+                
                 <div class="login">
                     <h3>Accedi</h3>
                     <form action="" method="post">
@@ -65,8 +65,10 @@
                         <button type="submit">Accedi</button>
                     </form>
                 </div>
+                
 
-                <!-- Modulo di registrazione -->
+                
+                
                 <div class="register">
                     <h3>Registrati</h3>
                     <form action="" method="post">
@@ -79,11 +81,24 @@
                         <button type="submit">Registrati</button>
                     </form>
                 </div>
+                
             </div>
         </section>
+        -->
 
+        <!-- Footer -->
         <?php
             include_once("footer.php");
+            // visualizza errori
+            ini_set('display_errors', 1);
+            # Inizializza la sessione
+            session_start();
+
+            # Se l'utente non ha effettuato l'accesso, reindirizzalo alla pagina di login
+            if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
+                echo "<script>" . "window.location.href='./login.php';" . "</script>";
+                exit;
+            }
         ?>
     </body>
 </html>
