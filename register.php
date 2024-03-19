@@ -18,7 +18,7 @@
         $username_err = "Il nome utente può contenere solo lettere, numeri e simboli come '@', '_', o '-'.";
       } else {
         # Prepara una query di selezione
-        $sql = "SELECT id FROM users WHERE username = ?";
+        $sql = "SELECT CF FROM Credentials WHERE CF = ?";
 
         if ($stmt = mysqli_prepare($link, $sql)) {
           # Associa le variabili alla query come parametri
@@ -55,7 +55,7 @@
         $email_err = "Inserisci un indirizzo email valido.";
       } else {
         # Prepara una query di selezione
-        $sql = "SELECT id FROM users WHERE email = ?";
+        $sql = "SELECT CF FROM Credentials WHERE email = ?";
 
         if ($stmt = mysqli_prepare($link, $sql)) {
           # Associa le variabili alla query come parametri
@@ -96,7 +96,7 @@
     # Verifica gli errori di input prima di inserire i dati nel database
     if (empty($username_err) && empty($email_err) && empty($password_err)) {
       # Prepara una query di inserimento
-      $sql = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
+      $sql = "INSERT INTO Credentials(CF, Email, Password) VALUES (?, ?, ?)";
 
       if ($stmt = mysqli_prepare($link, $sql)) {
         # Associa le variabili alla query preparata come parametri
