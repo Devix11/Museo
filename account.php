@@ -66,7 +66,8 @@
                     </form>
                 </div>
 
-                <!-- Modulo di registrazione -->
+                <!-- Modulo di registrazione
+                
                 <div class="register">
                     <h3>Registrati</h3>
                     <form action="" method="post">
@@ -79,6 +80,7 @@
                         <button type="submit">Registrati</button>
                     </form>
                 </div>
+                -->
             </div>
         </section>
 
