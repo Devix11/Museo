@@ -148,7 +148,7 @@
             <!-- il modulo inizia qui -->
             <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
               <div class="mb-3">
-                <label for="username" class="form-label">Nome utente</label>
+                <label for="username" class="form-label">Codice Fiscale</label>
                 <input type="text" class="form-control" name="username" id="username" value="<?= $username; ?>">
                 <small class="text-danger"><?= $username_err; ?></small>
               </div>
