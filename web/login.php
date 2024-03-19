@@ -6,7 +6,7 @@
 
   # Controlla se l'utente è già loggato, se sì, reindirizzalo alla pagina index
   if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
-    echo "<script>" . "window.location.href='./'" . "</script>";
+    echo "<script>" . "window.location.href='./account.php'" . "</script>";
     exit;
   }
 
@@ -88,7 +88,7 @@
                 }*/
 
                 # Reindirizza l'utente alla pagina index
-                echo "<script>" . "window.location.href='./'" . "</script>";
+                echo "<script>" . "window.location.href='./account.php'" . "</script>";
                 exit;
               } else {
                 # Se la password è errata, mostra un messaggio di errore
