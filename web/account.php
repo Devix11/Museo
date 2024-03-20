@@ -39,6 +39,15 @@
             die("Connessione fallita: " . $conn->connect_error);
         }
 
+        # Inizializza la sessione
+        session_start();
+
+        # Se l'utente non ha effettuato l'accesso, reindirizzalo alla pagina di login
+        if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
+            echo "<script>" . "window.location.href='./login.php';" . "</script>";
+            exit;
+        }
+
         // Chiusura della connessione
         $conn->close();
         ?>
@@ -89,16 +98,6 @@
         <!-- Footer -->
         <?php
             include_once("footer.php");
-            // visualizza errori
-            ini_set('display_errors', 1);
-            # Inizializza la sessione
-            session_start();
-
-            # Se l'utente non ha effettuato l'accesso, reindirizzalo alla pagina di login
-            if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
-                echo "<script>" . "window.location.href='./login.php';" . "</script>";
-                exit;
-            }
         ?>
     </body>
 </html>
