@@ -7,8 +7,9 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     </head>
     <body>
-        <header>
-            <!-- Menu di navigazione -->
+        <header class="navbar">
+            <!-- Intestazione con titolo e menu di navigazione -->
+            <h1>Yellow Tulip Museum</h1>
             <nav>
                 <ul>
                     <li><a href="index.php">Home</a></li>

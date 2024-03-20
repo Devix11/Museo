@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
     <head>
         <title>Contatti</title>
         <!-- Collegamento ai file CSS -->
@@ -7,13 +7,15 @@
         <link rel="stylesheet" href="styles.css"> <!-- Stili personalizzati -->
     </head>
     <body>
-        <header>
-            <!-- Navbar -->
+        <header class="navbar">
+            <!-- Intestazione con titolo e menu di navigazione -->
+            <h1>Yellow Tulip Museum</h1>
             <nav>
                 <ul>
                     <li><a href="index.php">Home</a></li>
                     <li><a href="exposures.php">Mostre</a></li>
-                    <li><a href="contacts.php">Contatti</a></li>
+                    <li><a href="tickets.php">Biglietti</a></li>
+                    <li><a href="account.php">Profilo</a></li>
                 </ul>
             </nav>
         </header>
