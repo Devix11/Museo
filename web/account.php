@@ -54,48 +54,23 @@
 
         <!-- Sezione Account -->
         <section id="user">
-            <h2>Hai un profilo?</h2>
-            <button onclick="open('login.php')">Accedi</button><br>
-            <a href="register.php">Registrati</a>
+            <h2>Il tuo account</h2>
+            <p>Benvenuto, <?php echo $_SESSION["username"]; ?>!</p>
+            <p><a href="logout.php">Esci</a></p>
+        </section>
+        <section>
+            <h2>Le tue prenotazioni</h2>
+            <p>Qui potrai visualizzare le tue prenotazioni.</p>
+        </section>
+        <section>
+            <h2>Le tue informazioni</h2>
+            <p>Qui potrai visualizzare e modificare le tue informazioni personali.</p>
+        </section>
+        <section>
+            <h2>Il tuo storico</h2>
+            <p>Qui potrai visualizzare i biglietti scaduti acquistati in precedenza.</p>
         </section>
 
-        <!-- Sezione Account 
-        <section id="account">
-            <h2>Account</h2>
-            <div class="account-actions">
-                
-                <div class="login">
-                    <h3>Accedi</h3>
-                    <form action="" method="post">
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" name="username" required>
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" required>
-                        <button type="submit">Accedi</button>
-                    </form>
-                </div>
-                
-
-                
-                
-                <div class="register">
-                    <h3>Registrati</h3>
-                    <form action="" method="post">
-                        <label for="new-username">Username:</label>
-                        <input type="text" id="new-username" name="username" required>
-                        <label for="new-password">Password:</label>
-                        <input type="password" id="new-password" name="password" required>
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                        <button type="submit">Registrati</button>
-                    </form>
-                </div>
-                
-            </div>
-        </section>
-        -->
-
-        <!-- Footer -->
         <?php
             include_once("footer.php");
         ?>
