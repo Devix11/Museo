@@ -100,6 +100,17 @@
 
         <?php
             include_once("footer.php");
+            $stmt = 'SELECT Date, E.Name, Visitors.Name, Visitors.Surname From Purchase Left join Tickets on Purchase.Ticket = Tickets.ID Left Join Exhibitions E on Tickets.Title = E.ID Left Join Visitors on Purchase.Visitor = Visitors.CF Left Join Credentials on Buyer = Credentials.CF Where Credentials.Email = ?';
+            $stmt = mysqli_prepare($conn, $stmt);
+            mysqli_stmt_bind_param($stmt, "s", $_SESSION["email"]);
+            foreach ($conn->query('SELECT Date, E.Name, Visitors.Name, Visitors.Surname From Purchase Left join Tickets on Purchase.Ticket = Tickets.ID Left Join Exhibitions E on Tickets.Title = E.ID Left Join Visitors on Purchase.Visitor = Visitors.CF Left Join Credentials on Buyer = Credentials.CF Where Credentials.Email =' . $_SESSION["email"]) as $row) {
+                echo "<tr>";
+                echo "<td>" . $row["Date"] . "</td>";
+                echo "<td>" . $row["E.Name"] . "</td>";
+                echo "<td>" . $row["Visitors.Name"] . "</td>";
+                echo "<td>" . $row["Visitors.Surname"] . "</td>";
+                echo "</tr>";
+            }
         ?>
     </body>
 </html>
