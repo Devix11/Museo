@@ -19,7 +19,7 @@
             </ul>
         </nav>
     </header>
-        <!-- <section id="exhibitions"> -->
+        <div class="container">
             <h2>Biglietti disponibili</h2>
 
             <!-- Exhibition 1 -->
@@ -48,7 +48,7 @@
                 <p>Price: $30</p>
                 <button>Buy Ticket</button>
             </div>
-        <!-- </section> -->
+    </div>
     <?php
         include_once("footer.php");
     ?>
