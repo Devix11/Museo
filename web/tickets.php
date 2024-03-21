@@ -20,10 +20,10 @@
         </nav>
     </header>
         <div class="container">
-            <h2>Biglietti disponibili</h2>
+            <h2 style="text-align: center">Biglietti disponibili</h2>
 
             <!-- Exhibition 1 -->
-            <div class="card">
+            <div id="info">
                 <img src="exhibition1.jpg" alt="Exhibition 1">
                 <h3>Exhibition Name 1</h3>
                 <p>Date: 2024-01-01 to 2024-03-30</p>
@@ -32,7 +32,7 @@
             </div>
 
             <!-- Exhibition 2 -->
-            <div class="card">
+            <div id="info">
                 <img src="exhibition2.jpg" alt="Exhibition 2">
                 <h3>Exhibition Name 2</h3>
                 <p>Date: 2024-02-15 to 2024-04-15</p>
@@ -41,7 +41,7 @@
             </div>
 
             <!-- Exhibition 3 -->
-            <div class="card">
+            <div id="info">
                 <img src="exhibition3.jpg" alt="Exhibition 3">
                 <h3>Exhibition Name 3</h3>
                 <p>Date: 2024-03-01 to 2024-05-01</p>
