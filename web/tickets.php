@@ -21,6 +21,25 @@
     </header>
         <div class="container">
             <h2 style="text-align: center">Biglietti disponibili</h2>
+            <?php
+            // Abilita la visualizzazione degli errori
+            ini_set('display_errors', 1);
+
+        // Parametri di connessione al database
+        $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
+        $user = "phpmyadmin"; // Nome utente per l'accesso al database
+        $pwd = "ciaone11"; // Password per l'accesso al database
+        $db = "Museo"; // Nome del database
+
+        // Creazione della connessione
+        $conn = new mysqli($server, $user, $pwd, $db);
+
+        // Controllo della connessione
+        if ($conn->connect_error) {
+            die("Connessione fallita: " . $conn->connect_error);
+        }
+
+        $conn->close();
 
             <!-- Exhibition 1 -->
             <div id="info">
