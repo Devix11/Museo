@@ -76,12 +76,7 @@
                     }
 
                     // Query per ottenere le prenotazioni dell'utente
-                    foreach ($conn->query('SELECT Date, E.Name, Visitors.Name, Visitors.Surname From Purchase
-                    Left join Tickets on Purchase.Ticket = Tickets.ID
-                    Left Join Exhibitions E on Tickets.Title = E.ID
-                    Left Join Visitors on Purchase.Visitor = Visitors.CF
-                    Left Join Credentials on Buyer = Credentials.CF
-                    Where Credentials.Email =' . $_SESSION["email"]) as $row) {
+                    foreach ($conn->query('SELECT Date, E.Name, Visitors.Name, Visitors.Surname From Purchase Left join Tickets on Purchase.Ticket = Tickets.ID Left Join Exhibitions E on Tickets.Title = E.ID Left Join Visitors on Purchase.Visitor = Visitors.CF Left Join Credentials on Buyer = Credentials.CF Where Credentials.Email =' . $_SESSION["email"]) as $row) {
                         echo "<tr>";
                         echo "<td>" . $row["Date"] . "</td>";
                         echo "<td>" . $row["E.Name"] . "</td>";
