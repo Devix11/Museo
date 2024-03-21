@@ -65,7 +65,7 @@
                 $username = mysqli_real_escape_string($link, $username);
 
                 # Reindirizza l'utente alla pagina index
-                echo "<script>" . "window.location.href='./account.php'" . "</script>";
+                //echo "<script>" . "window.location.href='./account.php'" . "</script>";
                 exit;
               } else {
                 # Se la password è errata, mostra un messaggio di errore
