@@ -19,8 +19,6 @@
             </ul>
         </nav>
     </header>
-
-    <main>
         <section id="exhibitions">
             <h2>Biglietti disponibili</h2>
 
@@ -51,8 +49,6 @@
                 <button>Buy Ticket</button>
             </div>
         </section>
-    </main>
-
     <?php
         include_once("footer.php");
     ?>
