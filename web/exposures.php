@@ -9,7 +9,7 @@
     <body>
         <header class="navbar">
             <!-- Intestazione con titolo e menu di navigazione -->
-            <h1>Yellow Tulip Museum</h1>
+            <h1>Yellow Tulip Museum</h1><br>
             <nav>
                 <ul>
                     <li><a href="index.php">Home</a></li>
