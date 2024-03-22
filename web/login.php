@@ -58,34 +58,10 @@
               if (password_verify($user_password, $hashed_password)) {
 
                 # Memorizza i dati nelle variabili di sessione
-                $_SESSION["id"] = $id;
                 $_SESSION["username"] = $username;
                 $_SESSION["loggedin"] = TRUE;
+                $_SESSION["email"] = $user_login;
                 $username = mysqli_real_escape_string($link, $username);
-
-        /*        // Query per verificare se l'utente è un amministratore
-                $sql = "SELECT adm FROM users WHERE username = '$username' OR email = '$username'";
-                $result = mysqli_query($link, $sql);
-
-                if ($result) {
-                  // Verifica se sono state restituite delle righe
-                  echo '<script>console.log("1 if!"); </script>'; 
-                  if (mysqli_num_rows($result) > 0) {
-                    echo '<script>console.log("2 if!"); </script>'; 
-                    $row = mysqli_fetch_assoc($result);
-                    $admin = $row['adm'];
-
-                    // Verifica se l'utente è un amministratore (supponendo che 'adm' sia un campo che abbuia valore admin per gli amm)
-                    if ($admin == 'admin') {
-                      echo '<script>console.log("3 if!"); </script>'; 
-                      $_SESSION["admin"] = $admin;
-                      var_dump($_SESSION);
-                    }
-                  }
-                } else {
-                  // Gestire il caso in cui si è verificato un errore nell'esecuzione della query SQL
-                  echo "<script>" . "alert('Oops! Si è verificato un errore. Riprova più tardi.');" . "</script>";
-                }*/
 
                 # Reindirizza l'utente alla pagina index
                 echo "<script>" . "window.location.href='./account.php'" . "</script>";
