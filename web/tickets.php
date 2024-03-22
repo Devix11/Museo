@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Museum Ticket Sales</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="navbar">
@@ -25,28 +25,22 @@
             // Abilita la visualizzazione degli errori
             ini_set('display_errors', 1);
 
-        // Parametri di connessione al database
-        $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
-        $user = "phpmyadmin"; // Nome utente per l'accesso al database
-        $pwd = "ciaone11"; // Password per l'accesso al database
-        $db = "Museo"; // Nome del database
-
-        // Creazione della connessione
-        $conn = new mysqli($server, $user, $pwd, $db);
+        include config.php;
+        global $link;
 
         // Controllo della connessione
-        if ($conn->connect_error) {
-            die("Connessione fallita: " . $conn->connect_error);
+        if ($link->connect_error) {
+            die("Connessione fallita: " . $link->connect_error);
         }
             $sql = "SELECT E.Name, E.Image, T.ValidityDate, T.ExpiringDate, T.Price FROM Exhibitions E INNER JOIN Tickets T ON E.ID = T.Title";
-            $result = $conn->query($sql);
+            $result = $link->query($sql);
 
         ?>
             <section id="exhibitions">
                 <h2>Current Exhibitions</h2>
                 <?php if ($result->num_rows > 0): ?>
                     <?php while($row = $result->fetch_assoc()): ?>
-                        <div class="card">
+                        <div id="info">
                             <img src="<?php echo htmlspecialchars($row['Image']); ?>" alt="<?php echo htmlspecialchars($row['Name']); ?>">
                             <h3><?php echo htmlspecialchars($row['Name']); ?></h3>
                             <p>Date: <?php echo htmlspecialchars($row['ValidityDate']); ?> to <?php echo htmlspecialchars($row['ExpiringDate']); ?></p>
@@ -60,7 +54,7 @@
             </section>
 
             <?php
-            $conn->close();
+            $link->close();
             ?>
             <!-- Exhibition 1 -->
             <div id="info">
