@@ -25,7 +25,7 @@
             // Abilita la visualizzazione degli errori
             ini_set('display_errors', 1);
 
-        include config.php;
+        require("config.php");
         global $link;
 
         // Controllo della connessione
