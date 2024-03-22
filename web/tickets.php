@@ -38,9 +38,30 @@
         if ($conn->connect_error) {
             die("Connessione fallita: " . $conn->connect_error);
         }
+            $sql = "SELECT E.Name, E.Image, T.ValidityDate, T.ExpiringDate, T.Price FROM Exhibitions E INNER JOIN Tickets T ON E.ID = T.Title";
+            $result = $conn->query($sql);
 
-        $conn->close();
+        ?>
+            <section id="exhibitions">
+                <h2>Current Exhibitions</h2>
+                <?php if ($result->num_rows > 0): ?>
+                    <?php while($row = $result->fetch_assoc()): ?>
+                        <div class="card">
+                            <img src="<?php echo htmlspecialchars($row['Image']); ?>" alt="<?php echo htmlspecialchars($row['Name']); ?>">
+                            <h3><?php echo htmlspecialchars($row['Name']); ?></h3>
+                            <p>Date: <?php echo htmlspecialchars($row['ValidityDate']); ?> to <?php echo htmlspecialchars($row['ExpiringDate']); ?></p>
+                            <p>Price: $<?php echo htmlspecialchars($row['Price']); ?></p>
+                            <button>Buy Ticket</button>
+                        </div>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <p>No exhibitions found.</p>
+                <?php endif; ?>
+            </section>
 
+            <?php
+            $conn->close();
+            ?>
             <!-- Exhibition 1 -->
             <div id="info">
                 <img src="exhibition1.jpg" alt="Exhibition 1">
