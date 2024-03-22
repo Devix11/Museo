@@ -40,16 +40,25 @@
                 <h2>Current Exhibitions</h2>
                 <?php if ($result->num_rows > 0): ?>
                     <?php while($row = $result->fetch_assoc()): ?>
-                        <div id="info">
+                        <?php 
+                        // Converto le date
+                        $validityDate = new DateTime($row['ValidityDate']);
+                        $expiringDate = new DateTime($row['ExpiringDate']);
+                        $currentDate = new DateTime(); // Data e ora corrente
+
+                        // Controllo che le date dell'evento siano valide
+                        if ($currentDate >= $validityDate && $currentDate <= $expiringDate): ?>
+                            <div id="info">
                             <img src="<?php echo htmlspecialchars($row['Image']); ?>" alt="<?php echo htmlspecialchars($row['Name']); ?>">
                             <h3><?php echo htmlspecialchars($row['Name']); ?></h3>
-                            <p>Date: <?php echo htmlspecialchars($row['ValidityDate']); ?> to <?php echo htmlspecialchars($row['ExpiringDate']); ?></p>
-                            <p>Price: $<?php echo htmlspecialchars($row['Price']); ?></p>
-                            <button>Buy Ticket</button>
-                        </div>
+                            <p>Durata: <?php echo htmlspecialchars($row['ValidityDate']); ?> to <?php echo htmlspecialchars($row['ExpiringDate']); ?></p>
+                            <p>Prezzo: $<?php echo htmlspecialchars($row['Price']); ?></p>
+                            <button>Compra biglietto</button>
+                            </div>
+                        <?php endif; ?>
                     <?php endwhile; ?>
                 <?php else: ?>
-                    <p>No exhibitions found.</p>
+                    <p>Non ci sono esibizioni disponibili.</p>
                 <?php endif; ?>
             </section>
 
