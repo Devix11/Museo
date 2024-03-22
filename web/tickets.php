@@ -37,7 +37,13 @@
 
         ?>
             <section id="exhibitions">
-                <h2>Current Exhibitions</h2>
+                <div id="info">
+                <h3>Ingresso normale</h3>
+                <p>Ingresso giornaliero valido per una persona</p>
+                <p>Prezzo: <?php  ?></p> <!-- Manca tabella coi prezzi -->
+                <button>COMPRA ORA</button>
+                </div>
+                <h2>Biglietti Disponibili</h2>
                 <?php if ($result->num_rows > 0): ?>
                     <?php while($row = $result->fetch_assoc()): ?>
                         <?php 
@@ -52,45 +58,21 @@
                             <img src="<?php echo htmlspecialchars($row['Image']); ?>" alt="<?php echo htmlspecialchars($row['Name']); ?>">
                             <h3><?php echo htmlspecialchars($row['Name']); ?></h3>
                             <p>Durata: <?php echo htmlspecialchars($row['ValidityDate']); ?> to <?php echo htmlspecialchars($row['ExpiringDate']); ?></p>
-                            <p>Prezzo: $<?php echo htmlspecialchars($row['Price']); ?></p>
-                            <button>Compra biglietto</button>
+                            <p>Prezzo: <?php echo htmlspecialchars($row['Price']); ?></p>
+                            <button>COMPRA ORA</button>
                             </div>
                         <?php endif; ?>
                     <?php endwhile; ?>
                 <?php else: ?>
-                    <p>Non ci sono esibizioni disponibili.</p>
+                    <div id="info">
+                        <p>Non ci sono esibizioni disponibili.</p>
+                    </div>
+                    
                 <?php endif; ?>
             </section>
-
             <?php
             $link->close();
             ?>
-            <!-- Exhibition 1 -->
-            <div id="info">
-                <img src="exhibition1.jpg" alt="Exhibition 1">
-                <h3>Exhibition Name 1</h3>
-                <p>Date: 2024-01-01 to 2024-03-30</p>
-                <p>Price: $20</p>
-                <button>Buy Ticket</button>
-            </div>
-
-            <!-- Exhibition 2 -->
-            <div id="info">
-                <img src="exhibition2.jpg" alt="Exhibition 2">
-                <h3>Exhibition Name 2</h3>
-                <p>Date: 2024-02-15 to 2024-04-15</p>
-                <p>Price: $25</p>
-                <button>Buy Ticket</button>
-            </div>
-
-            <!-- Exhibition 3 -->
-            <div id="info">
-                <img src="exhibition3.jpg" alt="Exhibition 3">
-                <h3>Exhibition Name 3</h3>
-                <p>Date: 2024-03-01 to 2024-05-01</p>
-                <p>Price: $30</p>
-                <button>Buy Ticket</button>
-            </div>
     </div>
     <?php
         include_once("footer.php");
