@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mostre</title>
-        <!-- Collegamento ai file CSS -->
         <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
     </head>
     <body>
         <header class="navbar">
@@ -28,23 +29,12 @@
                     // Abilita la visualizzazione degli errori
                     ini_set('display_errors', 1);
 
-                    // Parametri di connessione al database
-                    $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
-                    $user = "phpmyadmin"; // Nome utente per l'accesso al database
-                    $pwd = "ciaone11"; // Password per l'accesso al database
-                    $db = "Museo"; // Nome del database
-
-                    // Creazione della connessione
-                    $conn = new mysqli($server, $user, $pwd, $db);
-
-                    // Controllo della connessione
-                    if ($conn->connect_error) {
-                        die("Connessione fallita: " . $conn->connect_error);
-                    }
+                    require("config.php");
+                    global $link;
 
                     // Fetch della lista delle esibizioni dal database
                     $sql = "SELECT Name, Image FROM Exhibitions";
-                    $result = $conn->query($sql);
+                    $result = $link->query($sql);
 
                     // Controlla se ci sono delle esibizioni
                     if ($result->num_rows > 0) {
@@ -69,7 +59,7 @@
                     }
 
                     // Chiusura della connessione
-                    $conn->close();
+                    $link->close();
                 ?>
             </div>
         </div>
