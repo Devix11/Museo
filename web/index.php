@@ -55,7 +55,7 @@
         }
 
         // Query per selezionare le immagini dalla tabella
-        $sql = "SELECT ID, Name, Image FROM Images --WHERE Name LIKE 'HomeCarosel%'";
+        $sql = "SELECT ID, Name, Image FROM Images";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
