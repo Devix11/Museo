@@ -27,22 +27,32 @@
 
         require("config.php");
         global $link;
-
-            $sql = "SELECT E.Name, E.Image, T.ValidityDate, T.ExpiringDate, T.Price FROM Exhibitions E INNER JOIN Tickets T ON E.ID = T.Title";
-            $result = $link->query($sql);
-
+        $sql = "SELECT P.Price FROM Prices P WHERE P.ID = 1";
+        $result = $link>query($sql);
+            if ($result && $result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $price = htmlspecialchars($row['Price']);
+            } else {
+                $price = "Errore: prezzo non trovato";
+            }
         ?>
-            <section id="exhibitions">
+            <div id="exhibitions">
                 <div id="info">
-                <h3>Ingresso normale</h3>
-                <p>Ingresso giornaliero valido per una persona</p>
-                <p>Prezzo: <?php  ?></p> <!-- Manca tabella coi prezzi -->
-                <button>COMPRA ORA</button>
+                    <h2>Biglietti Disponibili</h2>
+                    <section>
+                    <h3>Ingresso normale</h3>
+                    <p>Ingresso giornaliero valido per una persona</p>
+                    <p>Prezzo: <?php echo($price) ?></p>
+                    <button>COMPRA ORA</button>
+                    </section>
                 </div>
-                <h2>Biglietti Disponibili</h2>
-                <?php if ($result->num_rows > 0): ?>
+
+                <?php
+                $sql = "SELECT E.Name, E.Image, T.ValidityDate, T.ExpiringDate, P.Price FROM Exhibitions E INNER JOIN Prices P ON E.ID = P.Exhibition";
+                $result = $link->query($sql);
+                if ($result->num_rows > 0): ?>
                     <?php while($row = $result->fetch_assoc()): ?>
-                        <?php 
+                        <?php
                         // Converto le date
                         $validityDate = new DateTime($row['ValidityDate']);
                         $expiringDate = new DateTime($row['ExpiringDate']);
@@ -50,6 +60,7 @@
 
                         // Controllo che le date dell'evento siano valide
                         if ($currentDate >= $validityDate && $currentDate <= $expiringDate): ?>
+                        <section>
                             <div id="info">
                             <img src="<?php echo htmlspecialchars($row['Image']); ?>" alt="<?php echo htmlspecialchars($row['Name']); ?>">
                             <h3><?php echo htmlspecialchars($row['Name']); ?></h3>
@@ -57,6 +68,7 @@
                             <p>Prezzo: <?php echo htmlspecialchars($row['Price']); ?></p>
                             <button>COMPRA ORA</button>
                             </div>
+                        </section>
                         <?php endif; ?>
                     <?php endwhile; ?>
                 <?php else: ?>
@@ -65,7 +77,7 @@
                     </div>
                     
                 <?php endif; ?>
-            </section>
+            </div>
             <?php
             $link->close();
             ?>
