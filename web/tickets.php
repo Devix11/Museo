@@ -27,9 +27,10 @@
 
         require("config.php");
         global $link;
+        $sql = "SELECT P.Price FROM Prices P WHERE P.ID = 1";
+        $result = $link>query($sql);
 
-            $sql = "SELECT E.Name, E.Image, T.ValidityDate, T.ExpiringDate, T.Price FROM Exhibitions E INNER JOIN Tickets T ON E.ID = T.Title";
-            $result = $link->query($sql);
+
 
         ?>
             <div id="exhibitions">
@@ -38,14 +39,16 @@
                     <section>
                     <h3>Ingresso normale</h3>
                     <p>Ingresso giornaliero valido per una persona</p>
-                    <p>Prezzo: <?php  ?></p> <!-- Manca tabella coi prezzi -->
+                    <p>Prezzo: <?php echo htmlspecialchars($row['Price']); ?></p> <!-- Manca tabella coi prezzi -->
                     <button>COMPRA ORA</button>
                     </section>
                 </div>
 
-                <?php if ($result->num_rows > 0): ?>
+                <?php
+                $sql = "SELECT E.Name, E.Image, T.ValidityDate, T.ExpiringDate, T.Price FROM Exhibitions E INNER JOIN Tickets T ON E.ID = T.Title";
+                $result = $link->query($sql);                                                                                                      if ($result->num_rows > 0): ?>
                     <?php while($row = $result->fetch_assoc()): ?>
-                        <?php 
+                        <?php
                         // Converto le date
                         $validityDate = new DateTime($row['ValidityDate']);
                         $expiringDate = new DateTime($row['ExpiringDate']);
