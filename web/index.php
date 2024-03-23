@@ -36,7 +36,7 @@
         </section>
 
         <!-- Sezione carosello -->
-        <?php
+        /** @noinspection ALL */<?php
             // Abilita la visualizzazione degli errori
             ini_set('display_errors', 1);
 
