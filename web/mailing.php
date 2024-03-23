@@ -60,5 +60,12 @@
             Messaggio:<br><textarea name="message" rows="5" cols="40"></textarea><br>
             <input type="submit" value="Invia Email">
         </form>
+
+        <!-- Footer -->
+        <?php
+            include_once("footer.php");
+        ?>
+
+        <script src="script.js"></script>
     </body>
 </html>

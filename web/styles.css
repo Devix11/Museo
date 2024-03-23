@@ -73,26 +73,6 @@ p, a {
     justify-content: center;
 }
 
-/* Stile del carosello */
-/*
-.carousel {
-    width: 100%;
-    margin: auto;
-    overflow: hidden;
-}
-
-.carousel-slide {
-    display: none;
-    width: 100%;
-    transition: all 0.5s ease;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: auto;
-}
-*/
-
 /* Stile dei pulsanti */
 button {
     background-color: #ffdd57;
@@ -117,6 +97,7 @@ footer {
     background: #333;
     color: #f9f9f9;
     padding: 20px 10px;
+    /*noinspection CssInvalidPropertyValue*/
     width: justify;
     display: flex;
     flex-direction: column;
@@ -195,6 +176,7 @@ body::-webkit-scrollbar-track {
 */
 
 body::-webkit-scrollbar-track {
+    /*noinspection CssUnresolvedCustomProperty*/
     background: var(--scrollbar-background-color); /* Colore di sfondo della traccia */
 }
 
