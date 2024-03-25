@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             # Prepara una query di selezione
             $sql = "SELECT CF FROM Credentials WHERE CF = ?";
 
-            if ($stmt = mysqli_prepare($link, $sql)) {
+            if ($stmt = mysqli_prepare($conn, $sql)) {
                 # Associa le variabili alla query come parametri
                 mysqli_stmt_bind_param($stmt, "s", $param_username);
                 # Imposta i parametri
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             # Prepara una query di selezione
             $sql = "SELECT CF FROM Credentials WHERE email = ?";
 
-            if ($stmt = mysqli_prepare($link, $sql)) {
+            if ($stmt = mysqli_prepare($conn, $sql)) {
                 # Associa le variabili alla query come parametri
                 mysqli_stmt_bind_param($stmt, "s", $param_email);
                 # Imposta i parametri
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         # Prepara una query di inserimento
         $sql = "INSERT INTO Credentials(CF, Email, Password) VALUES (?, ?, ?)";
 
-        if ($stmt = mysqli_prepare($link, $sql)) {
+        if ($stmt = mysqli_prepare($conn, $sql)) {
             # Associa le variabili alla query preparata come parametri
             mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_email, $param_password);
             # Imposta i parametri
@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     # Chiudi la connessione
-    mysqli_close($link);
+    mysqli_close($conn);
 }
 ?><!DOCTYPE html>
 <html lang="en">
