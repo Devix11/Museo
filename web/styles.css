@@ -74,8 +74,10 @@ section,
      max-width: 80%;
  }
 
- #img {
-     border-right: 2px solid #888888;
+ #info {
+     padding-left:5%;
+     border-left: 2px solid lightgrey;
+
  }
 
 .carousel-slide img {
