@@ -58,7 +58,7 @@
                         $currentDate = new DateTime(); // Data e ora corrente
 
                         // Controllo che le date dell'evento siano valide
-                        if ($currentDate >= $validityDate && $currentDate <= $expiringDate): ?>
+                        //if ($currentDate >= $validityDate && $currentDate <= $expiringDate): ?>
                         <section class="info">
                             <div id="img">
                             <img class="tiny" src="<?php echo htmlspecialchars($row['Image']); ?>" alt="<?php echo htmlspecialchars($row['Name']); ?>">
@@ -70,7 +70,7 @@
                             <button>COMPRA ORA</button>
                             </div>
                         </section>
-                        <?php endif; ?>
+                        <?php //endif; ?>
                     <?php endwhile; ?>
                 <?php else: ?>
                     <div style="text-align: center">
