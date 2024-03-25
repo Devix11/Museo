@@ -112,18 +112,6 @@
         $data = json_decode($response->getBody(), true);
         echo json_encode($data);
         ?>
-
-            <!-- Using Javascript -->
-            <h1 id="jsonResult"></h1>
-            <script>
-                fetch('http://127.0.0.1:3338/test')
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    document.getElementById('jsonResult').innerText = JSON.stringify(data);
-                })
-                .catch(error => console.error('Errore durante la richiesta:', error));
-            </script>
         </section>
 
         <!-- Footer -->
