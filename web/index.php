@@ -105,7 +105,7 @@
             <!-- Using PHP -->
             <h2 style="text-align: center">Api test section</h2>
             <?php
-            require_once "vendor/autoload.php";
+            require_once "../vendor/autoload.php";
 
         $client = new GuzzleHttp\Client(['base_uri' => 'http://127.0.0.1:3338/']);
         $response = $client->request('GET', 'test');
@@ -119,6 +119,7 @@
                 fetch('http://127.0.0.1:3338/test')
                 .then(response => response.json())
                 .then(data => {
+                    console.log(data);
                     document.getElementById('jsonResult').innerText = JSON.stringify(data);
                 })
                 .catch(error => console.error('Errore durante la richiesta:', error));
