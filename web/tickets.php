@@ -37,7 +37,7 @@
             }
         ?>
             <div id="exhibitions">
-                <div id="info">
+                <div class="info">
                     <section>
                     <h3>Ingresso normale</h3>
                     <p>Ingresso giornaliero valido per una persona</p>
@@ -73,8 +73,8 @@
                         <?php endif; ?>
                     <?php endwhile; ?>
                 <?php else: ?>
-                    <div id="info">
-                        <p>Non ci sono esibizioni disponibili.</p>
+                    <div style="text-align: center">
+                        <h3>Non ci sono esibizioni disponibili.</h3>
                     </div>
                     
                 <?php endif; ?>
