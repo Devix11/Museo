@@ -73,12 +73,7 @@ section,
      width: fit-content;
      max-width: 80%;
  }
-
- #info {
-     padding-left:5%;
-     border-left: 2px solid lightgrey;
-
- }
+ 
 
 .carousel-slide img {
     max-height: 600px;
