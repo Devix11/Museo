@@ -38,7 +38,6 @@
         ?>
             <div id="exhibitions">
                 <div id="info">
-                    <h2>Biglietti Disponibili</h2>
                     <section>
                     <h3>Ingresso normale</h3>
                     <p>Ingresso giornaliero valido per una persona</p>
@@ -48,7 +47,7 @@
                 </div>
 
                 <?php
-                $sql = "SELECT E.Name, E.Image, T.ValidityDate, T.ExpiringDate, P.Price FROM Exhibitions E INNER JOIN Prices P ON E.ID = P.Exhibition";
+                $sql = "SELECT E.Name, E.Image, T.ValidityDate, T.ExpiringDate, P.Price FROM Exhibitions E INNER JOIN Prices P ON E.ID = P.Exhibition INNER JOIN Tickets T ON E.ID = T.Title";
                 $result = $link->query($sql);
                 if ($result->num_rows > 0): ?>
                     <?php while($row = $result->fetch_assoc()): ?>
@@ -62,7 +61,7 @@
                         if ($currentDate >= $validityDate && $currentDate <= $expiringDate): ?>
                         <section>
                             <div id="info">
-                            <img src="<?php echo htmlspecialchars($row['Image']); ?>" alt="<?php echo htmlspecialchars($row['Name']); ?>">
+                            <img class="tiny" src="<?php echo htmlspecialchars($row['Image']); ?>" alt="<?php echo htmlspecialchars($row['Name']); ?>">
                             <h3><?php echo htmlspecialchars($row['Name']); ?></h3>
                             <p>Durata: <?php echo htmlspecialchars($row['ValidityDate']); ?> to <?php echo htmlspecialchars($row['ExpiringDate']); ?></p>
                             <p>Prezzo: <?php echo htmlspecialchars($row['Price']); ?></p>
