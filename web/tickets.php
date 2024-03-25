@@ -28,7 +28,7 @@
         require("config.php");
         global $link;
         $sql = "SELECT P.Price FROM Prices P WHERE P.ID = 1";
-        $result = $link>query($sql);
+        $result = $link->query($sql);
             if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 $price = htmlspecialchars($row['Price']);

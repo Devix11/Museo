@@ -4,3 +4,4 @@ vendor
 node_modules
 qodana.yaml
 .php-cs-fixer.cache
+dist
