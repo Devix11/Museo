@@ -26,9 +26,9 @@
             ini_set('display_errors', 1);
 
         require("config.php");
-        global $link;
+        global $conn;
         $sql = "SELECT P.Price FROM Prices P WHERE P.ID = 1";
-        $result = $link->query($sql);
+        $result = $conn->query($sql);
             if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 $price = htmlspecialchars($row['Price']);
@@ -48,7 +48,7 @@
 
                 <?php
                 $sql = "SELECT E.Name, E.Image, T.ValidityDate, T.ExpiringDate, P.Price FROM Exhibitions E INNER JOIN Prices P ON E.ID = P.Exhibition INNER JOIN Tickets T ON E.ID = T.Title";
-                $result = $link->query($sql);
+                $result = $conn->query($sql);
                 if ($result->num_rows > 0): ?>
                     <?php while($row = $result->fetch_assoc()): ?>
                         <?php
@@ -80,7 +80,7 @@
                 <?php endif; ?>
             </div>
             <?php
-            $link->close();
+            $conn->close();
             ?>
     </div>
     <?php
