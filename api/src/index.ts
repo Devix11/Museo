@@ -7,7 +7,7 @@ server.get('/ping', async (request, reply) => {
 })
 
 // IN PRODUCTION CHANGE TO 127.0.0.1
-server.listen({ host: "0.0.0.0", port: 3311 }, (err, address) => {
+server.listen({ host: "0.0.0.0", port: 3338 }, (err, address) => {
 if (err) {
     console.error(err)
     process.exit(1)
