@@ -28,37 +28,37 @@
                 <?php
                     ini_set('display_errors', 1);
 
-                    require("config.php");
-                    global $conn;
+                require("config.php");
+                global $conn;
 
-                    // Fetch della lista delle esibizioni dal database
-                    $sql = "SELECT Name, Image FROM Exhibitions";
-                    $result = $conn->query($sql);
+                // Fetch della lista delle esibizioni dal database
+                $sql = "SELECT Name, Image FROM Exhibitions";
+                $result = $conn->query($sql);
 
-                    // Controlla se ci sono delle esibizioni
-                    if ($result->num_rows > 0) {
-                        // Ciclo per mostrare a video tutte le esibizioni
-                        while ($row = $result->fetch_assoc()) {
-                            echo '<div class="col-md-4">';
-                                echo '<div class="card">';
-                                    // Mostra l'immagine della mostra
-                                    $imageData = base64_encode($row['Image']);
-                                    $src = 'data:image/jpeg;base64,' . $imageData;
-                                    echo '<img src="' . $src . '" class="card-img-top" alt="' . htmlspecialchars($row['Name']) . '">';
-                                    echo '<div class="card-body">';
-                                        // Mostra il nome della mostra
-                                        echo '<h5 class="card-title">' . htmlspecialchars($row['Name']) . '</h5>';
-                                    echo '</div>';
-                                echo '</div>';
-                            echo '</div>';
-                        }
-                    } else {
-                        // Se non ci sono esibizioni
-                        echo "Nessuna esibizione trovata.";
+                // Controlla se ci sono delle esibizioni
+                if ($result->num_rows > 0) {
+                    // Ciclo per mostrare a video tutte le esibizioni
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<div class="col-md-4">';
+                        echo '<div class="card">';
+                        // Mostra l'immagine della mostra
+                        $imageData = base64_encode($row['Image']);
+                        $src = 'data:image/jpeg;base64,' . $imageData;
+                        echo '<img src="' . $src . '" class="card-img-top" alt="' . htmlspecialchars($row['Name']) . '">';
+                        echo '<div class="card-body">';
+                        // Mostra il nome della mostra
+                        echo '<h5 class="card-title">' . htmlspecialchars($row['Name']) . '</h5>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
                     }
+                } else {
+                    // Se non ci sono esibizioni
+                    echo "Nessuna esibizione trovata.";
+                }
 
-                    // Chiusura della connessione
-                    $conn->close();
+                // Chiusura della connessione
+                $conn->close();
                 ?>
             </div>
         </div>
@@ -66,7 +66,7 @@
         <!-- Footer -->
         <?php
             include_once("footer.php");
-        ?>
+                ?>
 
         <script src="script.js"></script>
     </body>

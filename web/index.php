@@ -39,29 +39,29 @@
         <?php
             ini_set('display_errors', 1);
 
-            require("config.php");
-            global $conn;
+        require("config.php");
+        global $conn;
 
-            // Fetch della lista delle esibizioni dal database
-            $sql = "SELECT ID, Name, Image FROM Images";
-            $result = $conn->query($sql);
+        // Fetch della lista delle esibizioni dal database
+        $sql = "SELECT ID, Name, Image FROM Images";
+        $result = $conn->query($sql);
 
-            if ($result->num_rows > 0) {
-                // Output delle immagini
-                while ($row = $result->fetch_assoc()) {
-                    // Ottieni l'estensione del file dall'URL
-                    $extension = pathinfo($row['Name'], PATHINFO_EXTENSION);
-                    echo '<div class="carousel">';
-                    echo '<div class="carousel-slide">';
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />';
-                    echo '</div>';
-                    echo '</div>';
-                }
-            } else {
-                echo "Nessuna immagine trovata.";
+        if ($result->num_rows > 0) {
+            // Output delle immagini
+            while ($row = $result->fetch_assoc()) {
+                // Ottieni l'estensione del file dall'URL
+                $extension = pathinfo($row['Name'], PATHINFO_EXTENSION);
+                echo '<div class="carousel">';
+                echo '<div class="carousel-slide">';
+                echo '<img src="data:image/jpeg;base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />';
+                echo '</div>';
+                echo '</div>';
             }
+        } else {
+            echo "Nessuna immagine trovata.";
+        }
 
-            echo '<script src="script.js"></script>';
+        echo '<script src="script.js"></script>';
         ?>
 
         <section>
@@ -69,49 +69,49 @@
             <?php
                 // Fetch della lista delle esibizioni dal database
                 $sql = "SELECT Name, Image FROM Exhibitions";
-                $result = $conn->query($sql);
-                $cycle = ((int)$result->num_rows)/2;
+        $result = $conn->query($sql);
+        $cycle = ((int)$result->num_rows)/2;
 
-                // Controlla se ci sono delle esibizioni
-                if ($result->num_rows > 0) {
-                    // Ciclo per mostrare a video tutte le esibizioni
-                    while ($row = $result->fetch_assoc()) {
-                        if ($cycle >= 0){
-                            echo '<div class="col-md-4">';
-                            echo '<div class="card">';
-                            // Mostra l'immagine della mostra
-                            $imageData = base64_encode($row['Image']);
-                            $src = 'data:image/jpeg;base64,' . $imageData;
-                            echo '<img src="' . $src . '" class="card-img-top" alt="' . htmlspecialchars($row['Name']) . '">';
-                            echo '<div class="card-body">';
-                            // Mostra il nome della mostra
-                            echo '<h5 class="card-title">' . htmlspecialchars($row['Name']) . '</h5>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '</div>';
-                        }
-                        $cycle--;
-                    }
-                } else {
-                    echo "Nessuna esibizione trovata.";
+        // Controlla se ci sono delle esibizioni
+        if ($result->num_rows > 0) {
+            // Ciclo per mostrare a video tutte le esibizioni
+            while ($row = $result->fetch_assoc()) {
+                if ($cycle >= 0) {
+                    echo '<div class="col-md-4">';
+                    echo '<div class="card">';
+                    // Mostra l'immagine della mostra
+                    $imageData = base64_encode($row['Image']);
+                    $src = 'data:image/jpeg;base64,' . $imageData;
+                    echo '<img src="' . $src . '" class="card-img-top" alt="' . htmlspecialchars($row['Name']) . '">';
+                    echo '<div class="card-body">';
+                    // Mostra il nome della mostra
+                    echo '<h5 class="card-title">' . htmlspecialchars($row['Name']) . '</h5>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
                 }
+                $cycle--;
+            }
+        } else {
+            echo "Nessuna esibizione trovata.";
+        }
 
-                // Chiusura della connessione
-                $conn->close();
-            ?>
+        // Chiusura della connessione
+        $conn->close();
+        ?>
         </section>
 
         <section>
             <!-- Using PHP -->
             <h2 style="text-align: center">Api test section</h2>
             <?php
-                require_once "vendor/autoload.php";
+            require_once "vendor/autoload.php";
 
-                $client = new GuzzleHttp\Client(['base_uri' => 'http://127.0.0.1:3338/']);
-                $response = $client->request('GET', 'test');
-                $data = json_decode($response->getBody(), true);
-                echo json_encode($data);
-            ?>
+        $client = new GuzzleHttp\Client(['base_uri' => 'http://127.0.0.1:3338/']);
+        $response = $client->request('GET', 'test');
+        $data = json_decode($response->getBody(), true);
+        echo json_encode($data);
+        ?>
 
             <!-- Using Javascript -->
             <h1 id="jsonResult"></h1>
@@ -127,7 +127,7 @@
 
         <!-- Footer -->
         <?php
-            include_once("footer.php");
+        include_once("footer.php");
         ?>
 
         <script src="script.js"></script>

@@ -24,17 +24,17 @@
         <?php
             ini_set('display_errors', 1);
 
-            require("config.php");
-            global $conn;
+        require("config.php");
+        global $conn;
 
-            # Inizializza la sessione
-            session_start();
+        # Inizializza la sessione
+        session_start();
 
-            # Se l'utente non ha effettuato l'accesso, reindirizzalo alla pagina di login
-            if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
-                echo "<script>" . "window.location.href='./login.php';" . "</script>";
-                exit;
-            }
+        # Se l'utente non ha effettuato l'accesso, reindirizzalo alla pagina di login
+        if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+            echo "<script>" . "window.location.href='./login.php';" . "</script>";
+            exit;
+        }
         ?>
 
         <!-- Sezione Account -->
@@ -67,31 +67,31 @@
                             LEFT JOIN Credentials ON Purchase.Buyer = Credentials.CF 
                             WHERE Credentials.Email = ?'; // Placeholder for email
 
-                    // Prepare the statement
-                    $stmt = mysqli_prepare($conn, $stmt);
+        // Prepare the statement
+        $stmt = mysqli_prepare($conn, $stmt);
 
-                    // Bind the email parameter from the session
-                    mysqli_stmt_bind_param($stmt, "s", $_SESSION["email"]);
+        // Bind the email parameter from the session
+        mysqli_stmt_bind_param($stmt, "s", $_SESSION["email"]);
 
-                    // Execute the statement
-                    mysqli_stmt_execute($stmt);
+        // Execute the statement
+        mysqli_stmt_execute($stmt);
 
-                    // Fetch the results
-                    $result = mysqli_stmt_get_result($stmt);
+        // Fetch the results
+        $result = mysqli_stmt_get_result($stmt);
 
-                    // Iterate over the result set and display the data
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<tr>";
-                        echo "<td>" . htmlspecialchars($row["Date"]) . "</td>";
-                        echo "<td>" . htmlspecialchars($row["Name"]) . "</td>"; // Adjusted from E.Name to Name
-                        echo "<td>" . htmlspecialchars($row["Visitors.Name"]) . "</td>";
-                        echo "<td>" . htmlspecialchars($row["Visitors.Surname"]) . "</td>";
-                        echo "</tr>";
-                    }
+        // Iterate over the result set and display the data
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($row["Date"]) . "</td>";
+            echo "<td>" . htmlspecialchars($row["Name"]) . "</td>"; // Adjusted from E.Name to Name
+            echo "<td>" . htmlspecialchars($row["Visitors.Name"]) . "</td>";
+            echo "<td>" . htmlspecialchars($row["Visitors.Surname"]) . "</td>";
+            echo "</tr>";
+        }
 
-                    mysqli_stmt_close($stmt);
+        mysqli_stmt_close($stmt);
 
-                ?>
+        ?>
             </table>
         </section>
         <section>
@@ -105,17 +105,17 @@
 
         <?php
             include_once("footer.php");
-            /*$stmt = 'SELECT Date, E.Name, Visitors.Name, Visitors.Surname From Purchase Left join Tickets on Purchase.Ticket = Tickets.ID Left Join Exhibitions E on Tickets.Title = E.ID Left Join Visitors on Purchase.Visitor = Visitors.CF Left Join Credentials on Buyer = Credentials.CF Where Credentials.Email = ?';
-            $stmt = mysqli_prepare($conn, $stmt);
-            mysqli_stmt_bind_param($stmt, "s", $_SESSION["email"]);
-            foreach ($conn->query('SELECT Date, E.Name, Visitors.Name, Visitors.Surname From Purchase Left join Tickets on Purchase.Ticket = Tickets.ID Left Join Exhibitions E on Tickets.Title = E.ID Left Join Visitors on Purchase.Visitor = Visitors.CF Left Join Credentials on Buyer = Credentials.CF Where Credentials.Email =' . $_SESSION["email"]) as $row) {
-                echo "<tr>";
-                echo "<td>" . $row["Date"] . "</td>";
-                echo "<td>" . $row["E.Name"] . "</td>";
-                echo "<td>" . $row["Visitors.Name"] . "</td>";
-                echo "<td>" . $row["Visitors.Surname"] . "</td>";
-                echo "</tr>";
-            }*/
+        /*$stmt = 'SELECT Date, E.Name, Visitors.Name, Visitors.Surname From Purchase Left join Tickets on Purchase.Ticket = Tickets.ID Left Join Exhibitions E on Tickets.Title = E.ID Left Join Visitors on Purchase.Visitor = Visitors.CF Left Join Credentials on Buyer = Credentials.CF Where Credentials.Email = ?';
+        $stmt = mysqli_prepare($conn, $stmt);
+        mysqli_stmt_bind_param($stmt, "s", $_SESSION["email"]);
+        foreach ($conn->query('SELECT Date, E.Name, Visitors.Name, Visitors.Surname From Purchase Left join Tickets on Purchase.Ticket = Tickets.ID Left Join Exhibitions E on Tickets.Title = E.ID Left Join Visitors on Purchase.Visitor = Visitors.CF Left Join Credentials on Buyer = Credentials.CF Where Credentials.Email =' . $_SESSION["email"]) as $row) {
+            echo "<tr>";
+            echo "<td>" . $row["Date"] . "</td>";
+            echo "<td>" . $row["E.Name"] . "</td>";
+            echo "<td>" . $row["Visitors.Name"] . "</td>";
+            echo "<td>" . $row["Visitors.Surname"] . "</td>";
+            echo "</tr>";
+        }*/
         ?>
 
         <script src="script.js"></script>

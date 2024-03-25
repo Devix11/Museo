@@ -1,112 +1,112 @@
 <?php
-  // visualizza errori
-  ini_set('display_errors', 1);
-  # Includi la connessione
-  require_once "./config.php";
-  $username_err = $email_err = $password_err = "";
-  $username = $email = $password = "";
-  # Elabora i dati del modulo quando il modulo viene inviato
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// visualizza errori
+ini_set('display_errors', 1);
+# Includi la connessione
+require_once "./config.php";
+$username_err = $email_err = $password_err = "";
+$username = $email = $password = "";
+# Elabora i dati del modulo quando il modulo viene inviato
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     # Valida il nome utente
     if (empty(trim($_POST["username"]))) {
-      $username_err = "Inserisci un nome utente.";
+        $username_err = "Inserisci un nome utente.";
     } else {
-      $username = trim($_POST["username"]);
-      if (!ctype_alnum(str_replace(array("@", "-", "_"), "", $username))) {
-        $username_err = "Il nome utente può contenere solo lettere, numeri e simboli come '@', '_', o '-'.";
-      } else {
-        # Prepara una query di selezione
-        $sql = "SELECT CF FROM Credentials WHERE CF = ?";
+        $username = trim($_POST["username"]);
+        if (!ctype_alnum(str_replace(["@", "-", "_"], "", $username))) {
+            $username_err = "Il nome utente può contenere solo lettere, numeri e simboli come '@', '_', o '-'.";
+        } else {
+            # Prepara una query di selezione
+            $sql = "SELECT CF FROM Credentials WHERE CF = ?";
 
-        if ($stmt = mysqli_prepare($link, $sql)) {
-          # Associa le variabili alla query come parametri
-          mysqli_stmt_bind_param($stmt, "s", $param_username);
-          # Imposta i parametri
-          $param_username = $username;
-          # Esegui la query preparata
-          if (mysqli_stmt_execute($stmt)) {
-            # Memorizza il risultato
-            mysqli_stmt_store_result($stmt);
-            # Verifica se il nome utente è già registrato
-            if (mysqli_stmt_num_rows($stmt) == 1) {
-              $username_err = "Questo nome utente è già registrato.";
+            if ($stmt = mysqli_prepare($link, $sql)) {
+                # Associa le variabili alla query come parametri
+                mysqli_stmt_bind_param($stmt, "s", $param_username);
+                # Imposta i parametri
+                $param_username = $username;
+                # Esegui la query preparata
+                if (mysqli_stmt_execute($stmt)) {
+                    # Memorizza il risultato
+                    mysqli_stmt_store_result($stmt);
+                    # Verifica se il nome utente è già registrato
+                    if (mysqli_stmt_num_rows($stmt) == 1) {
+                        $username_err = "Questo nome utente è già registrato.";
+                    }
+                } else {
+                    echo "<script>" . "alert('Oops! Si è verificato un errore. Riprova più tardi.')" . "</script>";
+                }
+                # Chiudi la query
+                mysqli_stmt_close($stmt);
             }
-          } else {
-            echo "<script>" . "alert('Oops! Si è verificato un errore. Riprova più tardi.')" . "</script>";
-          }
-          # Chiudi la query
-          mysqli_stmt_close($stmt);
         }
-      }
     }
     # Valida l'email
     if (empty(trim($_POST["email"]))) {
-      $email_err = "Inserisci un indirizzo email.";
+        $email_err = "Inserisci un indirizzo email.";
     } else {
-      $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
-      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $email_err = "Inserisci un indirizzo email valido.";
-      } else {
-        # Prepara una query di selezione
-        $sql = "SELECT CF FROM Credentials WHERE email = ?";
+        $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $email_err = "Inserisci un indirizzo email valido.";
+        } else {
+            # Prepara una query di selezione
+            $sql = "SELECT CF FROM Credentials WHERE email = ?";
 
-        if ($stmt = mysqli_prepare($link, $sql)) {
-          # Associa le variabili alla query come parametri
-          mysqli_stmt_bind_param($stmt, "s", $param_email);
-          # Imposta i parametri
-          $param_email = $email;
-          # Esegui la query preparata
-          if (mysqli_stmt_execute($stmt)) {
-            # Memorizza il risultato
-            mysqli_stmt_store_result($stmt);
-            # Verifica se l'email è già registrata
-            if (mysqli_stmt_num_rows($stmt) == 1) {
-              $email_err = "Questa email è già registrata.";
+            if ($stmt = mysqli_prepare($link, $sql)) {
+                # Associa le variabili alla query come parametri
+                mysqli_stmt_bind_param($stmt, "s", $param_email);
+                # Imposta i parametri
+                $param_email = $email;
+                # Esegui la query preparata
+                if (mysqli_stmt_execute($stmt)) {
+                    # Memorizza il risultato
+                    mysqli_stmt_store_result($stmt);
+                    # Verifica se l'email è già registrata
+                    if (mysqli_stmt_num_rows($stmt) == 1) {
+                        $email_err = "Questa email è già registrata.";
+                    }
+                } else {
+                    echo "<script>" . "alert('Oops! Si è verificato un errore. Riprova più tardi.');" . "</script>";
+                }
+                # Chiudi la query
+                mysqli_stmt_close($stmt);
             }
-          } else {
-            echo "<script>" . "alert('Oops! Si è verificato un errore. Riprova più tardi.');" . "</script>";
-          }
-          # Chiudi la query
-          mysqli_stmt_close($stmt);
         }
-      }
     }
     # Valida la password
     if (empty(trim($_POST["password"]))) {
-      $password_err = "Inserisci una password.";
+        $password_err = "Inserisci una password.";
     } else {
-      $password = trim($_POST["password"]);
-      if (strlen($password) < 8) {
-        $password_err = "La password deve contenere almeno 8 caratteri.";
-      }
+        $password = trim($_POST["password"]);
+        if (strlen($password) < 8) {
+            $password_err = "La password deve contenere almeno 8 caratteri.";
+        }
     }
     # Verifica gli errori di input prima di inserire i dati nel database
     if (empty($username_err) && empty($email_err) && empty($password_err)) {
-      # Prepara una query di inserimento
-      $sql = "INSERT INTO Credentials(CF, Email, Password) VALUES (?, ?, ?)";
+        # Prepara una query di inserimento
+        $sql = "INSERT INTO Credentials(CF, Email, Password) VALUES (?, ?, ?)";
 
-      if ($stmt = mysqli_prepare($link, $sql)) {
-        # Associa le variabili alla query preparata come parametri
-        mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_email, $param_password);
-        # Imposta i parametri
-        $param_username = $username;
-        $param_email = $email;
-        $param_password = password_hash($password, PASSWORD_DEFAULT);
-        # Esegui la query preparata
-        if (mysqli_stmt_execute($stmt)) {
-          echo "<script>" . "alert('Registrazione completata con successo. Accedi per continuare.');" . "</script>";
-          echo "<script>" . "window.location.href='./login.php';" . "</script>";
-          exit;
-        } else {
-          echo "<script>" . "alert('Oops! Si è verificato un errore. Riprova più tardi.');" . "</script>";
+        if ($stmt = mysqli_prepare($link, $sql)) {
+            # Associa le variabili alla query preparata come parametri
+            mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_email, $param_password);
+            # Imposta i parametri
+            $param_username = $username;
+            $param_email = $email;
+            $param_password = password_hash($password, PASSWORD_DEFAULT);
+            # Esegui la query preparata
+            if (mysqli_stmt_execute($stmt)) {
+                echo "<script>" . "alert('Registrazione completata con successo. Accedi per continuare.');" . "</script>";
+                echo "<script>" . "window.location.href='./login.php';" . "</script>";
+                exit;
+            } else {
+                echo "<script>" . "alert('Oops! Si è verificato un errore. Riprova più tardi.');" . "</script>";
+            }
+            # Chiudi la query
+            mysqli_stmt_close($stmt);
         }
-        # Chiudi la query
-        mysqli_stmt_close($stmt);
-      }
     }
     # Chiudi la connessione
     mysqli_close($link);
-  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -162,7 +162,7 @@
     <!-- Footer -->
     <?php
         include_once("footer.php");
-    ?>
+?>
 
     <script src="script.js"></script>
   </body>

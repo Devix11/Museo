@@ -5,7 +5,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit-old": "composer run format",
+      "pre-commit": "composer run format"
     }
   }
 }
