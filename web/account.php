@@ -22,34 +22,19 @@
 
         <!-- Sezione php per la gestione login/registrazione -->
         <?php
-            // Abilita la visualizzazione degli errori
             ini_set('display_errors', 1);
 
-        // Parametri di connessione al database
-        $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
-        $user = "phpmyadmin"; // Nome utente per l'accesso al database
-        $pwd = "ciaone11"; // Password per l'accesso al database
-        $db = "Museo"; // Nome del database
+            require("config.php");
+            global $conn;
 
-        // Creazione della connessione
-        $conn = new mysqli($server, $user, $pwd, $db);
+            # Inizializza la sessione
+            session_start();
 
-        // Controllo della connessione
-        if ($conn->connect_error) {
-            die("Connessione fallita: " . $conn->connect_error);
-        }
-
-        # Inizializza la sessione
-        session_start();
-
-        # Se l'utente non ha effettuato l'accesso, reindirizzalo alla pagina di login
-        if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
-            echo "<script>" . "window.location.href='./login.php';" . "</script>";
-            exit;
-        }
-
-        // Chiusura della connessione
-        $conn->close();
+            # Se l'utente non ha effettuato l'accesso, reindirizzalo alla pagina di login
+            if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
+                echo "<script>" . "window.location.href='./login.php';" . "</script>";
+                exit;
+            }
         ?>
 
         <!-- Sezione Account -->
@@ -63,18 +48,6 @@
             <p>Qui potrai visualizzare le tue prenotazioni.</p>
             <table>
                 <?php
-                    // Parametri di connessione al database
-                    $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
-                    $user = "phpmyadmin"; // Nome utente per l'accesso al database
-                    $pwd = "ciaone11"; // Password per l'accesso al database
-                    $db = "Museo"; // Nome del database
-                    $conn = new mysqli($server, $user, $pwd, $db);
-
-                    // Controllo della connessione
-                    if ($conn->connect_error) {
-                        die("Connessione fallita: " . $conn->connect_error);
-                    }
-
                     // Query per ottenere le prenotazioni dell'utente
                     /*foreach ($conn->query('SELECT Date, E.Name, Visitors.Name, Visitors.Surname From Purchase Left join Tickets on Purchase.Ticket = Tickets.ID Left Join Exhibitions E on Tickets.Title = E.ID Left Join Visitors on Purchase.Visitor = Visitors.CF Left Join Credentials on Buyer = Credentials.CF Where Credentials.Email =' . $_SESSION["email"]) as $row) {
                         echo "<tr>";
@@ -118,8 +91,7 @@
 
                     mysqli_stmt_close($stmt);
 
-                    ?>
-                    
+                ?>
             </table>
         </section>
         <section>

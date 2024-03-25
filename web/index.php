@@ -36,25 +36,13 @@
         </section>
 
         <!-- Sezione carosello -->
-        /** @noinspection ALL */<?php
-            // Abilita la visualizzazione degli errori
+        <?php
             ini_set('display_errors', 1);
 
-            // Parametri di connessione al database
-            $server = "localhost"; // Indirizzo del server MySQL (MariaDB)
-            $user = "phpmyadmin"; // Nome utente per l'accesso al database
-            $pwd = "ciaone11"; // Password per l'accesso al database
-            $db = "Museo"; // Nome del database
+            require("config.php");
+            global $conn;
 
-            // Creazione della connessione
-            $conn = new mysqli($server, $user, $pwd, $db);
-
-            // Controllo della connessione
-            if ($conn->connect_error) {
-                die("Connessione fallita: " . $conn->connect_error);
-            }
-
-            // Query per selezionare le immagini dalla tabella
+            // Fetch della lista delle esibizioni dal database
             $sql = "SELECT ID, Name, Image FROM Images";
             $result = $conn->query($sql);
 
