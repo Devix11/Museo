@@ -195,10 +195,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 
-    <!-- Footer -->
-    <?php
-        include_once("footer.php");
-    ?>
 
     <script src="script.js"></script>
 </body>
