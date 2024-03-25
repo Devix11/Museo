@@ -61,7 +61,7 @@
                         if ($currentDate >= $validityDate && $currentDate <= $expiringDate): ?>
                         <section class="info">
                             <div id="img">
-                                <p class="tiny"><?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />'; ?></p>
+                                <p><?php echo '<img class="tiny" src="data:image/jpeg;base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />'; ?></p>
                             </div>
                             <div id="info">
                             <h3><?php echo htmlspecialchars($row['Name']); ?></h3>
