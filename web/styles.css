@@ -54,15 +54,16 @@ section,
 }
  section.info {
      text-align: center;
-     width: auto;
+     width: fit-content;
      max-width: 80%;
      display: grid;
      grid-template-columns: 1fr 2fr;
  }
 
- #img {
-     align-content: center;
-     margin: 10% 20% 10% 10%;
+ div.info {
+     text-align: center;
+     width: fit-content;
+     max-width: 80%;
  }
 
 .carousel-slide img {
