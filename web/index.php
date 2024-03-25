@@ -101,6 +101,30 @@
             ?>
         </section>
 
+        <section>
+            <!-- Using PHP -->
+            <h2 style="text-align: center">Api test section</h2>
+            <?php
+                require_once "vendor/autoload.php";
+
+                $client = new GuzzleHttp\Client(['base_uri' => 'http://127.0.0.1:3338/']);
+                $response = $client->request('GET', 'test');
+                $data = json_decode($response->getBody(), true);
+                echo json_encode($data);
+            ?>
+
+            <!-- Using Javascript -->
+            <h1 id="jsonResult"></h1>
+            <script>
+                fetch('http://127.0.0.1:3338/test')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('jsonResult').innerText = JSON.stringify(data);
+                })
+                .catch(error => console.error('Errore durante la richiesta:', error));
+            </script>
+        </section>
+
         <!-- Footer -->
         <?php
             include_once("footer.php");
