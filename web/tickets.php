@@ -59,9 +59,11 @@
 
                         // Controllo che le date dell'evento siano valide
                         if ($currentDate >= $validityDate && $currentDate <= $expiringDate): ?>
-                        <section>
-                            <div id="info">
+                        <section class="info">
+                            <div id="img">
                             <img class="tiny" src="<?php echo htmlspecialchars($row['Image']); ?>" alt="<?php echo htmlspecialchars($row['Name']); ?>">
+                            </div>
+                            <div id="info">
                             <h3><?php echo htmlspecialchars($row['Name']); ?></h3>
                             <p>Durata: <?php echo htmlspecialchars($row['ValidityDate']); ?> to <?php echo htmlspecialchars($row['ExpiringDate']); ?></p>
                             <p>Prezzo: <?php echo htmlspecialchars($row['Price']); ?></p>
