@@ -107,10 +107,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     # Chiudi la connessione
     mysqli_close($link);
 }
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -119,51 +118,88 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="./main.css">
     <link rel="shortcut icon" href="./img/favicon-16x16.png" type="image/x-icon">
     <script defer src="./script.js"></script>
-  </head>
-  <body>
+    <style>
+        :root {
+            --dark-color: #333;
+            --light-color: #f9f9f9;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        .form-wrap {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            border-color: var(--dark-color);
+        }
+
+        .btn-primary {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        input, textarea {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            border: 1px solid var(--dark-color);
+        }
+
+        input::placeholder {
+            color: var(--dark-color);
+        }
+    </style>
+</head>
+<body>
     <div class="container">
-      <div class="row min-vh-100 justify-content-center align-items-center">
-        <div class="col-lg-5">
-          <div class="form-wrap border rounded p-4">
-            <h1>Registrati</h1>
-            <p>Compila questo modulo per registrarti</p>
-            <!-- il modulo inizia qui -->
-            <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
-              <div class="mb-3">
-                <label for="username" class="form-label">Nome utente</label>
-                <input type="text" class="form-control" name="username" id="username" value="<?= $username; ?>">
-                <small class="text-danger"><?= $username_err; ?></small>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Indirizzo email</label>
-                <input type="email" class="form-control" name="email" id="email" value="<?= $email; ?>">
-                <small class="text-danger"><?= $email_err; ?></small>
-              </div>
-              <div class="mb-2">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password" id="password" value="<?= $password; ?>">
-                <small class="text-danger"><?= $password_err; ?></small>
-              </div>
-              <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="togglePassword">
-                <label for="togglePassword" class="form-check-label">Mostra password</label>
-              </div>
-              <div class="mb-3">
-                <input type="submit" class="btn btn-primary form-control" name="submit" value="Registrati">
-              </div>
-              <p class="mb-0">Hai già un account? <a href="./login.php">Accedi</a></p>
-            </form>
-            <!-- il modulo finisce qui -->
-          </div>
+        <div class="row min-vh-100 justify-content-center align-items-center">
+            <div class="col-lg-5">
+                <div class="form-wrap border rounded p-4">
+                    <h1>Registrati</h1>
+                    <p>Compila questo modulo per registrarti</p>
+                    <!-- il modulo inizia qui -->
+                    <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Nome utente</label>
+                            <input type="text" class="form-control" name="username" id="username" value="<?= $username; ?>">
+                            <small class="text-danger"><?= $username_err; ?></small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Indirizzo email</label>
+                            <input type="email" class="form-control" name="email" id="email" value="<?= $email; ?>">
+                            <small class="text-danger"><?= $email_err; ?></small>
+                        </div>
+                        <div class="mb-2">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="password" id="password" value="<?= $password; ?>">
+                            <small class="text-danger"><?= $password_err; ?></small>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="togglePassword">
+                            <label for="togglePassword" class="form-check-label">Mostra password</label>
+                        </div>
+                        <div class="mb-3">
+                            <input type="submit" class="btn btn-primary form-control" name="submit" value="Registrati">
+                        </div>
+                        <p class="mb-0">Hai già un account? <a href="./login.php">Accedi</a></p>
+                    </form>
+                    <!-- il modulo finisce qui -->
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <!-- Footer -->
     <?php
         include_once("footer.php");
-?>
+    ?>
 
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
