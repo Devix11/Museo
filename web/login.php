@@ -1,94 +1,93 @@
 <?php
-  // visualizza errori
-  ini_set('display_errors', 1);
-  # Inizializza la sessione
-  session_start();
+    ini_set('display_errors', 1);
 
-  # Controlla se l'utente è già loggato, se sì, reindirizzalo alla pagina index
-  if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
-    echo "<script>" . "window.location.href='./account.php'" . "</script>";
-    exit;
-  }
+    require("config.php");
+    global $conn;
 
-  # Includi la connessione
-  require_once "./config.php";
+    session_start();
 
-  # Definisci le variabili e inizializzale con valori vuoti
-  $user_login_err = $user_password_err = $login_err = "";
-  $user_login = $user_password = "";
-
-  # Elabora i dati del modulo quando il modulo viene inviato
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty(trim($_POST["user_login"]))) {
-      $user_login_err = "Inserisci il tuo nome utente o un indirizzo email.";
-    } else {
-      $user_login = trim($_POST["user_login"]);
+    # Controlla se l'utente è già loggato, se sì, reindirizzalo alla pagina index
+    if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
+        echo "<script>" . "window.location.href='./account.php'" . "</script>";
+        exit;
     }
 
-    if (empty(trim($_POST["user_password"]))) {
-      $user_password_err = "Inserisci la tua password.";
-    } else {
-      $user_password = trim($_POST["user_password"]);
-    }
+    # Definisci le variabili e inizializzale con valori vuoti
+    $user_login_err = $user_password_err = $login_err = "";
+    $user_login = $user_password = "";
 
-    # Convalida le credenziali
-    if (empty($user_login_err) && empty($user_password_err)) {
-      # Prepara una query di selezione
-      $sql = "SELECT CF, password FROM Credentials WHERE CF = ? OR email = ?";
-
-      if ($stmt = mysqli_prepare($link, $sql)) {
-        # Associa le variabili alla query come parametri
-        mysqli_stmt_bind_param($stmt, "ss", $param_user_login, $param_user_login);
-
-        # Imposta i parametri
-        $param_user_login = $user_login;
-
-        # Esegui la query
-        if (mysqli_stmt_execute($stmt)) {
-          # Memorizza il risultato
-          mysqli_stmt_store_result($stmt);
-
-          # Controlla se l'utente esiste, se sì, verifica la password
-          if (mysqli_stmt_num_rows($stmt) == 1) {
-            # Associa i valori del risultato alle variabili
-            mysqli_stmt_bind_result($stmt, $username, $hashed_password);
-
-            if (mysqli_stmt_fetch($stmt)) {
-              # Controlla se la password è corretta
-              if (password_verify($user_password, $hashed_password)) {
-
-                # Memorizza i dati nelle variabili di sessione
-                $_SESSION["username"] = $username;
-                $_SESSION["loggedin"] = TRUE;
-                $_SESSION["email"] = $user_login;
-                $username = mysqli_real_escape_string($link, $username);
-
-                # Reindirizza l'utente alla pagina index
-                echo "<script>" . "window.location.href='./account.php'" . "</script>";
-                exit;
-              } else {
-                # Se la password è errata, mostra un messaggio di errore
-                $login_err = "L'email o la password inserita non è corretta.";
-              }
-            }
-          } else {
-            # Se l'utente non esiste, mostra un messaggio di errore
-            $login_err = "Nome utente o password non validi.";
-          }
+    # Elabora i dati del modulo quando il modulo viene inviato
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (empty(trim($_POST["user_login"]))) {
+            $user_login_err = "Inserisci il tuo nome utente o un indirizzo email.";
         } else {
-          echo "<script>" . "alert('Oops! Si è verificato un errore. Riprova più tardi.');" . "</script>";
-          echo "<script>" . "window.location.href='./login.php'" . "</script>";
-          exit;
+            $user_login = trim($_POST["user_login"]);
         }
 
-        # Chiudi la query
-        mysqli_stmt_close($stmt);
-      }
-    }
+        if (empty(trim($_POST["user_password"]))) {
+                $user_password_err = "Inserisci la tua password.";
+            } else {
+                $user_password = trim($_POST["user_password"]);
+        }
 
-    # Chiudi la connessione
-    mysqli_close($link);
-  }
+        # Convalida le credenziali
+        if (empty($user_login_err) && empty($user_password_err)) {
+            # Prepara una query di selezione
+            $sql = "SELECT CF, password FROM Credentials WHERE CF = ? OR email = ?";
+
+            if ($stmt = mysqli_prepare($conn, $sql)) {
+                # Associa le variabili alla query come parametri
+                mysqli_stmt_bind_param($stmt, "ss", $param_user_login, $param_user_login);
+
+                # Imposta i parametri
+                $param_user_login = $user_login;
+
+                # Esegui la query
+                if (mysqli_stmt_execute($stmt)) {
+                    # Memorizza il risultato
+                    mysqli_stmt_store_result($stmt);
+
+                    # Controlla se l'utente esiste, se sì, verifica la password
+                    if (mysqli_stmt_num_rows($stmt) == 1) {
+                        # Associa i valori del risultato alle variabili
+                        mysqli_stmt_bind_result($stmt, $username, $hashed_password);
+
+                        if (mysqli_stmt_fetch($stmt)) {
+                            # Controlla se la password è corretta
+                            if (password_verify($user_password, $hashed_password)) {
+
+                                # Memorizza i dati nelle variabili di sessione
+                                $_SESSION["username"] = $username;
+                                $_SESSION["loggedin"] = TRUE;
+                                $_SESSION["email"] = $user_login;
+                                $username = mysqli_real_escape_string($conn, $username);
+
+                                # Reindirizza l'utente alla pagina index
+                                echo "<script>" . "window.location.href='./account.php'" . "</script>";
+                                exit;
+                            } else {
+                                # Se la password è errata, mostra un messaggio di errore
+                                $login_err = "L'email o la password inserita non è corretta.";
+                            }
+                        }
+                    } else {
+                        # Se l'utente non esiste, mostra un messaggio di errore
+                        $login_err = "Nome utente o password non validi.";
+                    }
+                } else {
+                    echo "<script>" . "alert('Oops! Si è verificato un errore. Riprova più tardi.');" . "</script>";
+                    echo "<script>" . "window.location.href='./login.php'" . "</script>";
+                    exit;
+                }
+
+                # Chiudi la query
+                mysqli_stmt_close($stmt);
+            }
+        }
+
+        # Chiudi la connessione
+        mysqli_close($conn);
+    }
 ?>
 
 <!DOCTYPE html>

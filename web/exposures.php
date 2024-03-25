@@ -26,15 +26,14 @@
             <div class="row">
 
                 <?php
-                    // Abilita la visualizzazione degli errori
                     ini_set('display_errors', 1);
 
                     require("config.php");
-                    global $link;
+                    global $conn;
 
                     // Fetch della lista delle esibizioni dal database
                     $sql = "SELECT Name, Image FROM Exhibitions";
-                    $result = $link->query($sql);
+                    $result = $conn->query($sql);
 
                     // Controlla se ci sono delle esibizioni
                     if ($result->num_rows > 0) {
@@ -59,7 +58,7 @@
                     }
 
                     // Chiusura della connessione
-                    $link->close();
+                    $conn->close();
                 ?>
             </div>
         </div>

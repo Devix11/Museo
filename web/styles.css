@@ -52,6 +52,11 @@ section,
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
+ section.info {
+     text-align: center;
+     width: auto;
+     max-width: 80%;
+ }
 
 .carousel-slide img {
     max-height: 600px;
@@ -91,6 +96,12 @@ button:hover {
 
 .card {
     padding: 25px;
+}
+
+/* Imposto grandezza immagini su compra biglietti */
+.tiny {
+    width:70px;
+    height:70px;
 }
 
 /* Stile del footer */
@@ -216,6 +227,11 @@ body::-webkit-scrollbar-thumb:hover {
         padding: 8px 16px;
     }
 
+    .tiny {
+        width:60px;
+        height:60px;
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -244,4 +260,5 @@ body::-webkit-scrollbar-thumb:hover {
     button {
         font-size: 14px;
     }
+
 }
