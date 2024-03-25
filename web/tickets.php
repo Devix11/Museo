@@ -37,14 +37,14 @@
             }
             ?>
             <div id="exhibitions">
-                <div class="info">
-                    <section>
+                <section class="info1">
+                    <div>
                     <h3>Ingresso normale</h3>
                     <p>Ingresso giornaliero valido per una persona</p>
                     <p>Prezzo: <?php echo($price) ?></p>
                     <button>COMPRA ORA</button>
-                    </section>
-                </div>
+                    </div>
+                </section>
 
                 <?php
                     $sql = "SELECT E.Name, E.Image, T.ValidityDate, T.ExpiringDate, P.Price FROM Exhibitions E INNER JOIN Prices P ON E.ID = P.Exhibition INNER JOIN Tickets T ON E.ID = T.Title";
