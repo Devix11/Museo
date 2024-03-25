@@ -75,8 +75,7 @@ section,
  }
 
  #img {
-     border-right: #888888;
-     border-width: 2px;
+     border-right: 2px solid #888888;
  }
 
 .carousel-slide img {
