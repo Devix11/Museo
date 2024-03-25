@@ -26,9 +26,9 @@
             ini_set('display_errors', 1);
 
         require("config.php");
-        global $link;
+        global $conn;
         $sql = "SELECT P.Price FROM Prices P WHERE P.ID = 1";
-        $result = $link->query($sql);
+        $result = $conn->query($sql);
             if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 $price = htmlspecialchars($row['Price']);
@@ -37,7 +37,7 @@
             }
         ?>
             <div id="exhibitions">
-                <div id="info">
+                <div class="info">
                     <section>
                     <h3>Ingresso normale</h3>
                     <p>Ingresso giornaliero valido per una persona</p>
@@ -48,7 +48,7 @@
 
                 <?php
                 $sql = "SELECT E.Name, E.Image, T.ValidityDate, T.ExpiringDate, P.Price FROM Exhibitions E INNER JOIN Prices P ON E.ID = P.Exhibition INNER JOIN Tickets T ON E.ID = T.Title";
-                $result = $link->query($sql);
+                $result = $conn->query($sql);
                 if ($result->num_rows > 0): ?>
                     <?php while($row = $result->fetch_assoc()): ?>
                         <?php
@@ -59,9 +59,11 @@
 
                         // Controllo che le date dell'evento siano valide
                         if ($currentDate >= $validityDate && $currentDate <= $expiringDate): ?>
-                        <section>
-                            <div id="info">
+                        <section class="info">
+                            <div id="img">
                             <img class="tiny" src="<?php echo htmlspecialchars($row['Image']); ?>" alt="<?php echo htmlspecialchars($row['Name']); ?>">
+                            </div>
+                            <div id="info">
                             <h3><?php echo htmlspecialchars($row['Name']); ?></h3>
                             <p>Durata: <?php echo htmlspecialchars($row['ValidityDate']); ?> to <?php echo htmlspecialchars($row['ExpiringDate']); ?></p>
                             <p>Prezzo: <?php echo htmlspecialchars($row['Price']); ?></p>
@@ -71,14 +73,14 @@
                         <?php endif; ?>
                     <?php endwhile; ?>
                 <?php else: ?>
-                    <div id="info">
-                        <p>Non ci sono esibizioni disponibili.</p>
+                    <div style="text-align: center">
+                        <h3>Non ci sono esibizioni disponibili.</h3>
                     </div>
                     
                 <?php endif; ?>
             </div>
             <?php
-            $link->close();
+            $conn->close();
             ?>
     </div>
     <?php
