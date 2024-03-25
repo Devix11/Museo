@@ -60,14 +60,14 @@
                         // Controllo che le date dell'evento siano valide
                         if ($currentDate >= $validityDate && $currentDate <= $expiringDate): ?>
                         <section class="info">
-                            <div id="img">
-                                <p><?php echo '<img class="tiny" src="data:image/jpeg;base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />'; ?></p>
+                            <div>
+                                <?php echo '<img class="tiny" src="data:image/jpeg;base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />'; ?>
                             </div>
                             <div id="info">
-                            <h3><?php echo htmlspecialchars($row['Name']); ?></h3>
-                            <p>Durata: <?php echo htmlspecialchars($row['ValidityDate']); ?> to <?php echo htmlspecialchars($row['ExpiringDate']); ?></p>
-                            <p>Prezzo: <?php echo htmlspecialchars($row['Price']); ?></p>
-                            <button>COMPRA ORA</button>
+                                <h3><?php echo htmlspecialchars($row['Name']); ?></h3>
+                                <p>Durata: <?php echo htmlspecialchars($row['ValidityDate']); ?> to <?php echo htmlspecialchars($row['ExpiringDate']); ?></p>
+                                <p>Prezzo: <?php echo htmlspecialchars($row['Price']); ?></p>
+                                <button>COMPRA ORA</button>
                             </div>
                         </section>
                         <?php endif; ?>

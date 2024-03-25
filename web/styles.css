@@ -60,6 +60,14 @@ section,
      grid-template-columns: 1fr 2fr;
  }
 
+/* Imposto grandezza immagini su compra biglietti */
+.tiny {
+    align-content: center;
+    padding-top: 10%;
+    width:200px;
+    height:200px;
+}
+
  section.info1 {
      text-align: center;
      width: fit-content;
@@ -104,12 +112,6 @@ button:hover {
 
 .card {
     padding: 25px;
-}
-
-/* Imposto grandezza immagini su compra biglietti */
-.tiny {
-    width:200px;
-    height:200px;
 }
 
 /* Stile del footer */
