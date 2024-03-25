@@ -60,7 +60,7 @@
                         // Controllo che le date dell'evento siano valide
                         if ($currentDate >= $validityDate && $currentDate <= $expiringDate): ?>
                         <section class="info">
-                            <div>
+                            <div id="img">
                                 <?php echo '<img class="tiny" src="data:image/jpeg;base64,' . base64_encode($row['Image']) . '" alt="' . $row['Name'] . '" />'; ?>
                             </div>
                             <div id="info">

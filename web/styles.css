@@ -74,6 +74,13 @@ section,
      max-width: 80%;
  }
 
+ #img {
+     border-right: #888888;
+     border-width: thin;
+     padding-top: 20%;
+     padding-bottom: 20%;
+ }
+
 .carousel-slide img {
     max-height: 600px;
     /*margin: auto;*/
