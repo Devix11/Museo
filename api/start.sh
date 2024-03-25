@@ -12,6 +12,8 @@ fi
 # Crea uno screen con il nome specificato
 screen -dmS $SCREEN_NAME
 
+sleep 1
+
 # Esegue i comandi all'interno dello screen
 screen -S $SCREEN_NAME -X stuff "npm i && npm run build && npm run start$(printf \\r)"
 
