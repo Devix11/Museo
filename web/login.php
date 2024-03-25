@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,51 +101,87 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="./main.css">
     <link rel="shortcut icon" href="./img/favicon-16x16.png" type="image/x-icon">
     <script defer src="./script.js"></script>
-  </head>
-  <body>
+    <style>
+        :root {
+            --dark-color: #333;
+            --light-color: #f9f9f9;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        .btn-primary {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        .form-wrap {
+            background-color: var(--light-color);
+            border-color: var(--dark-color);
+        }
+
+        input, textarea {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            border: 1px solid var(--dark-color);
+        }
+
+        input::placeholder {
+            color: var(--dark-color);
+        }
+    </style>
+</head>
+<body>
     <div class="container">
-      <div class="row min-vh-100 justify-content-center align-items-center">
-        <div class="col-lg-5">
-          <?php
-            if (!empty($login_err)) {
-                echo "<div class='alert alert-danger'>" . $login_err . "</div>";
-            }
-?>
-          <div class="form-wrap border rounded p-4">
-            <h1>Accedi</h1>
-            <p>Effettua il login per continuare</p>
-            <!-- il modulo inizia qui -->
-            <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
-              <div class="mb-3">
-                <label for="user_login" class="form-label">Email o nome utente</label>
-                <input type="text" class="form-control" name="user_login" id="user_login" value="<?= $user_login; ?>">
-                <small class="text-danger"><?= $user_login_err; ?></small>
-              </div>
-              <div class="mb-2">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" name="user_password" id="password">
-                <small class="text-danger"><?= $user_password_err; ?></small>
-              </div>
-              <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="togglePassword">
-                <label for="togglePassword" class="form-check-label">Mostra password</label>
-              </div>
-              <div class="mb-3">
-                <input type="submit" class="btn btn-primary form-control" name="submit" value="Accedi">
-              </div>
-              <p class="mb-0">Non hai un account? <a href="./register.php">Registrati</a></p>
-            </form>
-            <!-- il modulo finisce qui -->
-          </div>
+        <div class="row min-vh-100 justify-content-center align-items-center">
+            <div class="col-lg-5">
+                <?php
+                    if (!empty($login_err)) {
+                        echo "<div class='alert alert-danger'>" . $login_err . "</div>";
+                    }
+                ?>
+                <div class="form-wrap border rounded p-4">
+                    <h1>Accedi</h1>
+                    <p>Effettua il login per continuare</p>
+                    <!-- il modulo inizia qui -->
+                    <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
+                        <div class="mb-3">
+                            <label for="user_login" class="form-label">Email o nome utente</label>
+                            <input type="text" class="form-control" name="user_login" id="user_login" value="<?= $user_login; ?>">
+                            <small class="text-danger"><?= $user_login_err; ?></small>
+                        </div>
+                        <div class="mb-2">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="user_password" id="password">
+                            <small class="text-danger"><?= $user_password_err; ?></small>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="togglePassword">
+                            <label for="togglePassword" class="form-check-label">Mostra password</label>
+                        </div>
+                        <div class="mb-3">
+                            <input type="submit" class="btn btn-primary form-control" name="submit" value="Accedi">
+                        </div>
+                        <p class="mb-0">Non hai un account? <a href="./register.php">Registrati</a></p>
+                    </form>
+                    <!-- il modulo finisce qui -->
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <!-- Footer -->
     <?php
         include_once("footer.php");
-?>
+    ?>
 
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
