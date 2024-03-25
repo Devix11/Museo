@@ -65,7 +65,7 @@
                             </div>
                             <div id="info">
                                 <h3><?php echo htmlspecialchars($row['Name']); ?></h3>
-                                <p>Durata: <?php echo htmlspecialchars($row['ValidityDate']); ?> to <?php echo htmlspecialchars($row['ExpiringDate']); ?></p>
+                                <p>Durata:<br> Da <?php echo htmlspecialchars($row['ValidityDate']); ?> a <?php echo htmlspecialchars($row['ExpiringDate']); ?></p>
                                 <p>Prezzo: <?php echo htmlspecialchars($row['Price']); ?></p>
                                 <button>COMPRA ORA</button>
                             </div>

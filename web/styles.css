@@ -66,6 +66,7 @@ section,
     padding-top: 10%;
     width:200px;
     height:200px;
+    border-radius: 8px;
 }
 
  section.info1 {
