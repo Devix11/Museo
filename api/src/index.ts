@@ -1,11 +1,13 @@
 import Fastify from 'fastify'
 import fastifyStatic from '@fastify/static'
+import fastifyMysql from '@fastify/mysql'
 import path from 'path'
 import fs from 'fs'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+const __rootpath = path.join(__dirname, '..', '..')
 
 const EXHIBITIONS_PATH = path.join(__dirname, 'resources', 'exhibitions')
 
@@ -17,6 +19,9 @@ server.register(fastifyStatic, {
     root: path.join(__dirname, 'resources'),
 })
 
+server.register(fastifyMysql, {
+    connectionString: 'mysql://phpmyadmin@localhost/Museo'
+})
 
 // DEBUG
 server.get('/ping', async (request, reply) => {
@@ -32,6 +37,7 @@ server.get('/test', async (request, reply) => {
 // DEBUG
 
 server.get('/exhibitions', async (request, reply) => {
+    server.
     try {
         const files = fs.promises.readdir(EXHIBITIONS_PATH)
         reply.send(files)
