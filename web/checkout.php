@@ -72,7 +72,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-
+        </section>
+        <section>
+            <h2>Metodo di Pagamento</h2>
                 <div class="form-group>
                     <label for="payment">Metodo di Pagamento:</label>
                     <select id="payment" name="payment" required>
@@ -101,6 +103,13 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     <label for="cardholder_name">Nome del Titolare:</label>
                     <input type="text" id="cardholder_name" name="cardholder_name" required>
                 </div>
+
+                <div class="form-group
+                    <label for="cardholder_surname">Cognome del Titolare:</label>
+                    <input type="text" id="cardholder_surname" name="cardholder_surname" required>
+                </div>
+        </section>
+            
 
                 <button type="submit">Conferma Ordine</button>
                 
