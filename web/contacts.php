@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Contatti</title>
-        <!-- Collegamento ai file CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Stili di bootstrap -->
         <link rel="stylesheet" href="styles.css"> <!-- Stili personalizzati -->
     </head>
     <body>
@@ -19,16 +19,10 @@
                 </ul>
             </nav>
         </header>
-
-        <div class="container">
-            <!-- Titolo della pagina -->
-            <h1>Contatti</h1>
-            <p>Inserisci qui il tuo modulo di contatto o le informazioni di contatto.</p>
-
-            <div class="row">
+            <section class="info">
                 <!-- Form per il contatto -->
-                <div class="col-md-6">
-                    <h2>Modulo di Contatto</h2>
+                <div class="col1">
+                    <h2>Contattaci!</h2>
                     <form action="process_contact.php" method="POST">
                         <div class="form-group">
                             <label for="name">Nome</label>
@@ -46,14 +40,13 @@
                     </form>
                 </div>
                 <!-- Informazioni di contatto -->
-                <div class="col-md-6">
+                <div class="col2">
                     <h2>Informazioni di Contatto</h2>
                     <p>Indirizzo: Via S. Francesco, 94, 35121 Padova PD, Italia</p>
                     <p>Telefono: +39 049 827 3939</p>
                     <p>Email: info@yellowtulipmuseum.it</p>
                 </div>
-            </div>
-        </div>
+            </section>
 
         <!-- Footer -->
         <?php
