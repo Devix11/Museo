@@ -4,11 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Contatti</title>
-        <link rel="stylesheet" href="styles.css"> <!-- Stili personalizzati -->
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <header class="navbar">
-            <!-- Intestazione con titolo e menu di navigazione -->
             <h1>Yellow Tulip Museum</h1>
             <nav>
                 <ul>
@@ -19,6 +18,7 @@
                 </ul>
             </nav>
         </header>
+        <div class="container">
             <section class="info2">
                 <!-- Form per il contatto -->
                 <div class="col1">
@@ -47,6 +47,7 @@
                     <p>Email: info@yellowtulipmuseum.it</p>
                 </div>
             </section>
+        </div>
 
         <!-- Footer -->
         <?php
