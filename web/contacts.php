@@ -18,8 +18,7 @@
                 </ul>
             </nav>
         </header>
-        <div class="container">
-            <section class="info2">
+        <div class="info2">
                 <!-- Form per il contatto -->
                 <div class="col1">
                     <h2>Contattaci!</h2>
@@ -46,7 +45,6 @@
                     <p>Telefono: +39 049 827 3939</p>
                     <p>Email: info@yellowtulipmuseum.it</p>
                 </div>
-            </section>
         </div>
 
         <!-- Footer -->
