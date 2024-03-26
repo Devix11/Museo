@@ -1,9 +1,9 @@
 import Fastify from 'fastify'
 // import fastifyStatic from '@fastify/static'
 import fastifyMysql, { MySQLPromisePool } from '@fastify/mysql'
-import path from 'path'
-import fs, { mkdirSync } from 'fs'
-import { fileURLToPath } from 'url'
+import path from 'node:path'
+import fs, { mkdirSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -57,15 +57,28 @@ server.get('/test', async (request, reply) => {
 })
 //////// DEBUG /////////
 
+interface ImagesMeta {
+    Name: string
+}
+
 server.get('/exhibitions', async (request, reply) => {
     try {
         const conn = await server.mysql.getConnection()
-        const [row, fields] = await conn.query('SELECT Name FROM Exhibitions')
+        const [row, _] = await conn.query('SELECT Name FROM Exhibitions')
         conn.release()
-
-        return { row, fields }
-        // const files = fs.promises.readdir(EXHIBITIONS_PATH)
-        // reply.send(files)
+        
+        const images = []
+        for (const imageData of Object.values(row)) {
+            const imageName = imageData["Name"].replace(/\s/g, '') + '.png'
+            const imagePath = path.join(EXHIBITIONS_PATH, imageName)
+            const imageBuffer = await fs.promises.readFile(imagePath)
+            
+            images.push({
+              name: imageName,
+              image: imageBuffer.toString('base64')
+            })
+        }
+        return images
     } catch (error) {
         reply.code(500).send(error)
     }
