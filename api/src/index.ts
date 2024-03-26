@@ -1,29 +1,49 @@
 import Fastify from 'fastify'
 import fastifyStatic from '@fastify/static'
-import fastifyMysql from '@fastify/mysql'
+import fastifyMysql, { MySQLPromisePool } from '@fastify/mysql'
 import path from 'path'
-import fs from 'fs'
+import fs, { mkdirSync } from 'fs'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const __rootpath = path.join(__dirname, '..', '..')
 
-const EXHIBITIONS_PATH = path.join(__dirname, 'resources', 'exhibitions')
+////////// FOLDERS SETUP ///////////
+const IMAGES_PATH = path.join(__rootpath, 'images')
+if (!fs.existsSync(IMAGES_PATH)) mkdirSync(IMAGES_PATH)
+const EXHIBITIONS_PATH = path.join(IMAGES_PATH, 'exhibitions')
+if (!fs.existsSync(EXHIBITIONS_PATH)) mkdirSync(EXHIBITIONS_PATH)
+////////// FOLDERS SETUP ///////////
+
+declare module 'fastify' {
+    interface FastifyInstance {
+      mysql: MySQLPromisePool
+    }
+}
 
 const server = Fastify({
     logger: true
 })
 
-server.register(fastifyStatic, {
-    root: path.join(__dirname, 'resources'),
-})
+
+//////// PLUGINS ////////
+// server.register(fastifyStatic, {
+//    root: path.join(__dirname, 'resources'),
+// })
 
 server.register(fastifyMysql, {
-    connectionString: 'mysql://phpmyadmin@localhost/Museo'
+    promise: true,
+    // this is so weird, fu that, let's use sockets instead :)
+    // connectionString: 'mysql://phpmyadmin:ciaone11@127.0.0.1/Museo',
+    socketPath: '/var/run/mysqld/mysqld.sock',
+    user: 'phpmyadmin',
+    password: 'ciaone11'
 })
+//////// PLUGINS ////////
 
-// DEBUG
+
+///////// DEBUG /////////
 server.get('/ping', async (request, reply) => {
     return 'pong\n'
 })
@@ -34,13 +54,17 @@ server.get('/test', async (request, reply) => {
     .header('Content-Type', 'application/json; charset=utf-8')
     .send({ hello: 'world' })
 })
-// DEBUG
+//////// DEBUG /////////
 
 server.get('/exhibitions', async (request, reply) => {
-    server.
     try {
-        const files = fs.promises.readdir(EXHIBITIONS_PATH)
-        reply.send(files)
+        const conn = await server.mysql.getConnection()
+        const [row, fields] = await conn.query('SELECT Name, Image FROM Exhibitions')
+        conn.release()
+
+        return { row, fields }
+        // const files = fs.promises.readdir(EXHIBITIONS_PATH)
+        // reply.send(files)
     } catch (error) {
         reply.code(500).send(error)
     }

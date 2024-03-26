@@ -32,7 +32,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 }
                 echo "</ul>";
             }
-            ?>
+?>
         </section>
 
         <section>
