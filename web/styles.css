@@ -77,14 +77,24 @@ section,
 section.info2 {
     text-align: center;
     width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    justify-content: center;
 }
 
 .col1, .col2 {
     flex: 1;
     padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
  
 
