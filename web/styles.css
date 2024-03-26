@@ -140,8 +140,13 @@ button:hover {
     background-color: #ccbc4d;
 }
 
+img {
+    border-radius: 15px;
+}
+
 .card {
-    padding: 25px;
+    margin: 10px;
+    padding: 2px;
 }
 
 /* Stile del footer */
