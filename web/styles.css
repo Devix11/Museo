@@ -310,4 +310,11 @@ body::-webkit-scrollbar-thumb:hover {
         border-radius: 8px;
     }
 
+    button a {
+        color: inherit; /* Eredita il colore del testo dal genitore, ovvero il bottone */
+        text-decoration: none; /* Rimuove la sottolineatura */
+        display: block; /* Fa sì che il link occupi tutto lo spazio del bottone, rendendo l'intera area cliccabile */
+    }
+    
+
 }
