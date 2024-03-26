@@ -28,13 +28,14 @@ const server = Fastify({
 
 
 //////// PLUGINS ////////
-server.register(fastifyStatic, {
-    root: path.join(__dirname, 'resources'),
-})
+// server.register(fastifyStatic, {
+//    root: path.join(__dirname, 'resources'),
+// })
 
 server.register(fastifyMysql, {
     promise: true,
-    connectionString: 'mysql://phpmyadmin@localhost/Museo'
+    connectionString: 'mysql://phpmyadmin@localhost/Museo',
+    password: 'ciaone11'
 })
 //////// PLUGINS ////////
 
