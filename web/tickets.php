@@ -46,6 +46,7 @@
                             <input type="hidden" name="name" value="ingresso-normale">
                             <input type="hidden" name="desc" value="Ingresso giornaliero valido per una persona">
                             <input type="hidden" name="price" value="<?php echo htmlspecialchars($price); ?>">
+                            <input type="number" name="qt" value="1">
                             <button type="submit">COMPRA ORA</button>
                         </form>
                     </div>
@@ -76,6 +77,7 @@
                                     <input type="hidden" name="startDate" value="<?php echo htmlspecialchars($row['ValidityDate']); ?>">
                                     <input type="hidden" name="endDate" value="<?php echo htmlspecialchars($row['ExpiringDate']); ?>">
                                     <input type="hidden" name="price" value="<?php echo htmlspecialchars($row['Price']); ?>">
+                                    <input type="number" name="qt" value="1">
                                     <button type="submit">COMPRA ORA</button>
                                 </form>
                             </div>
