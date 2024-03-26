@@ -74,7 +74,7 @@ section,
      max-width: 80%;
  }
 
-section.info2 {
+.info2 {
     text-align: center;
     width: 80%;
     display: flex;
@@ -85,6 +85,16 @@ section.info2 {
 .col1, .col2 {
     flex: 1;
     padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
  
 
