@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Carrello</title>
-    <link rel="stylesheet" href="style.css"> <!-- Inclusione del foglio di stile CSS -->
+    <link rel="stylesheet" href="styles.css"> <!-- Inclusione del foglio di stile CSS -->
 </head>
 <body>
     <header>
