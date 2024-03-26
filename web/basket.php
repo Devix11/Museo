@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="style.css"> <!-- Inclusione del foglio di stile CSS -->
 </head>
 <body>
+<header>
+        <h1>Carrello</h1>
+    </header>
     <div id="cart">
 
     <section>
