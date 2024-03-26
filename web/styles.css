@@ -102,6 +102,22 @@ section.info2 {
     margin-bottom: 5px;
     font-weight: bold;
 }
+
+input[type="number"] {
+    width: 50px;
+    padding: 5px 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #f9f9f9;
+}
+
+input[type="number"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
  
 
 .carousel-slide img {
