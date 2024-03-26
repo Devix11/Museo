@@ -68,6 +68,12 @@ section,
     border-radius: 8px;
 }
 
+.big {
+    align-content: center;
+    max-width:70%;
+    border-radius: 3px;
+}
+
  section.info1 {
      text-align: center;
      width: fit-content;
