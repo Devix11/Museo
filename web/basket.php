@@ -28,9 +28,9 @@
             }
         }
 
-        // Pulsante per procedere al checkout
-        echo "<a href='checkout.php'>Procedi al Checkout</a>";
         ?>
+
+        <button><a href="checkout.php">Procedi al Checkout<</a></button>
         </section>
     </div>
 
