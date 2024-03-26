@@ -77,9 +77,9 @@ section,
 section.info2 {
     text-align: center;
     width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    justify-content: center;
 }
 
 .col1, .col2 {
