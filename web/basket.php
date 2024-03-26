@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Carrello</title>
+    <link rel="stylesheet" href="style.css"> <!-- Inclusione del foglio di stile CSS -->
 </head>
 <body>
     <div id="cart">
