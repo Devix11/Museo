@@ -27,12 +27,14 @@
                 }
             }
             ?>
+            <section>
             <button><a href="exposures.php">Continua lo shopping</a></button>
             <?php if (!$cartIsEmpty): ?>
                 <button><a href="checkout.php">Procedi al Checkout</a></button>
             <?php else: ?>
                 <button disabled>Procedi al Checkout</button>
             <?php endif; ?>
+            </section>
         </section>
     </div>
 
