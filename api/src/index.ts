@@ -1,15 +1,22 @@
 import Fastify from 'fastify'
 import fastifyStatic from '@fastify/static'
-import fastifyMysql from '@fastify/mysql'
+import fastifyMysql, { MySQLPromisePool } from '@fastify/mysql'
 import path from 'path'
-import fs from 'fs'
+import fs, { mkdirSync } from 'fs'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const __rootpath = path.join(__dirname, '..', '..')
 
-const EXHIBITIONS_PATH = path.join(__dirname, 'resources', 'exhibitions')
+const EXHIBITIONS_PATH = path.join(__dirname, 'images', 'exhibitions')
+if (!fs.existsSync(EXHIBITIONS_PATH)) mkdirSync(EXHIBITIONS_PATH)
+
+declare module 'fastify' {
+    interface FastifyInstance {
+      mysql: MySQLPromisePool
+    }
+}
 
 const server = Fastify({
     logger: true
@@ -20,10 +27,11 @@ server.register(fastifyStatic, {
 })
 
 server.register(fastifyMysql, {
+    promise: true,
     connectionString: 'mysql://phpmyadmin@localhost/Museo'
 })
 
-// DEBUG
+// DEBUG //
 server.get('/ping', async (request, reply) => {
     return 'pong\n'
 })
@@ -34,13 +42,17 @@ server.get('/test', async (request, reply) => {
     .header('Content-Type', 'application/json; charset=utf-8')
     .send({ hello: 'world' })
 })
-// DEBUG
+// DEBUG //
 
 server.get('/exhibitions', async (request, reply) => {
-    server.
     try {
-        const files = fs.promises.readdir(EXHIBITIONS_PATH)
-        reply.send(files)
+        const conn = await server.mysql.getConnection()
+        const [row, fields] = await conn.query('SELECT Name, Image FROM Exhibitions')
+        conn.release()
+
+        return { row, fields }
+        // const files = fs.promises.readdir(EXHIBITIONS_PATH)
+        // reply.send(files)
     } catch (error) {
         reply.code(500).send(error)
     }
