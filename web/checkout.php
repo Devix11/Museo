@@ -110,9 +110,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 </div>
         </section>
             
-
+            <section>
                 <button type="submit">Conferma Ordine</button>
-
+                </section>
             </form>
         </section>
     </main>
