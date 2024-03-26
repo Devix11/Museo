@@ -39,13 +39,17 @@
             <div id="exhibitions">
                 <section class="info1">
                     <div>
-                    <h3>Ingresso normale</h3>
-                    <p>Ingresso giornaliero valido per una persona</p>
-                    <p>Prezzo: <?php echo($price) ?></p>
-                    <button>COMPRA ORA</button>
+                        <h3>Ingresso normale</h3>
+                        <p>Ingresso giornaliero valido per una persona</p>
+                        <p>Prezzo: <?php echo($price) ?></p>
+                        <form action="ticket_process.php" method="POST">
+                            <input type="hidden" name="item" value="Ingresso normale">
+                            <input type="hidden" name="description" value="Ingresso giornaliero valido per una persona">
+                            <input type="hidden" name="price" value="<?php echo htmlspecialchars($price); ?>">
+                            <button type="submit">COMPRA ORA</button>
+                        </form>
                     </div>
                 </section>
-                <section class="info-content">
                 <?php
                     $sql = "SELECT E.Name, E.Image, T.ValidityDate, T.ExpiringDate, P.Price FROM Exhibitions E INNER JOIN Prices P ON E.ID = P.Exhibition INNER JOIN Tickets T ON E.ID = T.Title";
             $result = $conn->query($sql);
@@ -67,7 +71,13 @@
                                 <h3><?php echo htmlspecialchars($row['Name']); ?></h3>
                                 <p>Durata:<br> Da <?php echo htmlspecialchars($row['ValidityDate']); ?> a <?php echo htmlspecialchars($row['ExpiringDate']); ?></p>
                                 <p>Prezzo: <?php echo htmlspecialchars($row['Price']); ?></p>
-                                <button>COMPRA ORA</button>
+                                <form action="ticket_process.php" method="POST">
+                                    <input type="hidden" name="item" value="<?php echo htmlspecialchars($row['Name']); ?>">
+                                    <input type="hidden" name="startDate" value="<?php echo htmlspecialchars($row['ValidityDate']); ?>">
+                                    <input type="hidden" name="startDate" value="<?php echo htmlspecialchars($row['ExpiringDate']); ?>">
+                                    <input type="hidden" name="price" value="<?php echo htmlspecialchars($row['Price']); ?>">
+                                    <button type="submit">COMPRA ORA</button>
+                                </form>
                             </div>
                         </section>
                         <?php endif; ?>
@@ -78,7 +88,6 @@
                     </div>
                     
                 <?php endif; ?>
-                </section>
             </div>
             <?php
             $conn->close();
