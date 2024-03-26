@@ -71,28 +71,33 @@
         $cycle = ((int)$result->num_rows)/2;
 
         // Controlla se ci sono delle esibizioni
-        if ($result->num_rows > 0) {
-            // Ciclo per mostrare a video tutte le esibizioni
-            while ($row = $result->fetch_assoc()) {
-                if ($cycle >= 0) {
-                    echo '<div class="card" style="align-content: center;">';
-                    // Mostra l'immagine della mostra
-                    $imageData = base64_encode($row['Image']);
-                    $src = 'data:image/jpeg;base64,' . $imageData;
-                    echo '<img src="' . $src . '" class="big" alt="' . htmlspecialchars($row['Name']) . '">';
-                    echo '<div style="align-content: center">';
-                    // Mostra il nome della mostra
-                    echo '<h5 class="card-title" style="text-align: center">' . htmlspecialchars($row['Name']) . '</h5>';
-                    echo '</div>';
-                    echo '</div>';
+            if ($result->num_rows > 0) {
+                // Assuming $cycle is initialized before this code block
+                while ($row = $result->fetch_assoc()) {
+                    if ($cycle >= 0) { ?>
+                        <div class="card" style="align-content: center;">
+                            <!-- Mostra l'immagine della mostra -->
+                            <?php
+                            $imageData = base64_encode($row['Image']);
+                            $src = 'data:image/jpeg;base64,' . $imageData; ?>
+                            <img src="<?php echo $src ?>" class="big" alt="<?php echo htmlspecialchars($row['Name']) ?>">
+                            <div style="align-content: center">
+                                <!-- Mostra il nome della mostra -->
+                                <h5 class="card-title" style="text-align: center"><?php echo htmlspecialchars($row['Name']); ?></h5>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    $cycle--;
                 }
-                $cycle--;
+            } else { ?>
+                <p style="text-align: center">Nessuna esibizione trovata.</p>
+                <?php
             }
-        } else {
-            echo "Nessuna esibizione trovata.";
-        }
+            ?>
 
-        // Chiusura della connessione
+
+            // Chiusura della connessione
         $conn->close();
         ?>
         </section>
