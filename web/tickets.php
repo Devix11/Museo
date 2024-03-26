@@ -43,8 +43,8 @@
                         <p>Ingresso giornaliero valido per una persona</p>
                         <p>Prezzo: <?php echo($price) ?></p>
                         <form action="ticket_process.php" method="POST">
-                            <input type="hidden" name="item" value="Ingresso normale">
-                            <input type="hidden" name="description" value="Ingresso giornaliero valido per una persona">
+                            <input type="hidden" name="name" value="ingresso-normale">
+                            <input type="hidden" name="desc" value="Ingresso giornaliero valido per una persona">
                             <input type="hidden" name="price" value="<?php echo htmlspecialchars($price); ?>">
                             <button type="submit">COMPRA ORA</button>
                         </form>
@@ -72,9 +72,9 @@
                                 <p>Durata:<br> Da <?php echo htmlspecialchars($row['ValidityDate']); ?> a <?php echo htmlspecialchars($row['ExpiringDate']); ?></p>
                                 <p>Prezzo: <?php echo htmlspecialchars($row['Price']); ?></p>
                                 <form action="ticket_process.php" method="POST">
-                                    <input type="hidden" name="item" value="<?php echo htmlspecialchars($row['Name']); ?>">
+                                    <input type="hidden" name="name" value="<?php echo htmlspecialchars($row['Name']); ?>">
                                     <input type="hidden" name="startDate" value="<?php echo htmlspecialchars($row['ValidityDate']); ?>">
-                                    <input type="hidden" name="startDate" value="<?php echo htmlspecialchars($row['ExpiringDate']); ?>">
+                                    <input type="hidden" name="endDate" value="<?php echo htmlspecialchars($row['ExpiringDate']); ?>">
                                     <input type="hidden" name="price" value="<?php echo htmlspecialchars($row['Price']); ?>">
                                     <button type="submit">COMPRA ORA</button>
                                 </form>
