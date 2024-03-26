@@ -57,12 +57,10 @@
                 echo '</div>';
                 echo '</div>';
             }
-        } else {
-            echo "Nessuna immagine trovata.";
-        }
+        } else ?>
+            <div style="text-align: center">Nessuna immagine trovata</div>
+            <script src="script.js"></script>;
 
-        echo '<script src="script.js"></script>';
-        ?>
 
         <section>
             <h2 style="text-align: center">In evidenza oggi</h2>
@@ -77,16 +75,14 @@
             // Ciclo per mostrare a video tutte le esibizioni
             while ($row = $result->fetch_assoc()) {
                 if ($cycle >= 0) {
-                    echo '<div class="col-md-4">';
-                    echo '<div class="card">';
+                    echo '<div class="card" style="align-content: center;">';
                     // Mostra l'immagine della mostra
                     $imageData = base64_encode($row['Image']);
                     $src = 'data:image/jpeg;base64,' . $imageData;
-                    echo '<img src="' . $src . '" class="card-img-top" alt="' . htmlspecialchars($row['Name']) . '">';
-                    echo '<div class="card-body">';
+                    echo '<img src="' . $src . '" class="big" alt="' . htmlspecialchars($row['Name']) . '">';
+                    echo '<div style="align-content: center">';
                     // Mostra il nome della mostra
-                    echo '<h5 class="card-title">' . htmlspecialchars($row['Name']) . '</h5>';
-                    echo '</div>';
+                    echo '<h5 class="card-title" style="text-align: center">' . htmlspecialchars($row['Name']) . '</h5>';
                     echo '</div>';
                     echo '</div>';
                 }
