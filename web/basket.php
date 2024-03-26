@@ -25,13 +25,12 @@
             <?php
             // Abilita la visualizzazione degli errori
             ini_set('display_errors', 1);
-            
+
             session_start(); // Inizia la sessione
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (
                     !empty($_POST['name']) &&
-                    !empty($_POST['desc']) &&
                     !empty($_POST['price']) &&
                     !empty($_POST['qt'])
                 ) {
