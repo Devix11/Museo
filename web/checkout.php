@@ -72,6 +72,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
+            </form>
         </section>
         <section>
             <h2>Metodo di Pagamento</h2>

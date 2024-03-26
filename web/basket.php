@@ -1,29 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrello</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Inclusione del foglio di stile CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Carrello</h1>
-    </header>
+<header class="navbar">
+    <!-- Intestazione con titolo e menu di navigazione -->
+    <h1>Yellow Tulip Museum</h1>
+    <nav>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="exposures.php">Mostre</a></li>
+            <li><a href="contacts.php">Contatti</a></li>
+            <li><a href="account.php">Profilo</a></li>
+        </ul>
+    </nav>
+</header>
     <div id="cart">
         <section>
             <h2>Carrello</h2>
             <?php
             session_start(); // Inizia la sessione
 
-            if(empty($_SESSION['cart'])) {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (
+                    !empty($_POST['name']) &&
+                    !empty($_POST['desc']) &&
+                    !empty($_POST['startDate']) &&
+                    !empty($_POST['endDate']) &&
+                    !empty($_POST['price']) &&
+                    !empty($_POST['qt'])
+                ) {
+                    // Prepara l'array del prodotto
+                    $product = [
+                        "name" => $_POST['name'],
+                        "desc" => $_POST['desc'],
+                        "startDate" => $_POST['startDate'],
+                        "endDate" => $_POST['endDate'],
+                        "price" => $_POST['price'],
+                        "qt" => $_POST['qt']
+                    ];
+
+                    // Inizializza il carrello se non esiste
+                    if (!isset($_SESSION['cart'])) {
+                        $_SESSION['cart'] = [];
+                    }
+
+                    // Aggiungi il prodotto al carrello
+                    $_SESSION['cart'][] = $product;
+
+                } else {
+                    // Se uno dei campi è vuoto
+                    die(htmlspecialchars("Errore inaspettato, riprova più tardi."));
+                }
+            }
+
+
+
+            if (empty($_SESSION['cart'])) {
                 echo "Il tuo carrello è vuoto.";
                 $cartIsEmpty = true;
             } else {
-                // Mostra gli articoli nel carrello
                 $cartIsEmpty = false;
-                foreach($_SESSION['cart'] as $item) {
-                    echo "Prodotto: " . $item['name'] . "<br>";
-                    echo "Prezzo: $" . $item['price'] . "<br>";
-                    echo "<br>";
+                foreach ($_SESSION['cart'] as $item) {
+                    if ($item['name'] == "ingresso-normale") {
+                        echo "<h3>Ingresso normale</h3>";
+                        //echo "<p>Durata:<br> Da " . htmlspecialchars($item['startDate']) . " a " . htmlspecialchars($item['endDate']) . "</p>"; Non serve perchè è un ingresso normale
+                        echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
+                        echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p><br>";
+                    } else {
+                        echo "<h3>" . htmlspecialchars($item['name']) . "</h3>";
+                        echo "<p>Durata:<br> Da " . htmlspecialchars($item['startDate']) . " a " . htmlspecialchars($item['endDate']) . "</p>";
+                        echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
+                        echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p><br>";
+                    }
                 }
             }
             ?>

@@ -42,9 +42,11 @@
                         <h3>Ingresso normale</h3>
                         <p>Ingresso giornaliero valido per una persona</p>
                         <p>Prezzo: <?php echo($price) ?></p>
-                        <form action="ticket_process.php" method="POST">
+                        <form action="basket.php" method="POST">
                             <input type="hidden" name="name" value="ingresso-normale">
                             <input type="hidden" name="desc" value="Ingresso giornaliero valido per una persona">
+                            <input type="hidden" name="startDate" value="">
+                            <input type="hidden" name="endDate" value="">
                             <input type="hidden" name="price" value="<?php echo htmlspecialchars($price); ?>">
                             <input type="number" name="qt" value="1" max="20" min="1">
                             <button type="submit">COMPRA ORA</button>
@@ -72,7 +74,7 @@
                                 <h3><?php echo htmlspecialchars($row['Name']); ?></h3>
                                 <p>Durata:<br> Da <?php echo htmlspecialchars($row['ValidityDate']); ?> a <?php echo htmlspecialchars($row['ExpiringDate']); ?></p>
                                 <p>Prezzo: <?php echo htmlspecialchars($row['Price']); ?></p>
-                                <form action="ticket_process.php" method="POST">
+                                <form action="basket.php" method="POST">
                                     <input type="hidden" name="name" value="<?php echo htmlspecialchars($row['Name']); ?>">
                                     <input type="hidden" name="startDate" value="<?php echo htmlspecialchars($row['ValidityDate']); ?>">
                                     <input type="hidden" name="endDate" value="<?php echo htmlspecialchars($row['ExpiringDate']); ?>">
