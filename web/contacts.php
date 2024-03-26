@@ -23,20 +23,20 @@
                 <!-- Form per il contatto -->
                 <div class="col1">
                     <h2>Contattaci!</h2>
-                    <form action="process_contact.php" method="POST">
+                    <form class="col1" action="process_contact.php" method="POST">
                         <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+                            <label class="col1" for="name">Nome</label>
+                            <input class="col1" type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <label class="col1" for="email">Email</label>
+                            <input class="col1" type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Messaggio</label>
-                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                            <label class="col1" for="message">Messaggio</label>
+                            <textarea class="col1" id="message" name="message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Invia</button>
+                        <button type="submit">Invia</button>
                     </form>
                 </div>
                 <!-- Informazioni di contatto -->

@@ -81,25 +81,21 @@ section.info2 {
     grid-template-columns: 1fr 2fr;
 }
 
-form {
+form.col1 {
     padding: 20px; /* Adds some padding inside the form */
     background: #f9f9f9; /* Light background color for the form */
     border-radius: 8px; /* Rounded corners */
 }
 
-.form-group {
-    margin-bottom: 15px; /* Adds space between form groups */
-}
-
-label {
+label.col1 {
     display: block; /* Makes the label take up the full width */
     margin-bottom: 5px; /* Adds a little space below the label */
     font-weight: bold; /* Makes the text bold */
 }
 
-input[type="text"],
-input[type="email"],
-textarea {
+input[type="text"].col1,
+input[type="email"].col1,
+textarea.col1 {
     width: 100%; /* Makes the input fields take up the full width */
     padding: 8px; /* Adds some padding inside the input fields */
     border: 1px solid #ccc; /* Adds a border around the input fields */
