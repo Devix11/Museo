@@ -63,7 +63,7 @@
 
 
         <section>
-            <h2 style="text-align: center">In evidenza oggi</h2>
+            <h2>In evidenza oggi</h2>
             <?php
                 // Fetch della lista delle esibizioni dal database
                 $sql = "SELECT Name, Image FROM Exhibitions";
@@ -94,7 +94,7 @@
                 <p style="text-align: center">Nessuna esibizione trovata.</p>
                 <?php
             }
-            ?>
+
 
 
             // Chiusura della connessione
