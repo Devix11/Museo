@@ -83,7 +83,7 @@
                             <img src="<?php echo $src ?>" class="big" alt="<?php echo htmlspecialchars($row['Name']) ?>">
                             <div>
                                 <!-- Mostra il nome della mostra -->
-                                <h5 class="card-title" style="text-align: center"><?php echo htmlspecialchars($row['Name']); ?></h5>
+                                <h5 class="" style="text-align: center"><?php echo htmlspecialchars($row['Name']); ?></h5>
                             </div>
                         </div>
                         <?php
