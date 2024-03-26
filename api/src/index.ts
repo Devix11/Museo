@@ -34,7 +34,11 @@ const server = Fastify({
 
 server.register(fastifyMysql, {
     promise: true,
-    connectionString: 'mysql://phpmyadmin:ciaone11@127.0.0.1/Museo',
+    // this is so weird, fu that, let's use sockets instead :)
+    // connectionString: 'mysql://phpmyadmin:ciaone11@127.0.0.1/Museo',
+    socketPath: '/var/run/mysqld/mysqld.sock',
+    user: 'phpmyadmin',
+    password: 'ciaone11'
 })
 //////// PLUGINS ////////
 
