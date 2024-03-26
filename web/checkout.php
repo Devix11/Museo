@@ -112,11 +112,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             
 
                 <button type="submit">Conferma Ordine</button>
-                
 
-                
-
-                <button type="submit">Conferma Ordine</button>
             </form>
         </section>
     </main>
