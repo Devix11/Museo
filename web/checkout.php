@@ -44,14 +44,68 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 </div>
 
                 <div class="form-group">
-                    <label for="address">Indirizzo:</label>
+                    <label for="address">Città:</label>
                     <input type="text" id="address" name="address" required>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group> 
+                    <label for="city">Indirizzo:</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+
+                <div class="form-group>
+                    <label for="zip">CAP:</label>
+                    <input type="text" id="zip" name="zip" required>
+                </div>
+
+                <div class="form-group>
+                    <label for="country">Paese:</label>
+                    <input type="text" id="country" name="country" required>
+                </div>
+
+                <div class="form-group>
+                    <label for="phone">Telefono:</label>
+                    <input type="text" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group>
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
+
+                <div class="form-group>
+                    <label for="payment">Metodo di Pagamento:</label>
+                    <select id="payment" name="payment" required>
+                        <option value="visa">Visa</option>
+                        <option value="mastercard">Mastercard</option>
+                        <option value="paypal">PayPal</option>
+                    </select>
+                </div>
+
+                <div class="form-group>
+                    <label for="card_number">Numero Carta:</label>
+                    <input type="text" id="card_number" name="card_number" required>
+                </div>
+
+                <div class="form-group>
+                    <label for="expiry_date">Data di Scadenza:</label>
+                    <input type="text" id="expiry_date" name="expiry_date" required>
+                </div>
+
+                <div class="form-group>
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                </div>
+
+                <div class="form-group>
+                    <label for="cardholder_name">Nome del Titolare:</label>
+                    <input type="text" id="cardholder_name" name="cardholder_name" required>
+                </div>
+
+                <button type="submit">Conferma Ordine</button>
+                
+
+                
 
                 <button type="submit">Conferma Ordine</button>
             </form>
