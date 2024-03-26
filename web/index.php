@@ -81,7 +81,7 @@
                     $imageData = base64_encode($row['Image']);
                     $src = 'data:image/jpeg;base64,' . $imageData;
                     echo '<img src="' . $src . '" class="big" alt="' . htmlspecialchars($row['Name']) . '">';
-                    echo '<div class="card-body">';
+                    echo '<div style="align-content: center">';
                     // Mostra il nome della mostra
                     echo '<h5 class="card-title" style="text-align: center">' . htmlspecialchars($row['Name']) . '</h5>';
                     echo '</div>';
