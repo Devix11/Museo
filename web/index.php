@@ -75,13 +75,13 @@
                 // Assuming $cycle is initialized before this code block
                 while ($row = $result->fetch_assoc()) {
                     if ($cycle >= 0) { ?>
-                        <div class="card" style="align-content: center;">
+                        <div class="card">
                             <!-- Mostra l'immagine della mostra -->
                             <?php
                             $imageData = base64_encode($row['Image']);
                             $src = 'data:image/jpeg;base64,' . $imageData; ?>
                             <img src="<?php echo $src ?>" class="big" alt="<?php echo htmlspecialchars($row['Name']) ?>">
-                            <div style="align-content: center">
+                            <div>
                                 <!-- Mostra il nome della mostra -->
                                 <h5 class="card-title" style="text-align: center"><?php echo htmlspecialchars($row['Name']); ?></h5>
                             </div>

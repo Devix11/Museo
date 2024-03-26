@@ -70,7 +70,7 @@ section,
 
 .big {
     align-content: center;
-    max-width:70%;
+    max-width:90%;
     border-radius: 3px;
 }
 
@@ -142,6 +142,7 @@ button:hover {
 
 .card {
     padding: 25px;
+    align-content: center;
 }
 
 /* Stile del footer */
