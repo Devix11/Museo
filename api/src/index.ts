@@ -38,7 +38,8 @@ server.register(fastifyMysql, {
     // connectionString: 'mysql://phpmyadmin:ciaone11@127.0.0.1/Museo',
     socketPath: '/var/run/mysqld/mysqld.sock',
     user: 'phpmyadmin',
-    password: 'ciaone11'
+    password: 'ciaone11',
+    database: 'Museo'
 })
 //////// PLUGINS ////////
 
