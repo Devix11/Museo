@@ -23,6 +23,9 @@
         <section>
             <h2>Carrello</h2>
             <?php
+            // Abilita la visualizzazione degli errori
+            ini_set('display_errors', 1);
+            
             session_start(); // Inizia la sessione
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -52,7 +55,7 @@
 
                 } else {
                     // Se uno dei campi è vuoto
-                    die(htmlspecialchars("Errore inaspettato, riprova più tardi."));
+                    //die(htmlspecialchars("Errore inaspettato, riprova più tardi."));
                 }
             }
 
