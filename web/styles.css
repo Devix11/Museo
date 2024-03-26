@@ -73,6 +73,55 @@ section,
      width: fit-content;
      max-width: 80%;
  }
+
+section.info2 {
+    text-align: center;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+form {
+    max-width: 500px; /* Sets a maximum width for the form */
+    margin: 0 auto; /* Centers the form horizontally */
+    padding: 20px; /* Adds some padding inside the form */
+    background: #f9f9f9; /* Light background color for the form */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Adds space between form groups */
+}
+
+label {
+    display: block; /* Makes the label take up the full width */
+    margin-bottom: 5px; /* Adds a little space below the label */
+    font-weight: bold; /* Makes the text bold */
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%; /* Makes the input fields take up the full width */
+    padding: 8px; /* Adds some padding inside the input fields */
+    border: 1px solid #ccc; /* Adds a border around the input fields */
+    border-radius: 4px; /* Slightly rounded corners for the input fields */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #007bff; /* Changes border color when focused */
+    outline: none; /* Removes the default outline */
+}
+
+button[type="submit"] {
+    border: none; /* Removes the border */
+    padding: 10px 20px; /* Adds padding inside the button */
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer; /* Changes the cursor to a pointer */
+    font-size: 16px; /* Increases font size */
+}
  
 
 .carousel-slide img {

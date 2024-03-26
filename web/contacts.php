@@ -19,7 +19,7 @@
                 </ul>
             </nav>
         </header>
-            <section class="info">
+            <section class="info2">
                 <!-- Form per il contatto -->
                 <div class="col1">
                     <h2>Contattaci!</h2>
