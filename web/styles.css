@@ -67,6 +67,12 @@ section,
     height:200px;
     border-radius: 8px;
 }
+section.info-content {
+    width: fit-content;
+    max-width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
 
  section.info1 {
      text-align: center;
