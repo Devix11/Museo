@@ -28,7 +28,7 @@
             }
             ?>
             <section>
-            <button><a href="exposures.php">Continua lo shopping</a></button>
+            <button><a href="tickets.php">Continua lo shopping</a></button>
             <?php if (!$cartIsEmpty): ?>
                 <button><a href="checkout.php">Procedi al Checkout</a></button>
             <?php else: ?>
