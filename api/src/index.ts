@@ -34,8 +34,7 @@ const server = Fastify({
 
 server.register(fastifyMysql, {
     promise: true,
-    connectionString: 'mysql://phpmyadmin@localhost/Museo',
-    password: 'ciaone11'
+    connectionString: 'mysql://phpmyadmin:ciaone11@127.0.0.1/Museo',
 })
 //////// PLUGINS ////////
 
