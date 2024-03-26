@@ -9,8 +9,12 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const __rootpath = path.join(__dirname, '..', '..')
 
-const EXHIBITIONS_PATH = path.join(__dirname, 'images', 'exhibitions')
+////////// FOLDERS SETUP ///////////
+const IMAGES_PATH = path.join(__rootpath, 'images')
+if (!fs.existsSync(IMAGES_PATH)) mkdirSync(IMAGES_PATH)
+const EXHIBITIONS_PATH = path.join(IMAGES_PATH, 'exhibitions')
 if (!fs.existsSync(EXHIBITIONS_PATH)) mkdirSync(EXHIBITIONS_PATH)
+////////// FOLDERS SETUP ///////////
 
 declare module 'fastify' {
     interface FastifyInstance {
@@ -22,6 +26,8 @@ const server = Fastify({
     logger: true
 })
 
+
+//////// PLUGINS ////////
 server.register(fastifyStatic, {
     root: path.join(__dirname, 'resources'),
 })
@@ -30,8 +36,10 @@ server.register(fastifyMysql, {
     promise: true,
     connectionString: 'mysql://phpmyadmin@localhost/Museo'
 })
+//////// PLUGINS ////////
 
-// DEBUG //
+
+///////// DEBUG /////////
 server.get('/ping', async (request, reply) => {
     return 'pong\n'
 })
@@ -42,7 +50,7 @@ server.get('/test', async (request, reply) => {
     .header('Content-Type', 'application/json; charset=utf-8')
     .send({ hello: 'world' })
 })
-// DEBUG //
+//////// DEBUG /////////
 
 server.get('/exhibitions', async (request, reply) => {
     try {

@@ -146,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if (!empty($login_err)) {
                         echo "<div class='alert alert-danger'>" . $login_err . "</div>";
                     }
-                ?>
+?>
                 <div class="form-wrap border rounded p-4">
                     <h1>Accedi</h1>
                     <p>Effettua il login per continuare</p>
