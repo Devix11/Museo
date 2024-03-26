@@ -69,7 +69,7 @@ server.get('/exhibitions', async (request, reply) => {
         
         const images = []
         for (const imageData of Object.values(row)) {
-            const imageName = imageData["Name"]
+            const imageName = imageData["Name"].replace(/\s/g, '') + '.png'
             const imagePath = path.join(EXHIBITIONS_PATH, imageName)
             const imageBuffer = await fs.promises.readFile(imagePath)
             
