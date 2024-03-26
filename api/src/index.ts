@@ -1,5 +1,5 @@
 import Fastify from 'fastify'
-import fastifyStatic from '@fastify/static'
+// import fastifyStatic from '@fastify/static'
 import fastifyMysql, { MySQLPromisePool } from '@fastify/mysql'
 import path from 'path'
 import fs, { mkdirSync } from 'fs'
@@ -60,7 +60,7 @@ server.get('/test', async (request, reply) => {
 server.get('/exhibitions', async (request, reply) => {
     try {
         const conn = await server.mysql.getConnection()
-        const [row, fields] = await conn.query('SELECT Name, Image FROM Exhibitions')
+        const [row, fields] = await conn.query('SELECT Name FROM Exhibitions')
         conn.release()
 
         return { row, fields }
