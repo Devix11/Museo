@@ -5,6 +5,9 @@
 </head>
 <body>
     <div id="cart">
+
+    <section>
+        <h2>Carrello</h2>
         <?php
         // Inizia la sessione
         session_start();
@@ -24,6 +27,7 @@
         // Pulsante per procedere al checkout
         echo "<a href='checkout.php'>Procedi al Checkout</a>";
         ?>
+        </section>
     </div>
 
     <!-- Includi il footer -->
