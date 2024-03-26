@@ -29,8 +29,6 @@
                 if (
                     !empty($_POST['name']) &&
                     !empty($_POST['desc']) &&
-                    !empty($_POST['startDate']) &&
-                    !empty($_POST['endDate']) &&
                     !empty($_POST['price']) &&
                     !empty($_POST['qt'])
                 ) {
