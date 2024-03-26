@@ -74,7 +74,7 @@ section,
      max-width: 80%;
  }
 
-.info2 {
+section.info2 {
     text-align: center;
     width: 80%;
     display: flex;
