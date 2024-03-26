@@ -45,7 +45,7 @@
                     <button>COMPRA ORA</button>
                     </div>
                 </section>
-
+                <div class="info-content">
                 <?php
                     $sql = "SELECT E.Name, E.Image, T.ValidityDate, T.ExpiringDate, P.Price FROM Exhibitions E INNER JOIN Prices P ON E.ID = P.Exhibition INNER JOIN Tickets T ON E.ID = T.Title";
             $result = $conn->query($sql);
@@ -78,6 +78,7 @@
                     </div>
                     
                 <?php endif; ?>
+                </div>
             </div>
             <?php
             $conn->close();
