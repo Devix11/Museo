@@ -152,8 +152,16 @@ button {
     font-weight: bold;
 }
 
+button.cart {
+    background-color: dodgerblue;
+}
+
 button:hover {
     background-color: #ccbc4d;
+}
+
+button.cart:hover {
+    background-color: #1e90ff;
 }
 
 .card {

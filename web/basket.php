@@ -99,7 +99,7 @@
                     echo "<form method='post'>";
                     echo "<input type='hidden' name='item_index' value='" . $index . "'>";
                     echo "<input type='hidden' name='delete' value='1'>";
-                    echo "<button type='submit'>Elimina prodotto</button>";
+                    echo "<button class='cart' type='submit'>Elimina prodotto</button>";
                     echo "</form>";
                     echo "</div><br>";
                 }
