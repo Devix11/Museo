@@ -93,7 +93,7 @@
                 $cartIsEmpty = false;
                 foreach ($_SESSION['cart'] as $index => $item) {
                     $cpn = 0;
-                    if (!is_null($item['cpn'])) {
+                    if (isset($item['cpn']) && !empty($item['cpn'])) {
                         $cpn = coupon($item);
                     }
                     if ($item['name'] == "ingresso-normale") {
