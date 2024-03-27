@@ -94,7 +94,7 @@
                 foreach ($_SESSION['cart'] as $index => $item) {
                     $cpn = 0;
                     if (isset($item['cpn']) && !empty($item['cpn'])) {
-                        $cpn = coupon($item);
+                        $cpn = coupon($item, $index);
                     }
                     if ($item['name'] == "ingresso-normale") {
                         echo "<div class=''><h3>Ingresso normale</h3>";
@@ -132,7 +132,7 @@
                 }
             }
 
-            function coupon($item) {
+            function coupon($item, $index) {
                     global $conn;
                     $coupon = strip_tags(htmlentities(strtoupper($item['cpn'])));
 
@@ -149,6 +149,7 @@
                     } else {
                         echo "<script type='text/javascript'>alert('Coupon invalido');</script>";
                         $item['cpn'] = null;
+                        $_SESSION['cart'][$index] = $item;
                         return 0;
                     }
                     $stmt->close();
