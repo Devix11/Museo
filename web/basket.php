@@ -77,7 +77,7 @@
 
 
             if (empty($_SESSION['cart'])) {
-                echo "Il tuo carrello è vuoto.";
+                echo "<p>Il tuo carrello è vuoto.<p></p><br>";
                 $cartIsEmpty = true;
             } else {
                 $cartIsEmpty = false;
@@ -122,7 +122,7 @@
                     };
                 </script>
             <?php else: ?>
-                <button disabled>Procedi al Checkout</button>
+                <!-- <button disabled>Procedi al Checkout</button> -->
             <?php endif; ?>
             </div>
         </section>
