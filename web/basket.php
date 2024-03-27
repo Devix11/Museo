@@ -28,15 +28,22 @@
 
             session_start(); // Inizia la sessione
 
+            //Form eliminazione elemento dal carrello
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete']) && isset($_POST['item_index'])) {
+                $index = $_POST['item_index'];
+                array_splice($_SESSION['cart'], $index, 1);
+            }
+
+            //Form aggiunta elemento al carrello
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (
                     !empty($_POST['name']) &&
                     !empty($_POST['price']) &&
                     !empty($_POST['qt'])
                 ) {
+                    //Creo l'array del prodotto in base al tipo di biglietto
                     if ( isset($_POST['desc'])){
-                        // Prepara l'array del prodotto
-                        $product = [
+                        $ticket = [
                             "name" => $_POST['name'],
                             "desc" => $_POST['desc'],
                             "startDate" => "",
@@ -45,8 +52,7 @@
                             "qt" => $_POST['qt']
                         ];
                     } else {
-                        // Prepara l'array del prodotto
-                        $product = [
+                        $ticket = [
                             "name" => $_POST['name'],
                             "desc" => "",
                             "startDate" => $_POST['startDate'],
@@ -61,11 +67,9 @@
                         $_SESSION['cart'] = [];
                     }
 
-                    // Aggiungi il prodotto al carrello
-                    $_SESSION['cart'][] = $product;
+                    $_SESSION['cart'][] = $ticket;
 
                 } else {
-                    // Se uno dei campi è vuoto
                     //die(htmlspecialchars("Errore inaspettato, riprova più tardi."));
                 }
             }
@@ -77,20 +81,27 @@
                 $cartIsEmpty = true;
             } else {
                 $cartIsEmpty = false;
-                foreach ($_SESSION['cart'] as $item) {
+                foreach ($_SESSION['cart'] as $index => $item) {
                     if ($item['name'] == "ingresso-normale") {
                         echo "<div class=''><h3>Ingresso normale</h3>";
                         //echo "<p>Durata:<br> Da " . htmlspecialchars($item['startDate']) . " a " . htmlspecialchars($item['endDate']) . "</p>"; Non serve perchè è un ingresso normale
                         echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
                         echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p>";
-                        echo "<p>TOTALE: " . htmlspecialchars($item['qt']*$item['price']) . " &euro;" . "</p></div><br>";
+                        echo "<p>TOTALE: " . htmlspecialchars($item['qt']*$item['price']) . " &euro;" . "</p>";
                     } else {
                         echo "<div class=''><h3>" . htmlspecialchars($item['name']) . "</h3>";
                         echo "<p>Durata:<br> Da " . htmlspecialchars($item['startDate']) . " a " . htmlspecialchars($item['endDate']) . "</p>";
                         echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
                         echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p>";
-                        echo "<p>TOTALE: " . htmlspecialchars(floatval($item['qt']*$item['price'])) . " &euro;" . "</p></div><br>";
+                        echo "<p>TOTALE: " . htmlspecialchars(floatval($item['qt']*$item['price'])) . " &euro;" . "</p>";
                     }
+
+                    echo "<form method='post'>";
+                    echo "<input type='hidden' name='item_index' value='" . $index . "'>";
+                    echo "<input type='hidden' name='delete' value='1'>";
+                    echo "<button type='submit'>Elimina prodotto</button>";
+                    echo "</form>";
+                    echo "</div><br>";
                 }
             }
             ?>
