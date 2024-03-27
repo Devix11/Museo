@@ -154,7 +154,7 @@ button {
 
 button.cart {
     background-color: #034efd;
-    color: #333;
+    color: #ffffff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -168,7 +168,7 @@ button:hover {
 }
 
 button.cart:hover {
-    background-color: #000000;
+    background-color: #1a5fff;
 }
 
 .card {
