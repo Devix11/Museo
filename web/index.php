@@ -41,7 +41,7 @@
 
         require_once "../vendor/autoload.php";
 
-        require("config.php");
+        /* require("config.php");
         global $conn;
 
         // Fetch della lista delle esibizioni dal database
@@ -64,7 +64,7 @@
             <script src="script.js"></script>;
         <?php }
         $conn->close();
-        ?>
+        */?>
 
         <section>
             <h2>In evidenza oggi</h2>
