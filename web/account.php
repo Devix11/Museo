@@ -26,7 +26,7 @@
 
         require("config.php");
         global $conn;
-
+ 
         # Inizializza la sessione
         session_start();
 
