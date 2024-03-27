@@ -32,7 +32,7 @@
             //Form aggiunta coupon al prodotto
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['coupon']) && isset($_POST['item_index'])) {
                 $index = $_POST['item_index'];
-                $item['cpn'] = strip_tags(htmlentities(strtoupper($_POST['coupon'])));
+                $item['cpn'] = $_POST['coupon'];
                 $_SESSION['cart'][$index] = $item;
             }
 
@@ -148,7 +148,7 @@
                         return $discount;
                     } else {
                         echo "<script type='text/javascript'>alert('Coupon invalido');</script>";
-                        $item['cpn'] = "";
+                        $item['cpn'] = null;
                         return 0;
                     }
                     $stmt->close();
