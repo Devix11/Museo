@@ -98,7 +98,7 @@
                         if ($cpn < 0){
                             $cpn = 0;
                             $item['cpn'] = null;
-                            $_SESSION['cart'][index] = $item;
+                            $_SESSION['cart'][$index] = $item;
                             echo "<script type='text/javascript'>alert('Coupon invalido');</script>";
                         }
                     }
