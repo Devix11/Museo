@@ -101,7 +101,7 @@
                         //echo "<p>Durata:<br> Da " . htmlspecialchars($item['startDate']) . " a " . htmlspecialchars($item['endDate']) . "</p>"; Non serve perchè è un ingresso normale
                         echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
                         echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p>";
-                        if (isset($item['name'])){
+                        if (isset($item['cpn']) && !empty($item['cpn'])) {
                             echo "<p>Coupon: " . htmlspecialchars($item['cpn']) . "</p>";
                         }
                         echo "<p>TOTALE: " . htmlspecialchars(($item['qt']*$item['price'])/100*100-$cpn) . " &euro;" . "</p>";
@@ -110,7 +110,7 @@
                         echo "<p>Durata:<br> Da " . htmlspecialchars($item['startDate']) . " a " . htmlspecialchars($item['endDate']) . "</p>";
                         echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
                         echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p>";
-                        if (isset($item['name'])){
+                        if (isset($item['cpn']) && !empty($item['cpn'])) {
                             echo "<p>Coupon: " . htmlspecialchars($item['cpn']) . "</p>";
                         }
                         echo "<p>TOTALE: " . htmlspecialchars(($item['qt']*$item['price'])/100*100-$cpn) . " &euro;" . "</p>";
