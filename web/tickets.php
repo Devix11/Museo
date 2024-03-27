@@ -28,6 +28,7 @@
             require("config.php");
             global $conn;
             $sql = "SELECT P.Price FROM Prices P WHERE P.ID = 1";
+
             $result = $conn->query($sql);
             if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();

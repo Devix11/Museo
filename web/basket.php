@@ -25,8 +25,16 @@
             <?php
             // Abilita la visualizzazione degli errori
             ini_set('display_errors', 1);
-
+            require("config.php");
+            global $conn;
             session_start(); // Inizia la sessione
+
+            //Form aggiunta coupon al prodotto
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['coupon']) && isset($_POST['item_index'])) {
+                $index = $_POST['item_index'];
+                $item['cpn'] = strip_tags(htmlentities(strtoupper($_POST['coupon'])));
+                $_SESSION['cart'][$index] = $item;
+            }
 
             //Form eliminazione elemento dal carrello
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete']) && isset($_POST['item_index'])) {
@@ -49,7 +57,8 @@
                             "startDate" => "",
                             "endDate" => "",
                             "price" => $_POST['price'],
-                            "qt" => $_POST['qt']
+                            "qt" => $_POST['qt'],
+                            "cpn" => ""
                         ];
                     } else {
                         $ticket = [
@@ -58,7 +67,8 @@
                             "startDate" => $_POST['startDate'],
                             "endDate" => $_POST['endDate'],
                             "price" => $_POST['price'],
-                            "qt" => $_POST['qt']
+                            "qt" => $_POST['qt'],
+                            "cpn" => ""
                         ];
                     }
 
@@ -82,20 +92,38 @@
             } else {
                 $cartIsEmpty = false;
                 foreach ($_SESSION['cart'] as $index => $item) {
+                    $cpn = 0;
+                    if (isset($item['cpn'])) {
+                        $cpn = coupon($item);
+                    }
                     if ($item['name'] == "ingresso-normale") {
                         echo "<div class=''><h3>Ingresso normale</h3>";
                         //echo "<p>Durata:<br> Da " . htmlspecialchars($item['startDate']) . " a " . htmlspecialchars($item['endDate']) . "</p>"; Non serve perchè è un ingresso normale
                         echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
                         echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p>";
-                        echo "<p>TOTALE: " . htmlspecialchars($item['qt']*$item['price']) . " &euro;" . "</p>";
+                        if (isset($item['name'])){
+                            echo "<p>Coupon: " . htmlspecialchars($item['cpn']) . "</p>";
+                        }
+                        echo "<p>TOTALE: " . htmlspecialchars(($item['qt']*$item['price'])/100*100-$cpn) . " &euro;" . "</p>";
                     } else {
                         echo "<div class=''><h3>" . htmlspecialchars($item['name']) . "</h3>";
                         echo "<p>Durata:<br> Da " . htmlspecialchars($item['startDate']) . " a " . htmlspecialchars($item['endDate']) . "</p>";
                         echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
                         echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p>";
-                        echo "<p>TOTALE: " . htmlspecialchars(floatval($item['qt']*$item['price'])) . " &euro;" . "</p>";
+                        if (isset($item['name'])){
+                            echo "<p>Coupon: " . htmlspecialchars($item['cpn']) . "</p>";
+                        }
+                        echo "<p>TOTALE: " . htmlspecialchars(($item['qt']*$item['price'])/100*100-$cpn) . " &euro;" . "</p>";
                     }
+                    //Aggiungi coupon
+                    echo "<form method='post'>";
+                    echo "<input type='hidden' name='item_index' value='" . $index . "'>";
+                    echo "<input type='text' name='coupon' placeholder='ESEMPIO'>";
+                    echo "<button class='cart' type='submit'>Aggiungi coupon</button>";
+                    echo "</form>";
+                    echo "</div>";
 
+                    //Elimina prodotto
                     echo "<form method='post'>";
                     echo "<input type='hidden' name='item_index' value='" . $index . "'>";
                     echo "<input type='hidden' name='delete' value='1'>";
@@ -104,6 +132,29 @@
                     echo "</div><br>";
                 }
             }
+
+            function coupon($item) {
+                    global $conn;
+                    $coupon = strip_tags(htmlentities(strtoupper($item['cpn'])));
+
+                    $sql = "SELECT C.Discount FROM Category C WHERE C.Name = ?";
+                    $stmt = $conn->prepare($sql);
+
+                    $stmt->bind_param("s", $coupon);
+                    $stmt->execute();
+
+                    $result = $stmt->get_result();
+                    if ($row = $result->fetch_assoc()) {
+                        $discount = $row['Discount'];
+                        return $discount;
+                    } else {
+                        echo "<script type='text/javascript'>alert('Coupon invalido');</script>";
+                        $item['cpn'] = "";
+                        return 0;
+                    }
+                    $stmt->close();
+            }
+            $conn -> close();
             ?>
             <div>
                 <button id="button1" class="float-left submit-button" >Continua lo Shopping</button>
