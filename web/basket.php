@@ -142,6 +142,8 @@
                 $sql = "SELECT C.Discount FROM Category C WHERE C.Name = ?";
                 $stmt = $conn->prepare($sql);
                 if (!$stmt) {
+                    $item['cpn'] = null;
+                    $_SESSION['cart'][$index] = $item;
                     return -1;
                 }
 
