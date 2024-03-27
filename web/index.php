@@ -39,6 +39,8 @@
         <?php
             ini_set('display_errors', 1);
 
+        require_once "../vendor/autoload.php";
+
         require("config.php");
         global $conn;
 
@@ -57,48 +59,39 @@
                 echo '</div>';
                 echo '</div>';
             }
-        } else ?>
+        } else { ?>
             <div style="text-align: center">Nessuna immagine trovata</div>
             <script src="script.js"></script>;
-
+        <?php }
+        $conn->close();
+        ?>
 
         <section>
             <h2>In evidenza oggi</h2>
             <?php
-                // Fetch della lista delle esibizioni dal database
-                $sql = "SELECT Name, Image FROM Exhibitions";
-        $result = $conn->query($sql);
-        $cycle = ((int)$result->num_rows)/2;
+            $client = new GuzzleHttp\Client(['base_uri' => 'http://127.0.0.1:3338/']);
+            try {
+                $response = $client->request('GET', 'exhibitions');
+                $data = json_decode($response->getBody(), true);
+                // echo json_encode($data);
 
-        // Controlla se ci sono delle esibizioni
-            if ($result->num_rows > 0) {
-                // Assuming $cycle is initialized before this code block
-                while ($row = $result->fetch_assoc()) {
-                    if ($cycle >= 0) { ?>
-                        <div class="card">
-                            <!-- Mostra l'immagine della mostra -->
-                            <?php
-                            $imageData = base64_encode($row['Image']);
-                            $src = 'data:image/jpeg;base64,' . $imageData; ?>
-                            <img src="<?php echo $src ?>" class="big" alt="<?php echo htmlspecialchars($row['Name']) ?>">
-                            <div>
-                                <!-- Mostra il nome della mostra -->
-                                <h5 class="" style="text-align: center"><?php echo htmlspecialchars($row['Name']); ?></h5>
-                            </div>
-                        </div>
-                        <?php
-                    }
-                    $cycle--;
+                foreach ($data as $name => $image) {
+                    ?>
+                <div class="card">
+                    <?php
+                    // TODO: change PNG to JPEG
+                    $src = 'data:image/png;base64,' . $image; ?>
+                    <img src="<?php echo $src ?>" class="big" alt="<?php echo htmlspecialchars($name) ?>">
+                    <div>
+                        <!-- Mostra il nome della mostra -->
+                        <h5 class="" style="text-align: center"><?php echo htmlspecialchars($name); ?></h5>
+                    </div>
+                </div>
+                    <?php
                 }
-            } else { ?>
-                <p style="text-align: center">Nessuna esibizione trovata.</p>
-                <?php
+            } catch (\GuzzleHttp\Exception\GuzzleException $e) {
+                echo "<h1>API Offline</h1>";
             }
-
-
-
-            // Chiusura della connessione
-        $conn->close();
         ?>
         </section>
 
@@ -106,8 +99,6 @@
             <!-- Using PHP -->
             <h2 style="text-align: center">Api test section</h2>
             <?php
-            require_once "../vendor/autoload.php";
-
         $client = new GuzzleHttp\Client(['base_uri' => 'http://127.0.0.1:3338/']);
         $response = $client->request('GET', 'test');
         $data = json_decode($response->getBody(), true);
