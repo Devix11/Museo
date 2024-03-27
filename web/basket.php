@@ -94,7 +94,11 @@
                 foreach ($_SESSION['cart'] as $index => $item) {
                     $cpn = 0;
                     if (isset($item['cpn']) && !empty($item['cpn'])) {
-                        $cpn = coupon($item, $index);
+                        $cpn = coupon($conn, $item, $index);
+                        if ($cpn < 0){
+                            $cpn = 0;
+                            echo "<script type='text/javascript'>alert('Coupon invalido');</script>";
+                        }
                     }
                     if ($item['name'] == "ingresso-normale") {
                         echo "<div class=''><h3>Ingresso normale</h3>";
@@ -132,27 +136,29 @@
                 }
             }
 
-            function coupon($item, $index) {
-                    global $conn;
-                    $coupon = strip_tags(htmlentities(strtoupper($item['cpn'])));
+            function coupon($conn, $item, $index) {
+                $coupon = strip_tags(htmlentities(strtoupper($item['cpn'])));
 
-                    $sql = "SELECT C.Discount FROM Category C WHERE C.Name = ?";
-                    $stmt = $conn->prepare($sql);
+                $sql = "SELECT C.Discount FROM Category C WHERE C.Name = ?";
+                $stmt = $conn->prepare($sql);
+                if (!$stmt) {
+                    return -1;
+                }
 
-                    $stmt->bind_param("s", $coupon);
-                    $stmt->execute();
+                $stmt->bind_param("s", $coupon);
+                $stmt->execute();
 
-                    $result = $stmt->get_result();
-                    if ($row = $result->fetch_assoc()) {
-                        $discount = $row['Discount'];
-                        return $discount;
-                    } else {
-                        echo "<script type='text/javascript'>alert('Coupon invalido');</script>";
-                        $item['cpn'] = null;
-                        $_SESSION['cart'][$index] = $item;
-                        return 0;
-                    }
+                $result = $stmt->get_result();
+                if ($row = $result->fetch_assoc()) {
+                    $discount = $row['Discount'];
                     $stmt->close();
+                    return $discount;
+                } else {
+                    $item['cpn'] = null;
+                    $_SESSION['cart'][$index] = $item;
+                    $stmt->close();
+                    return -1;
+                }
             }
             $conn -> close();
             ?>
