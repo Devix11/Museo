@@ -54,21 +54,21 @@
                         $ticket = [
                             "name" => $_POST['name'],
                             "desc" => $_POST['desc'],
-                            "startDate" => "",
-                            "endDate" => "",
+                            "startDate" => null,
+                            "endDate" => null,
                             "price" => $_POST['price'],
                             "qt" => $_POST['qt'],
-                            "cpn" => ""
+                            "cpn" => null
                         ];
                     } else {
                         $ticket = [
                             "name" => $_POST['name'],
-                            "desc" => "",
+                            "desc" => null,
                             "startDate" => $_POST['startDate'],
                             "endDate" => $_POST['endDate'],
                             "price" => $_POST['price'],
                             "qt" => $_POST['qt'],
-                            "cpn" => ""
+                            "cpn" => null
                         ];
                     }
 
@@ -93,7 +93,7 @@
                 $cartIsEmpty = false;
                 foreach ($_SESSION['cart'] as $index => $item) {
                     $cpn = 0;
-                    if (isset($item['cpn'])) {
+                    if (!is_null($item['cpn'])) {
                         $cpn = coupon($item);
                     }
                     if ($item['name'] == "ingresso-normale") {
@@ -121,7 +121,6 @@
                     echo "<input type='text' name='coupon' placeholder='ESEMPIO'>";
                     echo "<button class='cart' type='submit'>Aggiungi coupon</button>";
                     echo "</form>";
-                    echo "</div>";
 
                     //Elimina prodotto
                     echo "<form method='post'>";
