@@ -33,7 +33,7 @@
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['coupon']) && isset($_POST['item_index'])) {
                 $index = $_POST['item_index'];
                 $item = $_SESSION['cart'][$index];
-                $item = newItem($item,$_POST['coupon']);
+                $item['cpn'] = $_POST['coupon'];
                 $_SESSION['cart'][$index] = $item;
             }
 
@@ -100,7 +100,6 @@
                             $cpn = 0;
                             $item = newItem($item, null);
                             $_SESSION['cart'][$index] = $item;
-                            echo "<script type='text/javascript'>alert('Coupon invalido');</script>";
                         }
                     }
                     if ($item['name'] == "ingresso-normale") {
