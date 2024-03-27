@@ -97,6 +97,8 @@
                         $cpn = coupon($conn, $item, $index);
                         if ($cpn < 0){
                             $cpn = 0;
+                            $item['cpn'] = null;
+                            $_SESSION['cart'][index] = $item;
                             echo "<script type='text/javascript'>alert('Coupon invalido');</script>";
                         }
                     }
@@ -142,8 +144,6 @@
                 $sql = "SELECT C.Discount FROM Category C WHERE C.Name = ?";
                 $stmt = $conn->prepare($sql);
                 if (!$stmt) {
-                    $item['cpn'] = null;
-                    $_SESSION['cart'][$index] = $item;
                     return -1;
                 }
 
@@ -156,8 +156,6 @@
                     $stmt->close();
                     return $discount;
                 } else {
-                    $item['cpn'] = null;
-                    $_SESSION['cart'][$index] = $item;
                     $stmt->close();
                     return -1;
                 }
