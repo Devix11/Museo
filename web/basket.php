@@ -79,15 +79,17 @@
                 $cartIsEmpty = false;
                 foreach ($_SESSION['cart'] as $item) {
                     if ($item['name'] == "ingresso-normale") {
-                        echo "<div class='info1'><h3>Ingresso normale</h3>";
+                        echo "<div class=''><h3>Ingresso normale</h3>";
                         //echo "<p>Durata:<br> Da " . htmlspecialchars($item['startDate']) . " a " . htmlspecialchars($item['endDate']) . "</p>"; Non serve perchè è un ingresso normale
                         echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
-                        echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p></div><br>";
+                        echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p>";
+                        echo "<p>TOTALE: " . htmlspecialchars($item['qt']*$item['price']) . "</p></div><br>";
                     } else {
-                        echo "<div class='info1'><h3>" . htmlspecialchars($item['name']) . "</h3>";
+                        echo "<div class=''><h3>" . htmlspecialchars($item['name']) . "</h3>";
                         echo "<p>Durata:<br> Da " . htmlspecialchars($item['startDate']) . " a " . htmlspecialchars($item['endDate']) . "</p>";
                         echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
-                        echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p></div><br>";
+                        echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p>";
+                        echo "<p>TOTALE: " . htmlspecialchars($item['qt']*$item['price']) . "</p></div><br>";
                     }
                 }
             }
