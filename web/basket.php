@@ -111,7 +111,7 @@
                         if (isset($item['cpn']) && !empty($item['cpn'])) {
                             echo "<p>Coupon: " . htmlspecialchars($item['cpn']) . "</p>";
                         }
-                        echo "<p>TOTALE: " . htmlspecialchars(($item['qt']*$item['price'])/100*100-$cpn) . " &euro;" . "</p>";
+                        echo "<p>TOTALE: " . htmlspecialchars(($item['qt'])*($item['price']/100*100-$cpn)) . " &euro;" . "</p>";
                     } else {
                         echo "<div class=''><h3>" . htmlspecialchars($item['name']) . "</h3>";
                         echo "<p>Durata:<br> Da " . htmlspecialchars($item['startDate']) . " a " . htmlspecialchars($item['endDate']) . "</p>";
@@ -120,7 +120,7 @@
                         if (isset($item['cpn']) && !empty($item['cpn'])) {
                             echo "<p>Coupon: " . htmlspecialchars($item['cpn']) . "</p>";
                         }
-                        echo "<p>TOTALE: " . htmlspecialchars(($item['qt']*$item['price'])/100*100-$cpn) . " &euro;" . "</p>";
+                        echo "<p>TOTALE: " . htmlspecialchars(($item['qt'])*($item['price']/100*100-$cpn)) . " &euro;" . "</p>";
                     }
                     //Aggiungi coupon
                     echo "<form method='post'>";
