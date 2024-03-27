@@ -32,7 +32,8 @@
             //Form aggiunta coupon al prodotto
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['coupon']) && isset($_POST['item_index'])) {
                 $index = $_POST['item_index'];
-                $item['cpn'] = $_POST['coupon'];
+                $item = $_SESSION['cart'][$index];
+                $item = newItem($item,$_POST['coupon']);
                 $_SESSION['cart'][$index] = $item;
             }
 
@@ -97,7 +98,7 @@
                         $cpn = coupon($conn, $item, $index);
                         if ($cpn < 0){
                             $cpn = 0;
-                            $item['cpn'] = null;
+                            $item = newItem($item, null);
                             $_SESSION['cart'][$index] = $item;
                             echo "<script type='text/javascript'>alert('Coupon invalido');</script>";
                         }
@@ -161,6 +162,19 @@
                 }
             }
             $conn -> close();
+
+            function newItem($item, $val){
+                $ticket = [
+                    "name" => $item['name'],
+                    "desc" => $item['desc'],
+                    "startDate" => $item['startDate'],
+                    "endDate" => $item['endDate'],
+                    "price" => $_POST['price'],
+                    "qt" => $_POST['qt'],
+                    "cpn" => $val
+                ];
+                return $ticket;
+            }
             ?>
             <div>
                 <button id="button1" class="float-left submit-button" >Continua lo Shopping</button>
