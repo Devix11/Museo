@@ -153,7 +153,14 @@ button {
 }
 
 button.cart {
-    background-color: dodgerblue;
+    background-color: #034efd;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: bold;
 }
 
 button:hover {
@@ -161,7 +168,7 @@ button:hover {
 }
 
 button.cart:hover {
-    background-color: #1e90ff;
+    background-color: dodgerblue;
 }
 
 .card {
