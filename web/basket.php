@@ -100,6 +100,7 @@
                             $cpn = 0;
                             $item = newItem($item, null);
                             $_SESSION['cart'][$index] = $item;
+                            echo "<script type='text/javascript'>alert('Coupon invalido');</script>";
                         }
                     }
                     if ($item['name'] == "ingresso-normale") {
