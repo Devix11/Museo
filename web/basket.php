@@ -168,8 +168,8 @@
                     "desc" => $item['desc'],
                     "startDate" => $item['startDate'],
                     "endDate" => $item['endDate'],
-                    "price" => $_POST['price'],
-                    "qt" => $_POST['qt'],
+                    "price" => $item['price'],
+                    "qt" => $item['qt'],
                     "cpn" => $val
                 ];
                 return $ticket;
