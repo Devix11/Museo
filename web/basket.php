@@ -34,15 +34,27 @@
                     !empty($_POST['price']) &&
                     !empty($_POST['qt'])
                 ) {
-                    // Prepara l'array del prodotto
-                    $product = [
-                        "name" => $_POST['name'],
-                        "desc" => $_POST['desc'],
-                        "startDate" => $_POST['startDate'],
-                        "endDate" => $_POST['endDate'],
-                        "price" => $_POST['price'],
-                        "qt" => $_POST['qt']
-                    ];
+                    if ( isset($_POST['desc'])){
+                        // Prepara l'array del prodotto
+                        $product = [
+                            "name" => $_POST['name'],
+                            "desc" => $_POST['desc'],
+                            "startDate" => "",
+                            "endDate" => "",
+                            "price" => $_POST['price'],
+                            "qt" => $_POST['qt']
+                        ];
+                    } else {
+                        // Prepara l'array del prodotto
+                        $product = [
+                            "name" => $_POST['name'],
+                            "desc" => "",
+                            "startDate" => $_POST['startDate'],
+                            "endDate" => $_POST['endDate'],
+                            "price" => $_POST['price'],
+                            "qt" => $_POST['qt']
+                        ];
+                    }
 
                     // Inizializza il carrello se non esiste
                     if (!isset($_SESSION['cart'])) {
@@ -67,15 +79,15 @@
                 $cartIsEmpty = false;
                 foreach ($_SESSION['cart'] as $item) {
                     if ($item['name'] == "ingresso-normale") {
-                        echo "<h3>Ingresso normale</h3>";
+                        echo "<div class='info1'><h3>Ingresso normale</h3>";
                         //echo "<p>Durata:<br> Da " . htmlspecialchars($item['startDate']) . " a " . htmlspecialchars($item['endDate']) . "</p>"; Non serve perchè è un ingresso normale
                         echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
-                        echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p><br>";
+                        echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p></div><br>";
                     } else {
-                        echo "<h3>" . htmlspecialchars($item['name']) . "</h3>";
+                        echo "<div class='info1'><h3>" . htmlspecialchars($item['name']) . "</h3>";
                         echo "<p>Durata:<br> Da " . htmlspecialchars($item['startDate']) . " a " . htmlspecialchars($item['endDate']) . "</p>";
                         echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
-                        echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p><br>";
+                        echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p></div><br>";
                     }
                 }
             }
