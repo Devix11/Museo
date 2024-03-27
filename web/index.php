@@ -70,28 +70,28 @@
             <h2>In evidenza oggi</h2>
             <?php
             $client = new GuzzleHttp\Client(['base_uri' => 'http://127.0.0.1:3338/']);
-            try {
-                $response = $client->request('GET', 'exhibitions');
-                $data = json_decode($response->getBody(), true);
-                // echo json_encode($data);
+        try {
+            $response = $client->request('GET', 'exhibitions');
+            $data = json_decode($response->getBody(), true);
+            // echo json_encode($data);
 
-                foreach ($data as $name => $image) {
-                    ?>
+            foreach ($data as $item) {
+                ?>
                 <div class="card">
                     <?php
-                    // TODO: change PNG to JPEG
-                    $src = 'data:image/png;base64,' . $image; ?>
-                    <img src="<?php echo $src ?>" class="big" alt="<?php echo htmlspecialchars($name) ?>">
+                // TODO: change PNG to JPEG
+                $src = 'data:image/png;base64,' . $item["image"]; ?>
+                    <img src="<?php echo $src ?>" class="big" alt="<?php echo htmlspecialchars($item["name"]) ?>">
                     <div>
                         <!-- Mostra il nome della mostra -->
-                        <h5 class="" style="text-align: center"><?php echo htmlspecialchars($name); ?></h5>
+                        <h5 class="" style="text-align: center"><?php echo htmlspecialchars($item["name"]); ?></h5>
                     </div>
                 </div>
                     <?php
-                }
-            } catch (\GuzzleHttp\Exception\GuzzleException $e) {
-                echo "<h1>API Offline</h1>";
             }
+        } catch (\GuzzleHttp\Exception\GuzzleException $e) {
+            echo "<h1>API Offline</h1>";
+        }
         ?>
         </section>
 
