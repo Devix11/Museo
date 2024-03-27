@@ -83,13 +83,13 @@
                         //echo "<p>Durata:<br> Da " . htmlspecialchars($item['startDate']) . " a " . htmlspecialchars($item['endDate']) . "</p>"; Non serve perchè è un ingresso normale
                         echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
                         echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p>";
-                        echo "<p>TOTALE: " . htmlspecialchars($item['qt']*$item['price']) . "</p></div><br>";
+                        echo "<p>TOTALE: " . htmlspecialchars($item['qt']*$item['price']) . " &euro;" . "</p></div><br>";
                     } else {
                         echo "<div class=''><h3>" . htmlspecialchars($item['name']) . "</h3>";
                         echo "<p>Durata:<br> Da " . htmlspecialchars($item['startDate']) . " a " . htmlspecialchars($item['endDate']) . "</p>";
                         echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
                         echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p>";
-                        echo "<p>TOTALE: " . htmlspecialchars($item['qt']*$item['price']) . "</p></div><br>";
+                        echo "<p>TOTALE: " . htmlspecialchars(floatval($item['qt']*$item['price'])) . " &euro;" . "</p></div><br>";
                     }
                 }
             }
