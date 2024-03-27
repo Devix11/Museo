@@ -94,14 +94,26 @@
                 }
             }
             ?>
-            <section>
-            <button><a href="tickets.php">Continua lo shopping</a></button>
+            <div>
+                <button id="button1" class="float-left submit-button" >Continua lo Shopping</button>
+
+                <script type="text/javascript">
+                    document.getElementById("button1").onclick = function () {
+                        location.href = "tickets.php";
+                    };
+                </script>
             <?php if (!$cartIsEmpty): ?>
-                <button><a href="checkout.php">Procedi al Checkout</a></button>
+                <button id="button2" class="float-left submit-button" >Procedi al Checkout</button>
+
+                <script type="text/javascript">
+                    document.getElementById("button2").onclick = function () {
+                        location.href = "checkout.php";
+                    };
+                </script>
             <?php else: ?>
                 <button disabled>Procedi al Checkout</button>
             <?php endif; ?>
-            </section>
+            </div>
         </section>
     </div>
 
