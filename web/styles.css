@@ -75,6 +75,7 @@ section,
 }
 
 p.tot {
+    padding-left: 2px;
     border-left: 6px solid #ffdd57;
 }
 
