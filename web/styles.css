@@ -82,7 +82,6 @@ section,
 
 section.info2 {
     text-align: center;
-    align-content: center;
     width: 80%;
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -92,6 +91,7 @@ section.info2 {
 .col1, .col2 {
     flex: 1;
     padding: 20px;
+    align-content: center;
 }
 
 .form-group {
