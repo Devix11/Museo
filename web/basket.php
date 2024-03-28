@@ -84,9 +84,6 @@
                     //die(htmlspecialchars("Errore inaspettato, riprova più tardi."));
                 }
             }
-
-
-
             if (empty($_SESSION['cart'])) {
                 echo "<p>Il tuo carrello è vuoto.<p></p><br>";
                 $cartIsEmpty = true;
@@ -95,10 +92,11 @@
                 foreach ($_SESSION['cart'] as $index => $item) {
                     $cpn = 0;
                     if (isset($item['cpn']) && !empty($item['cpn'])) {
-                        $cpn = coupon($conn, $item, $index);
+                        $cpn = coupon($conn, $item);
                         if ($cpn < 0){
                             $cpn = 0;
-                            $item = newItem($item, null);
+                            //$item = newItem($item, null);
+                            $item['cpn'] = null;
                             $_SESSION['cart'][$index] = $item;
                             echo "<script type='text/javascript'>alert('Coupon invalido');</script>";
                         }
@@ -139,7 +137,7 @@
                 }
             }
 
-            function coupon($conn, $item, $index) {
+            function coupon($conn, $item) {
                 $coupon = strip_tags(htmlentities(strtoupper($item['cpn'])));
 
                 $sql = "SELECT C.Discount FROM Category C WHERE C.Name = ?";
