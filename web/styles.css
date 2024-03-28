@@ -80,6 +80,13 @@ section,
      max-width: 80%;
  }
 
+ div.info1 {
+     padding-bottom: 5px;
+     border-style: double;
+     border-width: thin;
+     border-color: #cccccc;
+ }
+
 section.info2 {
     text-align: center;
     width: 80%;
