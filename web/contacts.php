@@ -23,12 +23,18 @@
                 <div class="col1">
                     <h2>Contattaci!</h2>
                     <form class="col1" action="process_contact.php" method="POST">
-                            <label class="col1" for="name">Nome</label>
-                            <input class="col1" type="text" id="name" name="name" required>
-                            <label class="col1" for="email">Email</label>
-                            <input class="col1" type="email" id="email" name="email" required>
-                            <label class="col1" for="message">Messaggio</label>
-                            <textarea class="col1" id="message" name="message" rows="5" required></textarea>
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Messaggio</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
                         <button type="submit">Invia</button>
                     </form>
                 </div>
