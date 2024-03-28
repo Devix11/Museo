@@ -50,7 +50,10 @@
                     </p>
                 </div>
         </section>
-
+        <footer>
+            <!-- Testo di copyright -->
+            <p class="copy">&copy; 2024 Yellow Tulip Museum. All rights reserved.</p>
+        </footer>
         <script src="script.js"></script>
     </body>
 </html>
