@@ -82,7 +82,7 @@ section,
 
  div.info1 {
      padding-bottom: 5px;
-     border-style: double;
+     border-bottom-style: double;
      border-width: thin;
      border-color: #cccccc;
  }
