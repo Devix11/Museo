@@ -82,6 +82,7 @@ section,
 
 section.info2 {
     text-align: center;
+    align-content: center;
     width: 80%;
     display: grid;
     grid-template-columns: 1fr 2fr;
