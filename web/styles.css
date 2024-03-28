@@ -85,6 +85,7 @@ p.tot {
  }
 
  div.info1 {
+     padding-left: 2px;
      padding-bottom: 5px;
      border-bottom: 3px double #cccccc;
  }
