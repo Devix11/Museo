@@ -131,6 +131,19 @@ input[type="text"], input[type="email"] {
     background-color: #f9f9f9;
 }
 
+input[type="text"].cart{
+    width: 150px;
+    padding: 5px 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #f9f9f9;
+}
+
 textarea {
     width: 200px;
     padding: 5px 10px;
