@@ -107,7 +107,7 @@
                         echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
                         echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p>";
                         if (isset($item['cpn']) && !empty($item['cpn'])) {
-                            echo "<p>Coupon: " . htmlspecialchars(strtoupper($item['cpn'])) . " ( " . htmlspecialchars($cpn) . "% )</p>";
+                            echo "<p class='cpn'>Coupon: " . htmlspecialchars(strtoupper($item['cpn'])) . " ( " . htmlspecialchars($cpn) . "% )</p>";
                         }
                         echo "<p class='tot'>TOTALE: " . htmlspecialchars(($item['qt'])*($item['price']/100*(100-$cpn))) . " &euro;" . "</p>";
                     } else {
@@ -116,7 +116,7 @@
                         echo "<p>Prezzo: " . htmlspecialchars($item['price']) . "</p>";
                         echo "<p>Quantità: " . htmlspecialchars($item['qt']) . "</p>";
                         if (isset($item['cpn']) && !empty($item['cpn'])) {
-                            echo "<p>Coupon: " . htmlspecialchars(strtoupper($item['cpn'])) . " ( " . htmlspecialchars($cpn) . "% )</p>";
+                            echo "<p class='cpn'>Coupon: " . htmlspecialchars(strtoupper($item['cpn'])) . " ( " . htmlspecialchars($cpn) . "% )</p>";
                         }
                         echo "<p class='tot'>TOTALE: " . htmlspecialchars(($item['qt'])*($item['price']/100*(100-$cpn))) . " &euro;" . "</p>";
                     }

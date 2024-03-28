@@ -79,6 +79,11 @@ p.tot {
     border-left: 6px solid #ffdd57;
 }
 
+p.cpn {
+    padding-left: 2px;
+    border-left: 6px solid limegreen;
+}
+
  section.info1 {
      text-align: center;
      width: fit-content;
@@ -86,7 +91,6 @@ p.tot {
  }
 
  div.info1 {
-     padding-left: 2px;
      padding-bottom: 5px;
      border-bottom: 3px double #cccccc;
  }
