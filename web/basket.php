@@ -123,7 +123,7 @@
                     //Aggiungi coupon
                     echo "<form method='post'>";
                     echo "<input type='hidden' name='item_index' value='" . $index . "'>";
-                    echo "<input type='text' name='coupon' placeholder='ESEMPIO'>";
+                    echo "<input class='cart' type='text' name='coupon' placeholder='ESEMPIO'>";
                     echo "<button class='cart' type='submit'>Aggiungi coupon</button>";
                     echo "</form>";
 
@@ -160,19 +160,6 @@
                 }
             }
             $conn -> close();
-
-            function newItem($item, $val){
-                $ticket = [
-                    "name" => $item['name'],
-                    "desc" => $item['desc'],
-                    "startDate" => $item['startDate'],
-                    "endDate" => $item['endDate'],
-                    "price" => $item['price'],
-                    "qt" => $item['qt'],
-                    "cpn" => $val
-                ];
-                return $ticket;
-            }
             ?>
             <div>
                 <button id="button1" class="float-left submit-button" >Continua lo Shopping</button>
