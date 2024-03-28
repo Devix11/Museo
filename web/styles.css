@@ -120,7 +120,7 @@ input[type="number"]:focus {
     outline: none;
 }
 
-input[type="text"], input[type="text"] {
+input[type="text"], input[type="email"] {
     width: 150px;
     padding: 5px 10px;
     margin: 5px;
@@ -131,7 +131,7 @@ input[type="text"], input[type="text"] {
     background-color: #f9f9f9;
 }
 
-input[type="text"].cart:focus {
+input[type="text"]:focus, input[type="email"]:focus, input[type="textarea"]:hover {
     border-color: #007bff;
     outline: none;
 }
