@@ -74,8 +74,8 @@ section,
     border-radius: 3px;
 }
 
-.tot {
-    border-left: 6px inset #ffdd57;
+p.tot {
+    border-left: 6px solid #ffdd57;
 }
 
  section.info1 {
@@ -86,7 +86,7 @@ section,
 
  div.info1 {
      padding-bottom: 5px;
-     border-bottom: thin double #cccccc;
+     border-bottom: 3px double #cccccc;
  }
 
 section.info2 {
