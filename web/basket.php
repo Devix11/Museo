@@ -121,11 +121,12 @@
                         echo "<p>TOTALE: " . htmlspecialchars(($item['qt'])*($item['price']/100*(100-$cpn))) . " &euro;" . "</p>";
                     }
                     //Aggiungi coupon
+                    echo "<div>"
                     echo "<form method='post'>";
                     echo "<input type='hidden' name='item_index' value='" . $index . "'>";
                     echo "<input type='text' name='coupon' placeholder='ESEMPIO'>";
                     echo "<button class='cart' type='submit'>Aggiungi coupon</button>";
-                    echo "</form>";
+                    echo "</form></div>";
 
                     //Elimina prodotto
                     echo "<form method='post'>";
