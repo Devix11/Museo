@@ -74,6 +74,10 @@ section,
     border-radius: 3px;
 }
 
+.tot {
+    border-left: 6px inset #ffdd57;
+}
+
  section.info1 {
      text-align: center;
      width: fit-content;
@@ -82,9 +86,7 @@ section,
 
  div.info1 {
      padding-bottom: 5px;
-     border-bottom-style: double;
-     border-width: thin;
-     border-color: #cccccc;
+     border-bottom: thin double #cccccc;
  }
 
 section.info2 {
